@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frankie & Fanucci's — Wood-Fired Pizza & Italian Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #f5f0e8;
+    --parchment: #ede5d4;
+    --gold: #d61f2c;
+    --gold-light: #ef4350;
+    --gold-dark: #a9121d;
+    --charcoal: #141414;
+    --brown: #5c3d2e;
+    --brick: #8b3a2a;
+    --sage: #6b7c6a;
+    --text-dark: #1e1a17;
+    --text-mid: #5a4a3a;
+    --text-light: #8a7a6a;
+    --border: rgba(196,147,63,0.25);
+    --shadow: 0 8px 40px rgba(42,36,32,0.12);
+    --shadow-lg: 0 20px 80px rgba(42,36,32,0.18);
+    --font-sans: "freight-sans-pro", "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-display: "freight-big-pro", "Bodoni Moda", "Didot", "Times New Roman", serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+  .hero-title,
+  .section-title,
+  .menu-panel-title,
+  .hero-awards-text,
+  .social-handle,
+  .newsletter-inner .section-title,
+  .package-name,
+  .package-price,
+  .stat-num,
+  .mobile-nav-link {
+    font-family: var(--font-display);
+  }
+  .nav-logo-text,
+  .footer-col-title,
+  .happy-badge {
+    font-family: var(--font-sans);
+  }
+
+  /* ── CURSOR ── */
+  body { cursor: none; }
+  .cursor {
+    position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+    background: var(--gold); border-radius: 50%; pointer-events: none;
+    z-index: 99999; transform: translate(-50%,-50%);
+    transition: width .2s, height .2s, background .2s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0; width: 36px; height: 36px;
+    border: 1.5px solid var(--gold); border-radius: 50%; pointer-events: none;
+    z-index: 99998; transform: translate(-50%,-50%);
+    transition: transform .12s ease-out, width .3s, height .3s, opacity .3s;
+    opacity: 0.6;
+  }
+  .cursor.hover { width: 20px; height: 20px; }
+  .cursor-ring.hover { width: 60px; height: 60px; opacity: 0.3; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+    background:
+      linear-gradient(to bottom,
+        rgba(10,7,4,0.78),
+        rgba(10,7,4,0.72));
+    backdrop-filter: blur(26px) saturate(150%);
+    -webkit-backdrop-filter: blur(26px) saturate(150%);
+    box-shadow:
+      0 0 0 0.5px rgba(255,255,255,0.16),
+      0 18px 45px rgba(0,0,0,0.55);
+    border-bottom: 1px solid rgba(196,147,63,0.45);
+    transition: background .4s, backdrop-filter .4s, box-shadow .4s, height .4s, border-color .4s;
+  }
+  nav.scrolled {
+    background:
+      linear-gradient(to bottom,
+        rgba(15,10,6,0.9),
+        rgba(15,10,6,0.86));
+    backdrop-filter: blur(30px) saturate(160%);
+    -webkit-backdrop-filter: blur(30px) saturate(160%);
+    box-shadow:
+      0 0 0 0.5px rgba(255,255,255,0.18),
+      0 22px 55px rgba(0,0,0,0.65);
+    border-bottom: 1px solid rgba(196,147,63,0.55);
+    height: 68px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity .3s;
+  }
+  .nav-logo:hover { opacity: 0.8; }
+  .nav-logo img {
+    height: 52px; width: 52px; border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(42,36,32,0.2);
+  }
+  .nav-logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; letter-spacing: 0.12em;
+    color: #fdf7ec;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.78); text-decoration: none; font-weight: 500;
+    position: relative; padding-bottom: 2px;
+    transition: color .25s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-order-btn {
+    background: var(--charcoal); color: var(--gold-light) !important;
+    padding: 10px 24px !important; border-radius: 2px;
+    font-weight: 500 !important; letter-spacing: 0.16em !important;
+    transition: background .25s, color .25s !important;
+  }
+  .nav-order-btn:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
+  .nav-order-btn::after { display: none !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; border: none; background: none; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transition: .3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-slideshow {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 1.4s ease;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26,20,16,0.7) 0%,
+      rgba(26,20,16,0.4) 50%,
+      rgba(26,20,16,0.25) 100%
+    );
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    padding: 0 80px; max-width: 800px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 400;
+    margin-bottom: 24px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .8s .3s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300; line-height: 1.02;
+    color: #fff; letter-spacing: -0.01em;
+    margin-bottom: 28px;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp .9s .5s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-desc {
+    font-size: 16px; color: rgba(255,255,255,0.8);
+    line-height: 1.75; max-width: 480px;
+    margin-bottom: 48px; font-weight: 300;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .8s .7s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; align-items: center;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .8s .9s forwards;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--charcoal);
+    padding: 16px 36px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    transition: background .25s, transform .2s, box-shadow .25s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,147,63,0.4); }
+  .btn-ghost {
+    color: rgba(255,255,255,0.9); font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: color .25s, border-color .25s;
+  }
+  .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
+  .hero-awards {
+    position: absolute; bottom: 60px; right: 80px; z-index: 1;
+    background: rgba(250,247,242,0.12); backdrop-filter: blur(12px);
+    border: 1px solid rgba(196,147,63,0.3);
+    padding: 20px 28px; border-radius: 2px;
+    opacity: 0; animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-awards-label {
+    font-family: 'DM Sans', sans-serif; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 6px;
+  }
+  .hero-awards-text {
+    font-family: var(--font-display); font-size: 22px;
+    color: #fff; font-weight: 500; line-height: 1.2;
+  }
+  .hero-awards-sub {
+    font-size: 11px; color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em; margin-top: 4px;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeIn 1s 1.5s forwards;
+  }
+  .hero-scroll-hint span {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .scroll-line {
+    width: 1px; height: 48px; background: linear-gradient(var(--gold-light), transparent);
+    animation: scrollLine 1.8s ease infinite;
+  }
+  @keyframes scrollLine { 0%,100%{transform:scaleY(1);opacity:1} 50%{transform:scaleY(0.5);opacity:0.4} }
+
+  /* ── SECTION BASICS ── */
+  section { position: relative; }
+  .section-inner { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+  .divider {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 16px;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-icon { color: var(--gold); font-size: 14px; }
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 10px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold-dark); font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4.5vw, 64px);
+    font-weight: 300; color: var(--charcoal);
+    line-height: 1.08; letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--gold-dark); }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--charcoal); padding: 80px 0;
+    overflow: hidden;
+  }
+  .about-strip .section-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-text .eyebrow { color: var(--gold-light); }
+  .about-text .section-title { color: #fff; margin: 16px 0 28px; }
+  .about-text p {
+    color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.85;
+    font-weight: 300; margin-bottom: 16px;
+  }
+  .about-stats {
+    display: flex; gap: 48px; margin-top: 40px; padding-top: 40px;
+    border-top: 1px solid rgba(196,147,63,0.2);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 48px; font-weight: 300; color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-top: 4px;
+  }
+  .about-image-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .about-img-wrap {
+    border-radius: 2px; overflow: hidden;
+    position: relative;
+  }
+  .about-img-wrap:first-child { grid-row: span 2; }
+  .about-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .8s ease;
+    display: block;
+  }
+  .about-img-wrap:first-child { height: 360px; }
+  .about-img-wrap:not(:first-child) { height: 174px; }
+  .about-img-wrap:hover img { transform: scale(1.05); }
+
+  /* ── FOOD CAROUSEL ── */
+  .food-carousel-section { padding: 120px 0; background: var(--warm-white); }
+  .food-carousel-header { text-align: center; margin-bottom: 64px; }
+  .food-carousel-header .section-title { margin: 12px 0 20px; }
+  .food-carousel-header p {
+    color: var(--text-light); font-size: 16px; max-width: 520px;
+    margin: 0 auto; line-height: 1.75; font-weight: 300;
+  }
+  .carousel-track-wrapper { overflow: hidden; position: relative; }
+  .carousel-track-wrapper::before,
+  .carousel-track-wrapper::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+    pointer-events: none;
+  }
+  .carousel-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--warm-white), transparent); }
+  .carousel-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--warm-white), transparent); }
+  .carousel-track {
+    display: flex; gap: 20px;
+    animation: infiniteScroll 40s linear infinite;
+    width: max-content;
+  }
+  .carousel-track:hover { animation-play-state: paused; }
+  @keyframes infiniteScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .food-card {
+    flex: 0 0 280px; height: 360px; border-radius: 4px; overflow: hidden;
+    position: relative; box-shadow: var(--shadow);
+  }
+  .food-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .food-card:hover img { transform: scale(1.08); }
+  .food-card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 60px 20px 20px;
+    background: linear-gradient(transparent, rgba(26,20,16,0.85));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 400;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .4s, transform .4s;
+  }
+  .food-card:hover .food-card-label { opacity: 1; transform: translateY(0); }
+
+  /* ── MENU SECTION ── */
+  .menu-section { padding: 120px 0; background: var(--cream); }
+  .menu-layout { display: grid; grid-template-columns: 380px 1fr; gap: 80px; align-items: start; margin-top: 64px; }
+  .menu-sticky { position: sticky; top: 100px; }
+  .menu-sticky .section-title { margin: 12px 0 24px; }
+  .menu-sticky p { color: var(--text-light); font-size: 15px; line-height: 1.8; margin-bottom: 36px; }
+  .menu-tabs { display: flex; flex-direction: column; gap: 2px; }
+  .menu-tab {
+    padding: 14px 20px; border-radius: 2px; cursor: none;
+    font-size: 13px; letter-spacing: 0.06em; font-weight: 400;
+    color: var(--text-mid); border: 1px solid transparent;
+    transition: all .25s; background: transparent;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .menu-tab:hover { background: var(--parchment); color: var(--charcoal); }
+  .menu-tab.active {
+    background: var(--charcoal); color: var(--gold-light);
+    border-color: transparent;
+  }
+  .menu-tab .tab-arrow { opacity: 0; transition: opacity .2s; font-size: 16px; }
+  .menu-tab.active .tab-arrow, .menu-tab:hover .tab-arrow { opacity: 1; }
+  .menu-cta {
+    margin-top: 36px; padding: 28px; background: var(--parchment);
+    border-radius: 2px; border: 1px solid var(--border);
+  }
+  .menu-cta p { font-size: 14px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.6; }
+  .btn-outlined {
+    display: inline-block; padding: 12px 28px;
+    border: 1.5px solid var(--charcoal); color: var(--charcoal);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500; border-radius: 2px;
+    transition: background .25s, color .25s;
+  }
+  .btn-outlined:hover { background: var(--charcoal); color: var(--gold-light); }
+  .menu-panels { position: relative; }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; animation: fadeUp .4s ease; }
+  .menu-panel-title {
+    font-family: var(--font-display); font-size: 32px;
+    font-weight: 400; color: var(--charcoal); margin-bottom: 8px;
+    font-style: italic;
+  }
+  .menu-panel-sub { font-size: 12px; letter-spacing: 0.1em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 36px; }
+  .menu-panel-img { width: 100%; height: 260px; object-fit: cover; border-radius: 2px; margin-bottom: 36px; }
+  .menu-items { list-style: none; }
+  .menu-item {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .item-name {
+    font-weight: 500; font-size: 14px; color: var(--charcoal);
+    letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .item-desc { font-size: 13px; color: var(--text-light); margin-top: 4px; font-weight: 300; line-height: 1.6; }
+  .item-price { font-family: var(--font-display); font-size: 18px; color: var(--gold-dark); white-space: nowrap; }
+
+  /* ── SERVICES GRID ── */
+  .services-section { padding: 120px 0; background: var(--parchment); }
+  .services-section .section-inner > .eyebrow { text-align: center; }
+  .services-section .section-title { text-align: center; margin: 12px 0 64px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border-radius: 2px; overflow: hidden; position: relative;
+    min-height: 480px; display: flex; align-items: flex-end;
+    box-shadow: var(--shadow);
+  }
+  .service-card img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; transition: transform .8s ease;
+  }
+  .service-card:hover img { transform: scale(1.06); }
+  .service-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(transparent 30%, rgba(26,20,16,0.88) 100%);
+    transition: background .4s;
+  }
+  .service-card:hover .service-card-overlay { background: linear-gradient(transparent 10%, rgba(26,20,16,0.92) 100%); }
+  .service-card-content { position: relative; z-index: 1; padding: 36px; width: 100%; }
+  .service-tag {
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 12px; display: block;
+  }
+  .service-card-title {
+    font-family: var(--font-display); font-size: 28px;
+    color: #fff; font-weight: 400; margin-bottom: 10px; line-height: 1.2;
+  }
+  .service-card-desc { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 24px; font-weight: 300; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--gold-light); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    border-bottom: 1px solid rgba(196,147,63,0.4);
+    padding-bottom: 4px;
+    transition: color .25s, border-color .25s;
+  }
+  .service-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── HAPPY HOUR ── */
+  .happy-section {
+    padding: 120px 0; background: var(--charcoal);
+    position: relative; overflow: hidden;
+  }
+  .happy-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/8d9ff1bb-3718-4647-a70d-eff315699c6b/Cocktails.jpg') center/cover;
+    opacity: 0.12;
+  }
+  .happy-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .happy-left .eyebrow { color: var(--gold-light); }
+  .happy-left .section-title { color: #fff; margin: 16px 0; }
+  .happy-badge {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--charcoal);
+    padding: 12px 24px; border-radius: 2px; margin: 24px 0 36px;
+    font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .happy-desc { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.85; margin-bottom: 36px; font-weight: 300; }
+  .cocktail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cocktail-item {
+    padding: 20px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(196,147,63,0.15); border-radius: 2px;
+    transition: background .3s, border-color .3s;
+  }
+  .cocktail-item:hover { background: rgba(196,147,63,0.1); border-color: rgba(196,147,63,0.3); }
+  .cocktail-name { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); font-weight: 500; margin-bottom: 4px; }
+  .cocktail-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── GROUPS ── */
+  .groups-section { padding: 120px 0; background: var(--warm-white); }
+  .groups-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 64px; }
+  .groups-image { border-radius: 2px; overflow: hidden; height: 560px; position: relative; }
+  .groups-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s; }
+  .groups-image:hover img { transform: scale(1.04); }
+  .groups-image-badge {
+    position: absolute; bottom: 32px; left: 32px;
+    background: var(--gold); color: var(--charcoal);
+    padding: 16px 20px; border-radius: 2px;
+    font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.06em;
+  }
+  .groups-content .section-title { margin: 12px 0 24px; }
+  .groups-content > p { color: var(--text-light); font-size: 15px; line-height: 1.85; margin-bottom: 40px; font-weight: 300; }
+  .packages { display: flex; flex-direction: column; gap: 16px; }
+  .package {
+    padding: 24px; border: 1px solid var(--border); border-radius: 2px;
+    transition: border-color .3s, box-shadow .3s; background: #fff;
+  }
+  .package:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(196,147,63,0.12); }
+  .package-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .package-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--charcoal); }
+  .package-price { font-family: var(--font-display); font-size: 22px; color: var(--gold-dark); }
+  .package-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
+  .groups-cta { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+  .btn-dark {
+    display: inline-block; background: var(--charcoal); color: var(--gold-light);
+    padding: 14px 32px; font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    border-radius: 2px; transition: background .25s;
+  }
+  .btn-dark:hover { background: var(--gold-dark); }
+
+  /* ── LOCATION ── */
+  .location-section { padding: 120px 0; background: var(--cream); }
+  .location-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 64px; }
+  .location-map {
+    border-radius: 2px; overflow: hidden; height: 400px;
+    box-shadow: var(--shadow-lg);
+  }
+  .location-map a { display: block; height: 100%; }
+  .location-map img { width: 100%; height: 100%; object-fit: cover; transition: opacity .3s; }
+  .location-map:hover img { opacity: 0.85; }
+  .location-info .section-title { margin: 12px 0 36px; }
+  .location-details { display: flex; flex-direction: column; gap: 28px; }
+  .detail-row { display: flex; gap: 20px; align-items: flex-start; }
+  .detail-icon {
+    width: 44px; height: 44px; background: var(--parchment);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 18px;
+    border: 1px solid var(--border);
+  }
+  .detail-content {}
+  .detail-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+  .detail-text { font-size: 15px; color: var(--charcoal); line-height: 1.65; }
+  .detail-text a { color: var(--charcoal); text-decoration: none; }
+  .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; font-size: 14px; color: var(--text-mid); }
+  .hours-grid .day { font-weight: 500; }
+
+  /* ── SOCIAL/INSTAGRAM ── */
+  .social-section { padding: 80px 0; background: var(--parchment); text-align: center; }
+  .social-section .eyebrow { margin-bottom: 12px; }
+  .social-section .section-title { margin-bottom: 12px; }
+  .social-handle { font-family: var(--font-display); font-size: 28px; color: var(--gold-dark); font-style: italic; margin-bottom: 48px; }
+  .social-handle a { color: inherit; text-decoration: none; }
+  .social-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    max-width: 900px; margin: 0 auto 48px;
+  }
+  .social-img { aspect-ratio: 1; overflow: hidden; border-radius: 2px; }
+  .social-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; display: block; }
+  .social-img:hover img { transform: scale(1.08); }
+  .social-follow-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 36px; background: var(--charcoal); color: var(--gold-light);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500; border-radius: 2px;
+    transition: background .25s;
+  }
+  .social-follow-btn:hover { background: var(--gold-dark); }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-section {
+    padding: 80px 0; background: var(--charcoal);
+  }
+  .newsletter-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+  .newsletter-inner .eyebrow { color: var(--gold-light); margin-bottom: 12px; }
+  .newsletter-inner .section-title { color: #fff; margin-bottom: 16px; font-size: 36px; }
+  .newsletter-inner p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; margin-bottom: 36px; }
+  .newsletter-form { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+  .newsletter-form input {
+    flex: 1; padding: 16px 20px; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(196,147,63,0.3); border-right: none;
+    color: #fff; font-size: 14px; outline: none; font-family: 'DM Sans', sans-serif;
+    border-radius: 2px 0 0 2px;
+    transition: border-color .25s;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .newsletter-form input:focus { border-color: rgba(196,147,63,0.6); }
+  .newsletter-form button {
+    padding: 16px 28px; background: var(--gold); color: var(--charcoal);
+    border: none; font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+    cursor: none; border-radius: 0 2px 2px 0;
+    transition: background .25s;
+  }
+  .newsletter-form button:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #15100d; padding: 64px 0 32px;
+  }
+  .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(196,147,63,0.15);
+  }
+  .footer-brand img { height: 60px; width: 60px; border-radius: 50%; margin-bottom: 20px; }
+  .footer-brand p { color: rgba(255,255,255,0.45); font-size: 13px; line-height: 1.75; max-width: 260px; margin-bottom: 24px; }
+  .footer-social-links { display: flex; gap: 16px; }
+  .footer-social-links a {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid rgba(196,147,63,0.25); display: flex;
+    align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.5); font-size: 14px; text-decoration: none;
+    transition: border-color .25s, color .25s;
+  }
+  .footer-social-links a:hover { border-color: var(--gold); color: var(--gold-light); }
+  .footer-col-title {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em;
+    color: var(--gold-light); margin-bottom: 20px; font-weight: 500;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.45); font-size: 13px; text-decoration: none;
+    transition: color .25s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { color: rgba(255,255,255,0.25); font-size: 12px; }
+  .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--charcoal); padding: 100px 48px 48px;
+    display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform .4s cubic-bezier(.7,0,.3,1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu nav-links { display: flex; flex-direction: column; gap: 0; }
+  .mobile-nav-link {
+    font-family: var(--font-display); font-size: 44px;
+    font-weight: 300; color: rgba(255,255,255,0.85);
+    text-decoration: none; padding: 16px 0;
+    border-bottom: 1px solid rgba(196,147,63,0.1);
+    display: block; transition: color .25s;
+  }
+  .mobile-nav-link:hover { color: var(--gold-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .about-strip .section-inner { grid-template-columns: 1fr; gap: 48px; }
+    .menu-layout { grid-template-columns: 1fr; }
+    .menu-sticky { position: static; }
+    .menu-tabs { flex-direction: row; flex-wrap: wrap; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .happy-inner { grid-template-columns: 1fr; }
+    .groups-layout { grid-template-columns: 1fr; }
+    .location-layout { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .social-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-content { padding: 0 24px; }
+    .hero-awards { display: none; }
+    .section-inner { padding: 0 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form input { border-right: 1px solid rgba(196,147,63,0.3); border-bottom: none; border-radius: 2px 2px 0 0; }
+    .newsletter-form button { border-radius: 0 0 2px 2px; }
+    .cocktail-grid { grid-template-columns: 1fr; }
+    .footer-inner { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/3e38ec41-716b-48c9-93e0-5dc3d1db98d8/FF+Circle+BlackBG.jpg" alt="F&F Logo">
+    <div class="nav-logo-text">Frankie &<br>Fanucci's</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#groups">Groups</a></li>
+    <li><a href="#happyhour">Happy Hour</a></li>
+    <li><a href="#giftcards">Gift Cards</a></li>
+    <li><a href="#location">Find Us</a></li>
+    <li><a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="nav-order-btn">Order Online</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" class="mobile-nav-link" onclick="closeMobile()">Home</a>
+  <a href="#menu" class="mobile-nav-link" onclick="closeMobile()">Menu</a>
+  <a href="#catering" class="mobile-nav-link" onclick="closeMobile()">Catering</a>
+  <a href="#groups" class="mobile-nav-link" onclick="closeMobile()">Groups</a>
+  <a href="#happyhour" class="mobile-nav-link" onclick="closeMobile()">Happy Hour</a>
+  <a href="#giftcards" class="mobile-nav-link" onclick="closeMobile()">Gift Cards</a>
+  <a href="#location" class="mobile-nav-link" onclick="closeMobile()">Find Us</a>
+  <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="mobile-nav-link" style="color:var(--gold-light)">Order Online →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-slideshow">
+    <div class="hero-slide active" style="background-image:url('https://deveusblob.blob.core.windows.net/kora-business-images/user-media/6b2b62af-58a9-483f-8461-c3c86b05fd49/7554ddb9-6882-4421-8f54-692dccdb1927/ChatGPT Image Mar 30, 2026, 04_46_38 PM.png')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783034884-RYPUFEK7J8DKQU1PW9GT/Truffled+Spaghetti.png')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783033413-NZN8F6MXVSHUJ5AQOX10/Amici+%282%29.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://deveusblob.blob.core.windows.net/kora-business-images/user-media/6b2b62af-58a9-483f-8461-c3c86b05fd49/7554ddb9-6882-4421-8f54-692dccdb1927/1774852863_svoa6e.jpg')"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Wood-Fired · Scratch Made · Fresh</p>
+    <h1 class="hero-title">Where Every<br>Bite Tells a<br><em>Story</em></h1>
+    <p class="hero-desc">Award-winning thin-crust pizzas baked in traditional wood-fired ovens. Handmade pastas, fresh salads, and Italian favorites — right in the heart of Mamaroneck, NY.</p>
+    <div class="hero-actions">
+      <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="btn-primary">Order Online</a>
+      <a href="#menu" class="btn-ghost">View Menu →</a>
+    </div>
+  </div>
+  <div class="hero-awards">
+    <div class="hero-awards-label">Recognition</div>
+    <div class="hero-awards-text">Best of Westchester</div>
+    <div class="hero-awards-sub">6× Award Winner</div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="section-inner">
+    <div class="about-text reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2 class="section-title">A Vibrant<br>Neighborhood<br><em>Pizzeria</em></h2>
+      <p>Frankie & Fanucci's in Mamaroneck, NY is more than a restaurant — it's the neighborhood's gathering place. Voted "Best of Westchester" six times, we've built our reputation on thin-crust perfection baked in traditional wood-fired ovens.</p>
+      <p>Our menu spans the full Italian table: handmade pastas, crispy antipasti, fresh salads, and entrées crafted with care. A full bar, handcrafted cocktails, and a family-friendly vibe make every visit memorable.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">6×</div>
+          <div class="stat-label">Best of Westchester</div>
+        </div>
+        <div>
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Signature Pizzas</div>
+        </div>
+        <div>
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Menu Items</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image-grid reveal reveal-delay-2">
+      <div class="about-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783032463-REXYNEKI3A1W124F1SZ6/Spaghetti+Meaballs.jpg" alt="Spaghetti & Meatballs" loading="lazy">
+      </div>
+      <div class="about-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783031414-94OPP3E3X6IZQIVG375O/Salmon.png" alt="Salmon" loading="lazy">
+      </div>
+      <div class="about-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783130377-FHRWDWEU049FVBXT9Q9M/burger.jpg" alt="Burger" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD CAROUSEL -->
+<section class="food-carousel-section">
+  <div class="food-carousel-header reveal">
+    <div class="eyebrow">From Our Kitchen</div>
+    <h2 class="section-title">Crafted with <em>Passion</em></h2>
+    <p>Every dish is made from scratch — from our wood-fired crust to our house-made sauces. Hover to pause and explore.</p>
+  </div>
+  <div class="carousel-track-wrapper">
+    <div class="carousel-track">
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783033413-NZN8F6MXVSHUJ5AQOX10/Amici+%282%29.jpg" alt="Amici Pizza" loading="lazy"><div class="food-card-label">Amici Pizza</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783034884-RYPUFEK7J8DKQU1PW9GT/Truffled+Spaghetti.png" alt="Truffled Spaghetti" loading="lazy"><div class="food-card-label">Truffled Spaghetti</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783198371-6ATW6SC6MDMRB7NN0QFM/Gelato+Cart.jpeg" alt="Gelato" loading="lazy"><div class="food-card-label">Craft Gelato</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783130377-FHRWDWEU049FVBXT9Q9M/burger.jpg" alt="Burger" loading="lazy"><div class="food-card-label">The Burger</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783031414-94OPP3E3X6IZQIVG375O/Salmon.png" alt="Salmon" loading="lazy"><div class="food-card-label">Salmon Piccata</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783032463-REXYNEKI3A1W124F1SZ6/Spaghetti+Meaballs.jpg" alt="Spaghetti & Meatballs" loading="lazy"><div class="food-card-label">Spaghetti & Meatballs</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783198384-9XZ6Y4ZQLXDTEOG2TPV5/Lasagna.jpg" alt="Lasagna" loading="lazy"><div class="food-card-label">House Lasagna</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788218065-TIYM3OB8OKZJMUQSGLD5/the+Q.png" alt="The Q Pizza" loading="lazy"><div class="food-card-label">The 'Q' Pizza</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788203848-LVBQM0LRJ4JV8MHLWPJ9/Chicken+Pillard.jpg" alt="Chicken Paillard" loading="lazy"><div class="food-card-label">Chicken Paillard</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788231505-R6UBP3D05AC8UVLVTJNK/Spicy+Sausage+%26+Onion.jpg" alt="Spicy Sausage Pizza" loading="lazy"><div class="food-card-label">Spicy Sausage & Onion</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788278724-MG37SKG6NU883BCX0B3S/Di+Parma.jpg" alt="Di Parma" loading="lazy"><div class="food-card-label">Di Parma</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788413919-F29IXMJHT8T6SNXDQBCF/IMG_8426.jpg" alt="House Specialty" loading="lazy"><div class="food-card-label">House Specialty</div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783033413-NZN8F6MXVSHUJ5AQOX10/Amici+%282%29.jpg" alt="Amici Pizza" loading="lazy"><div class="food-card-label">Amici Pizza</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783034884-RYPUFEK7J8DKQU1PW9GT/Truffled+Spaghetti.png" alt="Truffled Spaghetti" loading="lazy"><div class="food-card-label">Truffled Spaghetti</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783198371-6ATW6SC6MDMRB7NN0QFM/Gelato+Cart.jpeg" alt="Gelato" loading="lazy"><div class="food-card-label">Craft Gelato</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783130377-FHRWDWEU049FVBXT9Q9M/burger.jpg" alt="Burger" loading="lazy"><div class="food-card-label">The Burger</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783031414-94OPP3E3X6IZQIVG375O/Salmon.png" alt="Salmon" loading="lazy"><div class="food-card-label">Salmon Piccata</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783032463-REXYNEKI3A1W124F1SZ6/Spaghetti+Meaballs.jpg" alt="Spaghetti & Meatballs" loading="lazy"><div class="food-card-label">Spaghetti & Meatballs</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783198384-9XZ6Y4ZQLXDTEOG2TPV5/Lasagna.jpg" alt="Lasagna" loading="lazy"><div class="food-card-label">House Lasagna</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788218065-TIYM3OB8OKZJMUQSGLD5/the+Q.png" alt="The Q Pizza" loading="lazy"><div class="food-card-label">The 'Q' Pizza</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788203848-LVBQM0LRJ4JV8MHLWPJ9/Chicken+Pillard.jpg" alt="Chicken Paillard" loading="lazy"><div class="food-card-label">Chicken Paillard</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788231505-R6UBP3D05AC8UVLVTJNK/Spicy+Sausage+%26+Onion.jpg" alt="Spicy Sausage Pizza" loading="lazy"><div class="food-card-label">Spicy Sausage & Onion</div></div>
+      <div class="food-card"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788278724-MG37SKG6NU883BCX0B3S/Di+Parma.jpg" alt="Di Parma" loading="lazy"><div class="food-card-label">Di Parma</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Full Menu</div>
+    <div class="menu-layout">
+      <div class="menu-sticky reveal">
+        <h2 class="section-title">Explore<br>Our <em>Kitchen</em></h2>
+        <p>Wood-fired, scratch-made, always fresh. Every item crafted with the finest ingredients and Italian tradition.</p>
+        <div class="menu-tabs">
+          <button class="menu-tab active" onclick="switchTab('antipasti')">Antipasti <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('salads')">Salads <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('pizza')">Wood-Fired Pizza <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('pasta')">Pasta <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('entrees')">Entrées <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('heros')">Heroes & 'Wiches <span class="tab-arrow">→</span></button>
+          <button class="menu-tab" onclick="switchTab('dessert')">Dessert <span class="tab-arrow">→</span></button>
+        </div>
+        <div class="menu-cta">
+          <p>View current pricing or place your order online for pickup or delivery.</p>
+          <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="btn-outlined">View Full Menu & Order</a>
+        </div>
+      </div>
+      <div class="menu-panels reveal reveal-delay-2">
+
+        <div class="menu-panel active" id="panel-antipasti">
+          <div class="menu-panel-title">Antipasti</div>
+          <div class="menu-panel-sub">Starters & Shareables</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/f3913b67-a0b4-46b5-a1fc-8cf868170d6d/IMG_7600.jpg" alt="Fried Calamari" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Garlic Bread</div><div class="item-desc">Rustic bread, parsley butter</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Bruschetta</div><div class="item-desc">Toasted ciabatta, tomato & basil</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Fried Calamari</div><div class="item-desc">Classic or buffalo style</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Burrata</div><div class="item-desc">Fresh creamy mozzarella, balsamic shallots, grilled bread</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Mozzarella Sticks</div><div class="item-desc">Fresh mutz, parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Wood-Fired Cauliflower</div><div class="item-desc">Fresh brooklyn ricotta, rosemary flat bread</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Nonna's Meatballs</div><div class="item-desc">Fresh brooklyn ricotta, tuscan bread</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Wings</div><div class="item-desc">BBQ, Buffalo, or Balsamic Rosemary · ½ Doz.</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Spicy Shrimp</div><div class="item-desc">Cherry tomato, roasted garlic, spicy olive oil, grilled bread</div></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-salads">
+          <div class="menu-panel-title">Soup & Salad</div>
+          <div class="menu-panel-sub">Fresh & Vibrant</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/2038817a-5be8-4c49-88d6-10179deb9973/R6_01537.jpg" alt="Pear & Gorgonzola Salad" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Pear & Gorgonzola</div><div class="item-desc">Greens, candied walnuts, pear vinaigrette</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Arugula</div><div class="item-desc">Radicchio, radish, shaved parmigiano, balsamic</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Caesar</div><div class="item-desc">Croutons, shaved parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Di Casa</div><div class="item-desc">Romaine, radicchio, cherry tomato, celery, red onions, kalamata olives, chickpeas, croutons, house vinaigrette</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Tuscan</div><div class="item-desc">Greens, red onion, tomatoes, croutons, balsamic</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Mozzarella Salad</div><div class="item-desc">Tomato, roasted pepper, arugula, red onion, balsamic</div></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-pizza">
+          <div class="menu-panel-title">Wood-Fired Pizza</div>
+          <div class="menu-panel-sub">Personal 12" · Large 16" — Cooked Well Done & Charred</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/cf3c8f1a-2dc3-4dbc-8217-7e2eacb889c7/amici.jpg" alt="Amici Pizza" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Margherita</div><div class="item-desc">Fresh mozzarella, tomato sauce, basil</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Pepperoni Picante</div><div class="item-desc">Mozzarella, sauce, old fashioned pepperoni, pickled jalapeño, creamy mozzarella</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Spicy Sausage & Onion</div><div class="item-desc">Mozzarella, sauce</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Di Parma</div><div class="item-desc">Mozzarella, arugula, prosciutto (no sauce)</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Amici</div><div class="item-desc">Meatball, sausage, pepperoni, mozzarella, sauce</div></div></li>
+            <li class="menu-item"><div><div class="item-name">The 'Q'</div><div class="item-desc">Mozzarella, chicken sausage, applewood smoked bacon, BBQ sauce, blue cheese</div></div></li>
+            <li class="menu-item"><div><div class="item-name">White</div><div class="item-desc">Mozzarella, ricotta, parmigiano, roasted garlic</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Shroom</div><div class="item-desc">Finely chopped mushrooms & shallots, fresh ricotta, bel paese cheese, truffle oil, chives</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Giambotta</div><div class="item-desc">Eggplant, mushrooms, peppers, ricotta, sauce, mozzarella</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Popeye</div><div class="item-desc">Mozzarella, spinach, ricotta, roasted garlic, parmigiano, lemon zest (no sauce)</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Chicken & Broccoli</div><div class="item-desc">Mozzarella, sauce, grilled chicken, roasted broccoli, garlic, parmigiano</div></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-pasta">
+          <div class="menu-panel-title">Pasta</div>
+          <div class="menu-panel-sub">Scratch-Made · Gluten-Free Available</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1593023082552-MLNHZ6F6BYRZ00DOKWID/lasagna+bolognese.jpg" alt="Lasagna" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Penne alla Vodka</div><div class="item-desc">Creamy tomato</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Bolo</div><div class="item-desc">Veal, beef & pork bolognese, fettuccine, parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Rigatoni & Spicy Sausage</div><div class="item-desc">Creamy pomodoro, peas, fresh brooklyn ricotta</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Ravioli Vermouth</div><div class="item-desc">Cheese ravioli, vermouth & tomato cream sauce</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Truffled Spaghetti</div><div class="item-desc">Mushrooms, cream sauce, ricotta, truffle oil, chives</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Spicy Shrimp & Spaghetti</div><div class="item-desc">Cherry tomato, chili flakes, garlic & oil</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Gnocchi Siciliana</div><div class="item-desc">Fried eggplant, fresh mozzarella, parmigiana, pomodoro, basil</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Spaghetti & Meatballs</div><div class="item-desc">Parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Lasagna</div><div class="item-desc">Layers of fresh pasta, bolognese meat sauce, ricotta, fresh mozzarella</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Cavatelli</div><div class="item-desc">Chicken sausage, escarole, white beans, parmigiano</div></div></li>
+          </ul>
+          <p style="margin-top:24px;font-size:12px;color:var(--gold-dark);letter-spacing:.06em;text-transform:uppercase;">Add: Grilled Chicken · Chicken Cutlet · Shrimp · Salmon · Steak · Meatball</p>
+        </div>
+
+        <div class="menu-panel" id="panel-entrees">
+          <div class="menu-panel-title">Entrées</div>
+          <div class="menu-panel-sub">Italian Classics & Seasonal Specials</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1701840874993-3ER43Z11368ABTG3IYZH/IMG_1175+%281%29.jpg" alt="Pan Seared Salmon" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Parm</div><div class="item-desc">Chicken, eggplant or shrimp — served with rigatoni pomodoro</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Marsala</div><div class="item-desc">Chicken, wild mushrooms, marsala wine sauce, roasted potatoes</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Francese</div><div class="item-desc">Chicken or shrimp, egg battered, lemon white wine pan sauce, roasted broccoli</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Hanger Steak</div><div class="item-desc">Grilled, fresh herb gremolata, roasted potatoes</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Spicy Scarpariello</div><div class="item-desc">Chicken breast, sweet sausage, spicy peppers, roasted potato</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Paillard</div><div class="item-desc">Grilled chicken, arugula, cherry tomatoes, pickled red onions, parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Milanese</div><div class="item-desc">Breaded chicken breast, arugula, cherry tomatoes, pickled red onions, parmigiano</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Salmon Piccata</div><div class="item-desc">Pan seared, lemon butter caper sauce, roasted broccoli</div></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-heros">
+          <div class="menu-panel-title">Heroes & 'Wiches</div>
+          <div class="menu-panel-sub">Served with Fries or Salad</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1701841079296-LF8UXH7NF3C9ER0H5HF8/IMG_8438.jpg" alt="Heroes" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Parm Hero</div><div class="item-desc">Chicken cutlet, eggplant, or meatball, fresh mozzarella, pomodoro sauce</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Sausage, Peppers & Onions</div><div class="item-desc">Sautéed festival style</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Caprese Hero</div><div class="item-desc">Fresh mozzarella, roasted peppers, tomato, prosciutto, basil, arugula, balsamic & oil</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Milanese 'Wich</div><div class="item-desc">Chicken cutlet, arugula, pickled red onion — house wood-oven roll</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Chicken & Bacon 'Wich</div><div class="item-desc">Applewood smoked bacon, tomato, balsamic shallots, greens, mayo</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Roasted Eggplant 'Wich</div><div class="item-desc">Mozzarella, roasted peppers, basil, balsamic</div></div></li>
+            <li class="menu-item"><div><div class="item-name">The Burger</div><div class="item-desc">Cheddar, balsamic shallots, lettuce, tomato, pickles, special sauce, brioche bun & fries</div></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-dessert">
+          <div class="menu-panel-title">Dessert</div>
+          <div class="menu-panel-sub">The Perfect Finish</div>
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/420dad86-73d3-461f-a636-ab7165217087/Zeppole.png" alt="Zeppole" class="menu-panel-img" loading="lazy">
+          <ul class="menu-items">
+            <li class="menu-item"><div><div class="item-name">Cheesecake</div><div class="item-desc">Balsamic strawberries</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Tiramisu</div><div class="item-desc">Espresso dipped biscotti, mascarpone cream</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Zeppole</div><div class="item-desc">Fried dough tossed in powdered sugar</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Bomboloni</div><div class="item-desc">Nutella stuffed donut holes, cinnamon-sugar</div></div></li>
+            <li class="menu-item"><div><div class="item-name">S'mores Pizza</div><div class="item-desc">Nutella, charred marshmallows, graham cracker crumbs</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Lava Cake</div><div class="item-desc">Molten chocolate cake, vanilla ice cream</div></div></li>
+            <li class="menu-item"><div><div class="item-name">Tartufo</div><div class="item-desc">Vanilla & chocolate ice cream ball, chocolate ganache, raspberry purée</div></div></li>
+          </ul>
+        </div>
+
+      </div><!-- /menu-panels -->
+    </div><!-- /menu-layout -->
+
+    <!-- MEAL DEAL BANNER -->
+    <div style="margin-top:64px;background:var(--charcoal);border-radius:2px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;" class="reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--gold-light)">Special Offer</div>
+        <h3 style="font-family:var(--font-display);font-size:36px;color:#fff;font-weight:300;margin:8px 0 12px;">The <em style="color:var(--gold-light)">$35.95</em> Meal Deal</h3>
+        <p style="color:rgba(255,255,255,0.6);font-size:15px;line-height:1.7;">Large Margherita Pizza + Tuscan or Caesar Salad + Old School Garlic Bread<br><span style="font-size:12px;opacity:.5;">Take-out or delivery only · Limit 1 per order</span></p>
+      </div>
+      <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="btn-primary" style="white-space:nowrap;">Order Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="catering">
+  <div class="section-inner">
+    <div class="eyebrow reveal">What We Offer</div>
+    <h2 class="section-title reveal">Dine In, Take Out,<br><em>Celebrate</em></h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1712545154996-51BP5P2PB9J7845205CY/Catering-Tray.jpg" alt="Catering" loading="lazy">
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <span class="service-tag">Food by the Tray</span>
+          <div class="service-card-title">Catering</div>
+          <p class="service-card-desc">Wood-fired pizza, fresh salads, and classic Italian dishes for your next event. Easy pickup or delivery.</p>
+          <a href="#catering-detail" class="service-link">See Menu →</a>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/0ff9eb64-2518-4e94-af36-056e9b9bd08b/FRANK+AND+FUNUCCI+PACK.00_00_07_23.Still001.jpg" alt="Group Dining" loading="lazy">
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <span class="service-tag">Private Events</span>
+          <div class="service-card-title">Group Dining</div>
+          <p class="service-card-desc">Birthdays, team dinners, celebrations — our semi-private space accommodates up to 40 guests.</p>
+          <a href="#groups" class="service-link">More Info →</a>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1538fbba-2f1b-4919-98f9-1a510e1b8f6d/PXL_20230927_152301812+%282%29.jpg" alt="Happy Hour" loading="lazy">
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <span class="service-tag">All Day · Every Day</span>
+          <div class="service-card-title">2 for 1 Happy Hour</div>
+          <p class="service-card-desc">Craft cocktails, wine, and draft beer — all day, every day at the bar. The city's best deal.</p>
+          <a href="#happyhour" class="service-link">See Details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATERING DETAIL -->
+    <div id="catering-detail" style="margin-top:80px;" class="reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+        <div>
+          <div class="eyebrow" style="margin-bottom:12px;">Catering Menu</div>
+          <h3 style="font-family:var(--font-display);font-size:42px;font-weight:300;color:var(--charcoal);margin-bottom:20px;line-height:1.1;">All Your <em>Favorites</em><br>by the Tray</h3>
+          <p style="color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:36px;">Perfect for feeding a group — at home or in the office. 24-hour notice requested. Pricing is for ½ size trays.</p>
+          <div style="background:var(--parchment);border:1px solid var(--border);border-radius:2px;padding:28px;margin-bottom:24px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--charcoal);letter-spacing:.08em;margin-bottom:16px;">Ordering Guide</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:2;">
+              <strong>10 People</strong> — 1 Tray Appetizer + 2 Trays Pasta<br>
+              <strong>20 People</strong> — 2 Trays Appetizer + 4 Trays Pasta<br>
+              <strong>50 People</strong> — 5 Trays Appetizer + 10 Trays Pasta
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="btn-primary">Order Online</a>
+            <a href="tel:9146304360" class="btn-outlined">Call: (914) 630-4360</a>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="padding:20px 0;border-bottom:1px solid var(--border);">
+              <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">Pasta Trays</div>
+              <div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
+                <span>Penne alla Vodka</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$50</span>
+                <span>Rigatoni & Spicy Sausage</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
+                <span>Truffled Spaghetti</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
+                <span>Lasagna</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$60</span>
+                <span>Spaghetti & Meatballs</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$70</span>
+              </div>
+            </div>
+            <div style="padding:20px 0;border-bottom:1px solid var(--border);">
+              <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">Plates</div>
+              <div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
+                <span>Chicken Parm</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$65</span>
+                <span>Chicken Marsala</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$65</span>
+                <span>Eggplant Parm</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
+                <span>Pan Seared Salmon</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$110</span>
+                <span>Hanger Steak</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$120</span>
+              </div>
+            </div>
+            <div style="padding:20px 0;">
+              <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">Dessert</div>
+              <div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
+                <span>Zeppole (~2 dozen)</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$25</span>
+                <span>Bomboloni (20 pcs)</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$40</span>
+                <span>S'mores Pizza (16")</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HAPPY HOUR -->
+<section class="happy-section" id="happyhour">
+  <div class="section-inner">
+    <div class="happy-inner">
+      <div class="happy-left reveal">
+        <div class="eyebrow">Bar Program</div>
+        <h2 class="section-title">2 for 1<br><em>Happy Hour</em></h2>
+        <div class="happy-badge">
+          ✦ All Day · Every Day · At the Bar
+        </div>
+        <p class="happy-desc">One of Mamaroneck's best deals. Handcrafted cocktails, curated wines, and a rotating tap list — at the bar only. Come as you are, stay as long as you like.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="#location" class="btn-primary">Visit Us</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div style="margin-bottom:28px;">
+          <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:var(--gold-light);margin-bottom:16px;">Signature Cocktails</div>
+          <div class="cocktail-grid">
+            <div class="cocktail-item"><div class="cocktail-name">Aperol Spritz</div><div class="cocktail-desc">Prosecco, aperol</div></div>
+            <div class="cocktail-item"><div class="cocktail-name">Doppio Espresso Martini</div><div class="cocktail-desc">Vodka, espresso liqueur, baileys, brewed espresso</div></div>
+            <div class="cocktail-item"><div class="cocktail-name">Spicy Italian Margarita</div><div class="cocktail-desc">Tequila, calabrian chili, limoncello, lime</div></div>
+            <div class="cocktail-item"><div class="cocktail-name">Negroni</div><div class="cocktail-desc">Gin, campari, italian vermouth</div></div>
+            <div class="cocktail-item"><div class="cocktail-name">Ginger Agave</div><div class="cocktail-desc">Tequila, fresh ginger, lime</div></div>
+            <div class="cocktail-item"><div class="cocktail-name">Red Sangria</div><div class="cocktail-desc">Brandy, orange liqueur, fresh fruit</div></div>
+          </div>
+        </div>
+        <div style="padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(196,147,63,0.2);border-radius:2px;">
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;">Bar Snacks</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:2.1;">
+            Bar Truffle Fries · Garlic Bread Bites · Bruschetta<br>
+            R.I.S. Fried Calamari · Mozzarella Sticks · Flat Bread
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUPS -->
+<section class="groups-section" id="groups">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Private Events</div>
+    <div class="groups-layout">
+      <div class="groups-image reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1526910406416-6J6G7ZD0EZYNLXTLPQ32/File+Mar+28%2C+09+53+07.jpeg" alt="Group Dining" loading="lazy">
+        <div class="groups-image-badge">Up to 40 Guests</div>
+      </div>
+      <div class="groups-content reveal reveal-delay-2">
+        <h2 class="section-title">Host Your<br>Next <em>Event</em> at F&F</h2>
+        <p>Frankie & Fanucci's is the perfect setting for your next family celebration, business dinner, holiday party, or social gathering. Served family-style with customizable menus your guests will love.</p>
+        <div class="packages">
+          <div class="package">
+            <div class="package-header">
+              <div class="package-name">🍕 Pizza Party</div>
+              <div class="package-price">$39.95/pp</div>
+            </div>
+            <div class="package-desc">Salad + 2 Appetizers + Large Pies + Zeppole. 2-hour event. Fountain soda included.</div>
+          </div>
+          <div class="package">
+            <div class="package-header">
+              <div class="package-name">🍝 Italian Classic</div>
+              <div class="package-price">$49.95/pp</div>
+            </div>
+            <div class="package-desc">Salads + Appetizers + 1 Pizza + 3 Entrées (choose from pasta & plates) + Zeppole. 2 hours.</div>
+          </div>
+          <div class="package">
+            <div class="package-header">
+              <div class="package-name">✨ Italian Deluxe</div>
+              <div class="package-price">$59.95/pp</div>
+            </div>
+            <div class="package-desc">Salads + Appetizers + 1 Pizza + 2 Pasta + 2 Entrées + Zeppole. 2.5-hour event.</div>
+          </div>
+        </div>
+        <div class="groups-cta">
+          <a href="tel:9146304360" class="btn-dark">☎ (914) 630-4360</a>
+          <a href="mailto:info@FandFpizza.com" class="btn-outlined">Email Us</a>
+        </div>
+        <p style="margin-top:24px;font-size:13px;color:var(--text-light);">Taxes and gratuity additional. Minimum may apply. Also featuring a Craft-Your-Own Gelato Cart for birthdays!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<div id="giftcards" style="background:var(--gold);padding:60px 0;">
+  <div class="section-inner" style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:var(--charcoal);opacity:.7;margin-bottom:8px;">Perfect for Any Occasion</div>
+      <h3 style="font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--charcoal);line-height:1.1;">Gift Cards Available</h3>
+      <p style="color:var(--charcoal);opacity:.7;font-size:15px;margin-top:8px;">Treat someone to wood-fired pizza and Italian favorites they'll love.</p>
+    </div>
+    <a href="https://order.toasttab.com/egiftcards/fandfpizza" target="_blank" class="btn-dark" style="background:var(--charcoal);white-space:nowrap;">Get a Gift Card</a>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Visit Us</div>
+    <div class="location-layout">
+      <div class="location-map reveal">
+        <a href="https://www.google.com/search?q=frankie+and+fanuccis+directions" target="_blank">
+          <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/a440506b-cfb9-48b5-809f-b34aefa11e55/Map" alt="Map to Frankie & Fanucci's" loading="lazy">
+        </a>
+      </div>
+      <div class="location-info reveal reveal-delay-2">
+        <h2 class="section-title">Find <em>Us</em></h2>
+        <div class="location-details">
+          <div class="detail-row">
+            <div class="detail-icon">📍</div>
+            <div class="detail-content">
+              <div class="detail-label">Address</div>
+              <div class="detail-text">301 Mamaroneck Avenue<br>Mamaroneck, New York 10543</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">📞</div>
+            <div class="detail-content">
+              <div class="detail-label">Phone</div>
+              <div class="detail-text"><a href="tel:9146304360">(914) 630-4360</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">✉️</div>
+            <div class="detail-content">
+              <div class="detail-label">Email</div>
+              <div class="detail-text"><a href="mailto:info@FandFpizza.com">info@FandFpizza.com</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🕐</div>
+            <div class="detail-content">
+              <div class="detail-label">Hours of Operation</div>
+              <div class="detail-text">
+                <div class="hours-grid">
+                  <span class="day">Mon – Thu</span><span>12:00 PM – 9:00 PM</span>
+                  <span class="day">Fri & Sat</span><span>12:00 PM – 10:00 PM</span>
+                  <span class="day">Sunday</span><span>12:00 PM – 9:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://www.google.com/search?q=frankie+and+fanuccis+directions" target="_blank" class="btn-primary">Get Directions</a>
+          <a href="https://order.toasttab.com/online/fandfpizza" target="_blank" class="btn-outlined">Order for Delivery</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="social-section">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Follow Along</div>
+    <h2 class="section-title reveal">Share the <em>Goodness</em></h2>
+    <div class="social-handle reveal"><a href="https://www.instagram.com/fandfpizza" target="_blank">@FandFpizza</a></div>
+    <div class="social-grid reveal">
+      <div class="social-img"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783033413-NZN8F6MXVSHUJ5AQOX10/Amici+%282%29.jpg" alt="" loading="lazy"></div>
+      <div class="social-img"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783034884-RYPUFEK7J8DKQU1PW9GT/Truffled+Spaghetti.png" alt="" loading="lazy"></div>
+      <div class="social-img"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744783198371-6ATW6SC6MDMRB7NN0QFM/Gelato+Cart.jpeg" alt="" loading="lazy"></div>
+      <div class="social-img"><img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/1744788278724-MG37SKG6NU883BCX0B3S/Di+Parma.jpg" alt="" loading="lazy"></div>
+    </div>
+    <a href="https://www.instagram.com/fandfpizza" target="_blank" class="social-follow-btn reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Follow on Instagram
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="eyebrow">Stay Connected</div>
+    <h2 class="section-title">Exclusive Offers<br>& <em>Updates</em></h2>
+    <p>Sign up to receive exclusive offers, seasonal menus, event announcements, and more.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.06em;">We respect your privacy. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/3e38ec41-716b-48c9-93e0-5dc3d1db98d8/FF+Circle+BlackBG.jpg" alt="F&F Logo">
+        <p>Frankie & Fanucci's — Mamaroneck's award-winning neighborhood pizzeria. Wood-fired, scratch-made, and always fresh since day one.</p>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/fandfpizza" target="_blank" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="tel:9146304360" aria-label="Phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </a>
+          <a href="mailto:info@FandFpizza.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#catering">Catering</a></li>
+          <li><a href="#groups">Groups & Events</a></li>
+          <li><a href="#happyhour">Happy Hour</a></li>
+          <li><a href="#location">Find Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Order</div>
+        <ul class="footer-links">
+          <li><a href="https://order.toasttab.com/online/fandfpizza" target="_blank">Order Online</a></li>
+          <li><a href="https://order.toasttab.com/online/fandfpizza" target="_blank">Delivery</a></li>
+          <li><a href="https://order.toasttab.com/online/fandfpizza" target="_blank">Takeout</a></li>
+          <li><a href="https://order.toasttab.com/egiftcards/fandfpizza" target="_blank">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:9146304360">(914) 630-4360</a></li>
+          <li><a href="mailto:info@FandFpizza.com">info@FandFpizza.com</a></li>
+          <li><a href="https://www.google.com/search?q=frankie+and+fanuccis+directions" target="_blank">301 Mamaroneck Ave<br>Mamaroneck, NY 10543</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Frankie & Fanucci's. All rights reserved.</p>
+      <p><a href="https://www.instagram.com/fandfpizza" target="_blank">@FandFpizza</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+(function animateRing() {
+  ringX += (mouseX - ringX) * 0.14;
+  ringY += (mouseY - ringY) * 0.14;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+})();
+document.querySelectorAll('a, button, .menu-tab, .food-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Hamburger
+const btn = document.getElementById('hamburgerBtn');
+const mob = document.getElementById('mobileMenu');
+btn.addEventListener('click', () => mob.classList.toggle('open'));
+function closeMobile() { mob.classList.remove('open'); }
+
+// Hero slideshow
+const slides = document.querySelectorAll('.hero-slide');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 5000);
+
+// Menu tabs
+function switchTab(id) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Newsletter
+function handleNewsletter(e) {
+  e.preventDefault();
+  e.target.innerHTML = '<p style="color:var(--gold-light);font-size:15px;">✓ Thank you for subscribing!</p>';
+}
+</script>
+</body>
+</html>
