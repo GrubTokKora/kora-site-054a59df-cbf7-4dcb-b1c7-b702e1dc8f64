@@ -1,0 +1,193 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu – The Golden Spoon</title>
+  <meta name="description" content="Explore our menu of gourmet dishes, from fresh appetizers and main courses to decadent desserts, all crafted with the finest ingredients at The Golden Spoon.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Menu – The Golden Spoon">
+  <meta property="og:description" content="Explore our menu of gourmet dishes, from fresh appetizers and main courses to decadent desserts, all crafted with the finest ingredients at The Golden Spoon.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://example.com/images/grilled_salmon.jpg">
+  <meta property="og:url" content="https://example.com/menu.html">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://example.com/menu.html">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "The Golden Spoon",
+    "description": "The Golden Spoon was founded in 2005 by Chef Maria Rodriguez with a vision to bring authentic, gourmet dining to the heart of Anytown. Our commitment to quality ingredients, innovative recipes, and exceptional service has made us a beloved local favorite.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main Street",
+      "addressLocality": "Anytown",
+      "addressCountry": "USA"
+    },
+    "telephone": "+1-555-123-4567",
+    "openingHours": [
+      "Mo-Fr 11:00-22:00",
+      "Sa-Su 10:00-23:00"
+    ],
+    "image": "https://example.com/images/hero_background.jpg",
+    "servesCuisine": "Gourmet",
+    "priceRange": "$$$",
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Main Menu"
+    }
+  }
+  </script>
+
+  <!-- Tailwind + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply font-body bg-secondary text-primary;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        @apply font-display;
+      }
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1A1A1A',
+            secondary: '#FFFFFF',
+            accent: '#D4AF37',
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'serif'],
+            'body': ['Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-primary text-secondary shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-display font-bold text-accent">The Golden Spoon</a>
+      <nav class="hidden md:flex items-center space-x-8 text-lg">
+        <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+        <a href="menu.html" class="text-accent font-semibold">Menu</a>
+        <a href="about.html" class="hover:text-accent transition-colors">About</a>
+        <a href="contact.html" class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="https://www.opentable.com/r/the-golden-spoon-anytown" target="_blank" class="bg-accent text-primary px-5 py-2 rounded-full hover:bg-yellow-500 transition-colors font-semibold">Reserve a Table</a>
+        <a href="https://www.doordash.com/store/the-golden-spoon-anytown-12345/" target="_blank" class="border border-accent text-accent px-5 py-2 rounded-full hover:bg-accent hover:text-primary transition-colors font-semibold">Order Online</a>
+      </div>
+      <button id="mobile-menu-button" class="md:hidden text-secondary">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary">
+      <nav class="flex flex-col items-center space-y-4 px-6 pb-6 pt-2">
+        <a href="index.html" class="hover:text-accent transition-colors w-full text-center py-2">Home</a>
+        <a href="menu.html" class="text-accent font-semibold w-full text-center py-2">Menu</a>
+        <a href="about.html" class="hover:text-accent transition-colors w-full text-center py-2">About</a>
+        <a href="contact.html" class="hover:text-accent transition-colors w-full text-center py-2">Contact</a>
+        <a href="https://www.opentable.com/r/the-golden-spoon-anytown" target="_blank" class="bg-accent text-primary px-5 py-2 rounded-full hover:bg-yellow-500 transition-colors font-semibold w-full text-center mt-4">Reserve a Table</a>
+        <a href="https://www.doordash.com/store/the-golden-spoon-anytown-12345/" target="_blank" class="border border-accent text-accent px-5 py-2 rounded-full hover:bg-accent hover:text-primary transition-colors font-semibold w-full text-center">Order Online</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-20">
+    <h1 class="text-5xl font-display text-center mb-16">Our Menu</h1>
+
+    <div id="menu-container" class="space-y-16">
+      <!-- Menu sections will be injected here by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-secondary py-12">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-2xl font-display text-accent mb-4">The Golden Spoon</h3>
+      <p>123 Main Street, Anytown, USA</p>
+      <p class="mb-4">(555) 123-4567</p>
+      <a href="contact.html" class="text-accent hover:underline">Get Directions & Contact Us</a>
+      <div class="flex justify-center space-x-6 my-6">
+        <a href="https://instagram.com/goldenspoon" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors"><i data-lucide="instagram"></i></a>
+        <a href="https://facebook.com/goldenspoon" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors"><i data-lucide="facebook"></i></a>
+        <a href="https://twitter.com/goldenspoon" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors"><i data-lucide="twitter"></i></a>
+      </div>
+      <p class="text-sm text-gray-400">&copy; <span id="current-year"></span> The Golden Spoon. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuData = [
+      { "category": "Chef's Specials", "items": [ { "name": "Lobster Risotto", "description": "Creamy arborio rice, fresh lobster, saffron.", "price": "$45.00", "image": "https://example.com/images/lobster_risotto.jpg" }, { "name": "Duck Confit", "description": "Slow-cooked duck leg, potato gratin, cherry reduction.", "price": "$38.00", "image": "https://example.com/images/duck_confit.jpg" } ] },
+      { "category": "Appetizers", "items": [ { "name": "Caprese Skewers", "description": "Fresh mozzarella, cherry tomatoes, basil, balsamic glaze.", "price": "$12.00", "image": "https://example.com/images/caprese_skewers.jpg" }, { "name": "Calamari Fritti", "description": "Crispy fried calamari, marinara sauce.", "price": "$15.00", "image": "https://example.com/images/calamari_fritti.jpg" } ] },
+      { "category": "Main Courses", "items": [ { "name": "Grilled Salmon", "description": "Pan-seared salmon, asparagus, lemon-dill sauce.", "price": "$28.00", "image": "https://example.com/images/grilled_salmon.jpg" }, { "name": "Ribeye Steak", "description": "12oz prime ribeye, mashed potatoes, seasonal vegetables.", "price": "$35.00", "image": "https://example.com/images/ribeye_steak.jpg" }, { "name": "Vegetable Lasagna", "description": "Layers of pasta, ricotta, spinach, marinara.", "price": "$22.00", "image": "https://example.com/images/vegetable_lasagna.jpg" } ] },
+      { "category": "Desserts", "items": [ { "name": "Tiramisu", "description": "Classic Italian coffee-flavored dessert.", "price": "$9.00", "image": "https://example.com/images/tiramisu.jpg" }, { "name": "Chocolate Lava Cake", "description": "Warm chocolate cake, vanilla ice cream.", "price": "$10.00", "image": "https://example.com/images/chocolate_lava_cake.jpg" } ] },
+      { "category": "Beverages", "items": [ { "name": "Sparkling Water", "description": "", "price": "$4.00", "image": "https://example.com/images/sparkling_water.jpg" }, { "name": "Fresh Orange Juice", "description": "", "price": "$6.00", "image": "https://example.com/images/fresh_orange_juice.jpg" }, { "name": "Espresso", "description": "", "price": "$5.00", "image": "https://example.com/images/espresso.jpg" } ] }
+    ];
+
+    const menuContainer = document.getElementById('menu-container');
+    menuData.forEach(category => {
+      const section = document.createElement('section');
+      let itemsHtml = '';
+      category.items.forEach(item => {
+        itemsHtml += `
+          <div class="flex items-start space-x-4 bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+            <img src="${item.image}" alt="${item.name}" class="w-24 h-24 object-cover rounded-md flex-shrink-0" loading="lazy" width="100" height="100">
+            <div class="flex-grow">
+              <div class="flex justify-between items-baseline">
+                <h4 class="text-xl font-semibold">${item.name}</h4>
+                <p class="text-lg font-semibold text-primary">${item.price}</p>
+              </div>
+              <p class="text-gray-600 mt-1">${item.description}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      section.innerHTML = `
+        <h2 class="text-4xl font-display text-center mb-10 text-accent">${category.category}</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          ${itemsHtml}
+        </div>
+      `;
+      menuContainer.appendChild(section);
+    });
+
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```
