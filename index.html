@@ -1515,22 +1515,29 @@
 
     .newsletter-form {
       display: flex;
-      gap: 0;
-      max-width: 440px;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 520px;
       margin: 0 auto;
     }
 
-    .newsletter-form input {
-      flex: 1;
+    .newsletter-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form input[type="tel"] {
+      width: 100%;
       padding: 16px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(196, 147, 63, 0.3);
-      border-right: none;
       color: #fff;
       font-size: 14px;
       outline: none;
       font-family: 'DM Sans', sans-serif;
-      border-radius: 2px 0 0 2px;
+      border-radius: 2px;
       transition: border-color .25s;
     }
 
@@ -1538,8 +1545,38 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
-    .newsletter-form input:focus {
+    .newsletter-form input[type="email"]:focus,
+    .newsletter-form input[type="tel"]:focus {
       border-color: rgba(196, 147, 63, 0.6);
+    }
+
+    .newsletter-options {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .newsletter-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: none;
+    }
+
+    .newsletter-option input {
+      accent-color: var(--gold);
+    }
+
+    .newsletter-submit-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
     .newsletter-form button {
@@ -1553,12 +1590,19 @@
       text-transform: uppercase;
       font-weight: 500;
       cursor: none;
-      border-radius: 0 2px 2px 0;
+      border-radius: 2px;
       transition: background .25s;
     }
 
     .newsletter-form button:hover {
       background: var(--gold-light);
+    }
+
+    .newsletter-message {
+      min-height: 18px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.72);
+      letter-spacing: 0.03em;
     }
 
     /* ── FOOTER ── */
@@ -1828,18 +1872,12 @@
         grid-template-columns: 1fr;
       }
 
-      .newsletter-form {
-        flex-direction: column;
-      }
-
-      .newsletter-form input {
-        border-right: 1px solid rgba(196, 147, 63, 0.3);
-        border-bottom: none;
-        border-radius: 2px 2px 0 0;
+      .newsletter-fields {
+        grid-template-columns: 1fr;
       }
 
       .newsletter-form button {
-        border-radius: 0 0 2px 2px;
+        width: 100%;
       }
 
       .cocktail-grid {
@@ -2954,9 +2992,25 @@
       <div class="eyebrow">Stay Connected</div>
       <h2 class="section-title">Exclusive Offers<br>& <em>Updates</em></h2>
       <p>Sign up to receive exclusive offers, seasonal menus, event announcements, and more.</p>
-      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
+      <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
+        <div class="newsletter-fields">
+          <input id="newsletter-email" type="email" placeholder="Your email address">
+          <input id="newsletter-phone" type="tel" placeholder="Your phone number">
+        </div>
+        <div class="newsletter-options">
+          <label class="newsletter-option">
+            <input id="newsletter-email-optin" type="checkbox" checked>
+            <span>Email Updates</span>
+          </label>
+          <label class="newsletter-option">
+            <input id="newsletter-sms-optin" type="checkbox">
+            <span>SMS Updates</span>
+          </label>
+        </div>
+        <div class="newsletter-submit-row">
+          <button type="submit">Subscribe</button>
+          <p id="newsletter-message" class="newsletter-message" aria-live="polite"></p>
+        </div>
       </form>
       <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.06em;">We respect your
         privacy. Unsubscribe anytime.</p>
@@ -3091,9 +3145,97 @@
     reveals.forEach(el => observer.observe(el));
 
     // Newsletter
-    function handleNewsletter(e) {
+    window.KORA_CONFIG = window.KORA_CONFIG || {
+      apiBaseUrl: "https://kora-agent.grubtok.com",
+      businessId: "054a59df-cbf7-4dcb-b1c7-b702e1dc8f64"
+    };
+
+    async function handleNewsletter(e) {
       e.preventDefault();
-      e.target.innerHTML = '<p style="color:var(--gold-light);font-size:15px;">✓ Thank you for subscribing!</p>';
+
+      const cfg = window.KORA_CONFIG || {};
+      const apiBaseUrl = (cfg.apiBaseUrl || "").replace(/\/+$/, "");
+      const businessId = (cfg.businessId || "").trim();
+
+      const emailEl = document.getElementById("newsletter-email");
+      const phoneEl = document.getElementById("newsletter-phone");
+      const emailOptEl = document.getElementById("newsletter-email-optin");
+      const smsOptEl = document.getElementById("newsletter-sms-optin");
+      const messageEl = document.getElementById("newsletter-message");
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+
+      const email = emailEl ? emailEl.value.trim() : "";
+      const phone = phoneEl ? phoneEl.value.trim() : "";
+      const emailOptIn = emailOptEl ? emailOptEl.checked : false;
+      const smsOptIn = smsOptEl ? smsOptEl.checked : false;
+
+      function showMessage(text, isError) {
+        if (!messageEl) return;
+        messageEl.textContent = text || "";
+        messageEl.style.color = isError ? "#ffb4b4" : "#9ff0b1";
+      }
+
+      if (!apiBaseUrl || !businessId) {
+        showMessage("Newsletter is not configured yet.", true);
+        return;
+      }
+
+      if (!emailOptIn && !smsOptIn) {
+        showMessage("Select at least one option: email or SMS.", true);
+        return;
+      }
+
+      if (emailOptIn && !email) {
+        showMessage("Enter your email for email updates.", true);
+        return;
+      }
+
+      if (smsOptIn && !phone) {
+        showMessage("Enter your phone number for SMS updates.", true);
+        return;
+      }
+
+      const emailValid = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (emailOptIn && !emailValid) {
+        showMessage("Enter a valid email address.", true);
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      showMessage("Subscribing...", false);
+
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/v1/public/newsletter/subscribe`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            business_id: businessId,
+            email: emailOptIn ? email : null,
+            phone_number: smsOptIn ? phone : null,
+            email_opt_in: emailOptIn,
+            sms_opt_in: smsOptIn,
+            source: "static_site_widget"
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Subscription failed");
+        }
+
+        const data = await response.json();
+        showMessage(data.message || "Thank you for subscribing!", false);
+
+        if (emailEl) emailEl.value = "";
+        if (phoneEl) phoneEl.value = "";
+        if (emailOptEl) emailOptEl.checked = false;
+        if (smsOptEl) smsOptEl.checked = false;
+      } catch (error) {
+        showMessage("Something went wrong. Please try again.", true);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     }
   </script>
 </body>
