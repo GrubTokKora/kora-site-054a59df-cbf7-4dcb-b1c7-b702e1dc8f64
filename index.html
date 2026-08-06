@@ -1106,6 +1106,99 @@
       border-color: var(--gold);
     }
 
+    /* ── CATERING DETAIL ── */
+    .catering-detail {
+      margin-top: 80px;
+    }
+
+    .catering-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .catering-intro-title {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .catering-intro-desc {
+      color: var(--text-light);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .catering-guide {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .catering-guide-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      color: var(--charcoal);
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+
+    .catering-guide-body {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 2;
+    }
+
+    .catering-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .catering-menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .catering-menu-group {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .catering-menu-group:last-child {
+      border-bottom: none;
+    }
+
+    .catering-menu-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--gold-dark);
+      margin-bottom: 12px;
+    }
+
+    .catering-menu-items {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 20px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+
+    .catering-menu-price {
+      color: var(--gold-dark);
+      font-family: var(--font-display);
+      font-size: 16px;
+    }
+
     /* ── HAPPY HOUR ── */
     .happy-section {
       padding: 120px 0;
@@ -1831,6 +1924,11 @@
         grid-template-columns: 1fr;
       }
 
+      .catering-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
       .groups-layout {
         grid-template-columns: 1fr;
       }
@@ -1895,6 +1993,33 @@
 
       .cocktail-grid {
         grid-template-columns: 1fr;
+      }
+
+      .catering-detail {
+        margin-top: 56px;
+      }
+
+      .catering-layout {
+        gap: 40px;
+      }
+
+      .catering-intro-title {
+        font-size: 34px;
+      }
+
+      .catering-guide {
+        padding: 22px;
+      }
+
+      .catering-actions {
+        flex-direction: column;
+      }
+
+      .catering-actions .btn-primary,
+      .catering-actions .btn-outlined {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
 
       .footer-inner {
@@ -2589,61 +2714,55 @@
 </div>
 </div>
 <!-- CATERING DETAIL -->
-<div class="reveal" id="catering-detail" style="margin-top:80px;">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
-<div>
+<div class="reveal catering-detail" id="catering-detail">
+<div class="catering-layout">
+<div class="catering-intro">
 <div class="eyebrow" style="margin-bottom:12px;">Catering Menu</div>
-<h3 style="font-family:var(--font-display);font-size:42px;font-weight:300;color:var(--charcoal);margin-bottom:20px;line-height:1.1;">
+<h3 class="catering-intro-title">
               All Your <em>Favorites</em><br/>by the Tray</h3>
-<p style="color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:36px;">Perfect for feeding a
+<p class="catering-intro-desc">Perfect for feeding a
               group — at home or in the office. 24-hour notice requested. Pricing is for ½ size trays.</p>
-<div style="background:var(--parchment);border:1px solid var(--border);border-radius:2px;padding:28px;margin-bottom:24px;">
-<div style="font-family:'Cinzel',serif;font-size:13px;color:var(--charcoal);letter-spacing:.08em;margin-bottom:16px;">
-                Ordering Guide</div>
-<div style="font-size:13px;color:var(--text-mid);line-height:2;">
+<div class="catering-guide">
+<div class="catering-guide-title">Ordering Guide</div>
+<div class="catering-guide-body">
 <strong>10 People</strong> — 1 Tray Appetizer + 2 Trays Pasta<br/>
 <strong>20 People</strong> — 2 Trays Appetizer + 4 Trays Pasta<br/>
 <strong>50 People</strong> — 5 Trays Appetizer + 10 Trays Pasta
               </div>
 </div>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div class="catering-actions">
 <a class="btn-primary" href="https://order.toasttab.com/online/fandfpizza" target="_blank">Order
                 Online</a>
 <a class="btn-outlined" href="tel:9146304360">Call: (914) 630-4360</a>
 </div>
 </div>
-<div>
-<div style="display:flex;flex-direction:column;gap:0;">
-<div style="padding:20px 0;border-bottom:1px solid var(--border);">
-<div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">
-                  Pasta Trays</div>
-<div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
-<span>Penne alla Vodka</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$50</span>
-<span>Rigatoni &amp; Spicy Sausage</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
-<span>Truffled Spaghetti</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
-<span>Lasagna</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$60</span>
-<span>Spaghetti &amp; Meatballs</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$70</span>
+<div class="catering-menu-list">
+<div class="catering-menu-group">
+<div class="catering-menu-label">Pasta Trays</div>
+<div class="catering-menu-items">
+<span>Penne alla Vodka</span><span class="catering-menu-price">$50</span>
+<span>Rigatoni &amp; Spicy Sausage</span><span class="catering-menu-price">$55</span>
+<span>Truffled Spaghetti</span><span class="catering-menu-price">$55</span>
+<span>Lasagna</span><span class="catering-menu-price">$60</span>
+<span>Spaghetti &amp; Meatballs</span><span class="catering-menu-price">$70</span>
 </div>
 </div>
-<div style="padding:20px 0;border-bottom:1px solid var(--border);">
-<div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">
-                  Plates</div>
-<div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
-<span>Chicken Parm</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$65</span>
-<span>Chicken Marsala</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$65</span>
-<span>Eggplant Parm</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$55</span>
-<span>Pan Seared Salmon</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$110</span>
-<span>Hanger Steak</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$120</span>
+<div class="catering-menu-group">
+<div class="catering-menu-label">Plates</div>
+<div class="catering-menu-items">
+<span>Chicken Parm</span><span class="catering-menu-price">$65</span>
+<span>Chicken Marsala</span><span class="catering-menu-price">$65</span>
+<span>Eggplant Parm</span><span class="catering-menu-price">$55</span>
+<span>Pan Seared Salmon</span><span class="catering-menu-price">$110</span>
+<span>Hanger Steak</span><span class="catering-menu-price">$120</span>
 </div>
 </div>
-<div style="padding:20px 0;">
-<div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold-dark);margin-bottom:12px;">
-                  Dessert</div>
-<div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:13px;color:var(--text-mid);">
-<span>Zeppole (~2 dozen)</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$25</span>
-<span>Bomboloni (20 pcs)</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$40</span>
-<span>S'mores Pizza (16")</span><span style="color:var(--gold-dark);font-family:var(--font-display);font-size:16px;">$30</span>
-</div>
+<div class="catering-menu-group">
+<div class="catering-menu-label">Dessert</div>
+<div class="catering-menu-items">
+<span>Zeppole (~2 dozen)</span><span class="catering-menu-price">$25</span>
+<span>Bomboloni (20 pcs)</span><span class="catering-menu-price">$40</span>
+<span>S'mores Pizza (16")</span><span class="catering-menu-price">$30</span>
 </div>
 </div>
 </div>
