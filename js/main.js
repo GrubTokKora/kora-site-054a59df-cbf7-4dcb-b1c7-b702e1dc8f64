@@ -1,10 +1,12 @@
 /* Frankie & Fanucci's — shared interactions */
 (function () {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function initCursor() {
     const cursor = document.getElementById("cursor");
     const ring = document.getElementById("cursorRing");
     if (!cursor || !ring) return;
-    if (window.matchMedia("(pointer: coarse)").matches) {
+    if (reduceMotion || window.matchMedia("(pointer: coarse)").matches) {
       cursor.style.display = "none";
       ring.style.display = "none";
       document.body.style.cursor = "auto";
@@ -80,7 +82,7 @@
 
   function initHeroSlideshow() {
     const slides = document.querySelectorAll(".hero-slide");
-    if (slides.length < 2) return;
+    if (slides.length < 2 || reduceMotion) return;
     let current = 0;
     setInterval(() => {
       slides[current].classList.remove("active");
@@ -113,6 +115,10 @@
   function initReveal() {
     const reveals = document.querySelectorAll(".reveal");
     if (!reveals.length) return;
+    if (reduceMotion) {
+      reveals.forEach((el) => el.classList.add("visible"));
+      return;
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
