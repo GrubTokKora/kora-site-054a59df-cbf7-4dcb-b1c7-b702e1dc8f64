@@ -651,6 +651,9 @@
     .carousel-track-wrapper {
       overflow: hidden;
       position: relative;
+      /* Promote layer so Safari paints the full scrolling strip */
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     .carousel-track-wrapper::before,
@@ -677,26 +680,24 @@
     .carousel-track {
       display: flex;
       gap: 20px;
-      animation: infiniteScroll 40s linear infinite;
       width: max-content;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
 
-    .carousel-track:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes infiniteScroll {
-      from {
-        transform: translateX(0)
-      }
-
-      to {
-        transform: translateX(-50%)
-      }
+    .carousel-set {
+      display: flex;
+      gap: 20px;
+      flex-shrink: 0;
     }
 
     .food-card {
       flex: 0 0 280px;
+      width: 280px;
+      min-width: 280px;
       height: 360px;
       border-radius: 4px;
       overflow: hidden;
@@ -2223,6 +2224,7 @@ body.interior-page #mainNav.scrolled {
   .carousel-track {
     animation: none !important;
     transform: none !important;
+    -webkit-transform: none !important;
   }
   .reveal,
   .reveal-delay-1,

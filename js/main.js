@@ -91,6 +91,115 @@
     }, 5000);
   }
 
+  function initFoodCarousel() {
+    const track = document.querySelector("[data-food-carousel]");
+    if (!track) return;
+
+    const set = track.querySelector(".carousel-set");
+    if (!set) return;
+
+    if (reduceMotion) return;
+
+    if (!track.dataset.cloned) {
+      const clone = set.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("img").forEach((img) => {
+        img.setAttribute("loading", "eager");
+        img.removeAttribute("fetchpriority");
+      });
+      track.appendChild(clone);
+      track.dataset.cloned = "true";
+    }
+
+    // Match previous 40s full-loop timing; px/s is identical in Safari & Chrome
+    const LOOP_DURATION_MS = 40000;
+    let distance = 0;
+    let offset = 0;
+    let hoverPaused = false;
+    let rafId = 0;
+    let lastTs = 0;
+
+    function isPaused() {
+      return hoverPaused || document.hidden;
+    }
+
+    function applyTransform() {
+      const value = "translate3d(" + -offset + "px, 0, 0)";
+      track.style.transform = value;
+      track.style.webkitTransform = value;
+    }
+
+    function measure() {
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      const next = set.getBoundingClientRect().width + gap;
+      if (next > 0) {
+        distance = next;
+        if (offset >= distance) offset = offset % distance;
+        applyTransform();
+      }
+    }
+
+    function tick(ts) {
+      if (!lastTs) lastTs = ts;
+      const delta = Math.min(ts - lastTs, 64);
+      lastTs = ts;
+
+      if (!isPaused() && distance > 0) {
+        offset += (distance / LOOP_DURATION_MS) * delta;
+        while (offset >= distance) offset -= distance;
+        applyTransform();
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    measure();
+    requestAnimationFrame(measure);
+    rafId = requestAnimationFrame(tick);
+
+    const imgs = track.querySelectorAll("img");
+    imgs.forEach((img) => {
+      if (img.complete) return;
+      img.addEventListener("load", measure, { once: true });
+      img.addEventListener("error", measure, { once: true });
+    });
+
+    let resizeTimer = 0;
+    window.addEventListener(
+      "resize",
+      () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(measure, 150);
+      },
+      { passive: true }
+    );
+
+    // Sticky :hover on iOS pauses forever; only pause for real desktop hover
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (canHover) {
+      track.addEventListener("mouseenter", () => {
+        hoverPaused = true;
+      });
+      track.addEventListener("mouseleave", () => {
+        hoverPaused = false;
+        lastTs = 0;
+      });
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      lastTs = 0;
+    });
+
+    window.addEventListener(
+      "pagehide",
+      () => {
+        if (rafId) cancelAnimationFrame(rafId);
+      },
+      { once: true }
+    );
+  }
+
   function initMenuTabs() {
     const tabs = document.querySelectorAll(".menu-tab");
     if (!tabs.length) return;
@@ -219,6 +328,7 @@
     initCursor();
     initNav();
     initHeroSlideshow();
+    initFoodCarousel();
     initMenuTabs();
     initReveal();
   }
