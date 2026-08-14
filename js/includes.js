@@ -6,7 +6,7 @@
   const PHONE = "9146304360";
   const PHONE_DISPLAY = "(914) 630-4360";
   const EMAIL = "info@FandFpizza.com";
-  const MAPS = "https://www.google.com/search?q=frankie+and+fanuccis+directions";
+  const MAPS = "https://maps.app.goo.gl/46oFBpwPPzhscmRL8";
   const LOGO =
     "https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683078_rrbxh1.jpg";
 

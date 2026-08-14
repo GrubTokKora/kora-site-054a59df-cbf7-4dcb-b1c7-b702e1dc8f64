@@ -1379,20 +1379,12 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .location-map a {
+    .location-map .map-embed,
+    .location-map iframe {
       display: block;
-      height: 100%;
-    }
-
-    .location-map img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: opacity .3s;
-    }
-
-    .location-map:hover img {
-      opacity: 0.85;
+      border: 0;
     }
 
     .location-info .section-title {
