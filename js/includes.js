@@ -8,7 +8,7 @@
   const EMAIL = "info@FandFpizza.com";
   const MAPS = "https://www.google.com/search?q=frankie+and+fanuccis+directions";
   const LOGO =
-    "https://images.squarespace-cdn.com/content/v1/5b021e482714e5923e6df0ff/3e38ec41-716b-48c9-93e0-5dc3d1db98d8/FF+Circle+BlackBG.jpg";
+    "https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683078_rrbxh1.jpg";
 
   window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
 
