@@ -56,27 +56,27 @@
     const mob = document.getElementById("mobileMenu");
     if (!btn || !mob) return;
 
-    btn.addEventListener("click", () => {
-      const open = mob.classList.toggle("open");
+    function setMenuOpen(open) {
+      mob.classList.toggle("open", open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       mob.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.classList.toggle("mobile-menu-open", open);
+      if (open) {
+        mob.scrollTop = 0;
+      }
+    }
+
+    btn.addEventListener("click", () => {
+      setMenuOpen(!mob.classList.contains("open"));
     });
 
     mob.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mob.classList.remove("open");
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "Open menu");
-        mob.setAttribute("aria-hidden", "true");
-      });
+      link.addEventListener("click", () => setMenuOpen(false));
     });
 
     window.closeMobile = function closeMobile() {
-      mob.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", "Open menu");
-      mob.setAttribute("aria-hidden", "true");
+      setMenuOpen(false);
     };
   }
 
