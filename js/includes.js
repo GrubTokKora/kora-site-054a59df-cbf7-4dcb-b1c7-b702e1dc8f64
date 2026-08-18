@@ -24,9 +24,11 @@
 </a>
 <ul class="nav-links">
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
+  <li><a href="delivery.html"${active(page, "delivery")}>Delivery</a></li>
   <li><a href="catering.html"${active(page, "catering")}>Catering</a></li>
   <li><a href="groups.html"${active(page, "groups")}>Groups</a></li>
   <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
+  <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
   <li><a href="contact.html"${active(page, "contact")}>Find Us</a></li>
   <li><a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
 </ul>
@@ -39,11 +41,13 @@
     el.innerHTML = `
 <a class="mobile-nav-link" href="index.html"${active(page, "home")}>Home</a>
 <a class="mobile-nav-link" href="menu.html"${active(page, "menu")}>Menu</a>
+<a class="mobile-nav-link" href="delivery.html"${active(page, "delivery")}>Delivery &amp; Pickup</a>
 <a class="mobile-nav-link" href="catering.html"${active(page, "catering")}>Catering</a>
-<a class="mobile-nav-link" href="groups.html"${active(page, "groups")}>Groups</a>
+<a class="mobile-nav-link" href="groups.html"${active(page, "groups")}>Groups &amp; Events</a>
 <a class="mobile-nav-link" href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a>
-<a class="mobile-nav-link" href="contact.html"${active(page, "contact")}>Find Us</a>
+<a class="mobile-nav-link" href="rewards.html"${active(page, "rewards")}>Rewards</a>
 <a class="mobile-nav-link" href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a>
+<a class="mobile-nav-link" href="contact.html"${active(page, "contact")}>Find Us</a>
 <a class="mobile-nav-link" href="${ORDER}" style="color:var(--gold-light)" target="_blank" rel="noopener noreferrer">Order Online →</a>`;
   }
 
@@ -87,6 +91,7 @@
         <li><a href="catering.html">Catering</a></li>
         <li><a href="groups.html">Groups &amp; Events</a></li>
         <li><a href="happy-hour.html">Happy Hour</a></li>
+        <li><a href="rewards.html">Rewards</a></li>
         <li><a href="contact.html">Find Us</a></li>
       </ul>
     </div>
@@ -94,7 +99,7 @@
       <div class="footer-col-title">Order</div>
       <ul class="footer-links">
         <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
-        <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Delivery</a></li>
+        <li><a href="delivery.html">Delivery &amp; Pickup</a></li>
         <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Takeout</a></li>
         <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
       </ul>

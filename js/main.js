@@ -240,6 +240,18 @@
       { threshold: 0.12 }
     );
     reveals.forEach((el) => observer.observe(el));
+
+    requestAnimationFrame(() => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      reveals.forEach((el) => {
+        if (el.classList.contains("visible")) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh && rect.bottom > 0) {
+          el.classList.add("visible");
+          observer.unobserve(el);
+        }
+      });
+    });
   }
 
   window.KORA_CONFIG = window.KORA_CONFIG || {
