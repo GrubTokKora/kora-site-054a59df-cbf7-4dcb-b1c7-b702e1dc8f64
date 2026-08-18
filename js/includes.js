@@ -30,8 +30,8 @@
   <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
   <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
   <li><a href="contact.html"${active(page, "contact")}>Find Us</a></li>
-  <li><a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
 </ul>
+<a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>
 <button aria-label="Open menu" aria-expanded="false" class="nav-hamburger" id="hamburgerBtn" type="button">
   <span></span><span></span><span></span>
 </button>`;
