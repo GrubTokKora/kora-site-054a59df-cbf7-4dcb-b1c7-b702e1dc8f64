@@ -83,7 +83,7 @@
         </a>
       </div>
     </div>
-    <div>
+    <div class="footer-col footer-col-nav">
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
@@ -95,7 +95,7 @@
         <li><a href="contact.html">Find Us</a></li>
       </ul>
     </div>
-    <div>
+    <div class="footer-col footer-col-order">
       <div class="footer-col-title">Order</div>
       <ul class="footer-links">
         <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
@@ -104,7 +104,7 @@
         <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
       </ul>
     </div>
-    <div>
+    <div class="footer-col footer-col-contact">
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="tel:${PHONE}">${PHONE_DISPLAY}</a></li>

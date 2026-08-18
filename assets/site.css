@@ -2108,7 +2108,13 @@
       }
 
       .footer-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 24px;
+      }
+
+      .footer-brand,
+      .footer-col-contact {
+        grid-column: 1 / -1;
       }
 
       .newsletter-fields {
