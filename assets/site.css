@@ -363,6 +363,20 @@
       max-width: 540px;
     }
 
+    /* Keep hero copy in DOM for SEO/crawlers, but hide it from UI */
+    .hero-content.seo-hidden-ui {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
     .hero-eyebrow {
       font-family: 'DM Sans', sans-serif;
       font-size: 10px;
