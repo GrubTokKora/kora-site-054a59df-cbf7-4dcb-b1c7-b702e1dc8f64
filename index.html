@@ -155,23 +155,12 @@
 <!-- Hero background: poster image shown immediately for fast FCP/LCP,
      video fades in only after it can play without buffering -->
 <div aria-hidden="true" class="hero-slideshow" id="heroBg">
-  <!-- Poster image — eager-loaded, always visible until video is ready -->
-  <div class="hero-slide active" id="heroPoster">
-    <img
-      alt=""
-      src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683061_51lloh.jpg"
-      width="1920" height="1080"
-      fetchpriority="high" loading="eager" decoding="async"
-    />
-  </div>
-  <!-- Video — no src on initial paint; JS injects it after page load -->
-  <video
-    id="heroVideo"
-    class="hero-video"
-    autoplay muted loop playsinline
-    preload="none"
-    aria-hidden="true"
-  ></video>
+<!-- Poster image — eager-loaded, always visible until video is ready -->
+<div class="hero-slide active" id="heroPoster">
+<img alt="" decoding="async" fetchpriority="high" height="1080" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683061_51lloh.jpg" width="1920"/>
+</div>
+<!-- Video — no src on initial paint; JS injects it after page load -->
+<video aria-hidden="true" autoplay="" class="hero-video" id="heroVideo" loop="" muted="" playsinline="" preload="none"></video>
 </div>
 <div class="hero-content seo-hidden-ui">
 <p class="hero-eyebrow">Wood-Fired · Scratch Made · Fresh</p>
