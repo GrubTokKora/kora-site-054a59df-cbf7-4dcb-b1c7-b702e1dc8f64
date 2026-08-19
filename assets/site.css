@@ -323,6 +323,26 @@
       object-fit: cover;
     }
 
+    /* ── HERO VIDEO ── */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 0;
+    }
+    .hero-video.ready {
+      opacity: 1;
+    }
+    /* Once video is playing, fade the poster slide out underneath */
+    #heroPoster.video-playing {
+      opacity: 0;
+      transition: opacity 1.2s ease 0.4s;
+    }
+
     .hero-slide::after {
       content: '';
       position: absolute;

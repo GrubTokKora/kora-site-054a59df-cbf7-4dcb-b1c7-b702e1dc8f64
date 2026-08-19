@@ -81,14 +81,56 @@
   }
 
   function initHeroSlideshow() {
-    const slides = document.querySelectorAll(".hero-slide");
-    if (slides.length < 2 || reduceMotion) return;
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }, 5000);
+    // Legacy slideshow — no-op now; video handled by initHeroVideo()
+  }
+
+  function initHeroVideo() {
+    const video  = document.getElementById("heroVideo");
+    const poster = document.getElementById("heroPoster");
+    if (!video || !poster) return;
+
+    // Respect user motion preference — keep the static poster instead
+    if (reduceMotion) return;
+
+    const VIDEO_SRC = "https://stream.mux.com/wapXqrf025Y00bXmZXwlUu022dbLvwTgW01w401lbNTKWsDU/high.mp4";
+
+    function loadVideo() {
+      // Set src now that the page is idle — avoids competing with LCP
+      video.src = VIDEO_SRC;
+
+      // canplaythrough fires when enough data is buffered for smooth play
+      video.addEventListener("canplaythrough", function onReady() {
+        video.removeEventListener("canplaythrough", onReady);
+        video.classList.add("ready");      // fade video in
+        poster.classList.add("video-playing"); // fade poster out underneath
+        video.play().catch(() => {});      // explicit play() for some browsers
+      }, { once: true });
+
+      // Fallback: if canplaythrough takes too long, start on first data
+      video.addEventListener("loadeddata", function onData() {
+        video.removeEventListener("loadeddata", onData);
+        if (!video.classList.contains("ready")) {
+          video.classList.add("ready");
+          poster.classList.add("video-playing");
+          video.play().catch(() => {});
+        }
+      }, { once: true });
+
+      video.load();
+    }
+
+    // Use requestIdleCallback to defer src injection until browser is idle
+    // so it never blocks the LCP image or first paint
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadVideo, { timeout: 3000 });
+    } else {
+      // Fallback for Safari: wait until after load event
+      if (document.readyState === "complete") {
+        setTimeout(loadVideo, 200);
+      } else {
+        window.addEventListener("load", () => setTimeout(loadVideo, 200), { once: true });
+      }
+    }
   }
 
   function initFoodCarousel() {
@@ -340,6 +382,7 @@
     initCursor();
     initNav();
     initHeroSlideshow();
+    initHeroVideo();
     initFoodCarousel();
     initMenuTabs();
     initReveal();
