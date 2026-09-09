@@ -2,49 +2,6 @@
 (function () {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function initCursor() {
-    const cursor = document.getElementById("cursor");
-    const ring = document.getElementById("cursorRing");
-    if (!cursor || !ring) return;
-    if (reduceMotion || window.matchMedia("(pointer: coarse)").matches) {
-      cursor.style.display = "none";
-      ring.style.display = "none";
-      document.body.style.cursor = "auto";
-      return;
-    }
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let ringX = 0;
-    let ringY = 0;
-
-    document.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + "px";
-      cursor.style.top = mouseY + "px";
-    });
-
-    (function animateRing() {
-      ringX += (mouseX - ringX) * 0.14;
-      ringY += (mouseY - ringY) * 0.14;
-      ring.style.left = ringX + "px";
-      ring.style.top = ringY + "px";
-      requestAnimationFrame(animateRing);
-    })();
-
-    document.querySelectorAll("a, button, .menu-tab, .food-card, .explore-card").forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        cursor.classList.add("hover");
-        ring.classList.add("hover");
-      });
-      el.addEventListener("mouseleave", () => {
-        cursor.classList.remove("hover");
-        ring.classList.remove("hover");
-      });
-    });
-  }
-
   function initNav() {
     const nav = document.getElementById("mainNav");
     if (!nav) return;
@@ -379,7 +336,6 @@
   };
 
   function start() {
-    initCursor();
     initNav();
     initHeroSlideshow();
     initHeroVideo();

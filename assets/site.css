@@ -57,52 +57,6 @@
       font-family: var(--font-sans);
     }
 
-    /* ── CURSOR ── */
-    body {
-      cursor: none;
-    }
-
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      transition: width .2s, height .2s, background .2s;
-      mix-blend-mode: multiply;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 36px;
-      height: 36px;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%, -50%);
-      transition: transform .12s ease-out, width .3s, height .3s, opacity .3s;
-      opacity: 0.6;
-    }
-
-    .cursor.hover {
-      width: 20px;
-      height: 20px;
-    }
-
-    .cursor-ring.hover {
-      width: 60px;
-      height: 60px;
-      opacity: 0.3;
-    }
-
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -244,7 +198,7 @@
       height: 24px;
       flex-direction: column;
       justify-content: center;
-      cursor: none;
+      cursor: pointer;
       border: none;
       background: none;
       padding: 0;
@@ -868,7 +822,7 @@
     .menu-tab {
       padding: 14px 20px;
       border-radius: 2px;
-      cursor: none;
+      cursor: pointer;
       font-size: 13px;
       letter-spacing: 0.06em;
       font-weight: 400;
@@ -1750,7 +1704,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      cursor: none;
+      cursor: pointer;
     }
 
     .newsletter-option input {
@@ -1774,7 +1728,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 500;
-      cursor: none;
+      cursor: pointer;
       border-radius: 2px;
       transition: background .25s;
     }
@@ -3174,13 +3128,6 @@ body.interior-page #mainNav.scrolled {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .cursor,
-  .cursor-ring {
-    display: none !important;
-  }
-  body {
-    cursor: auto !important;
   }
   .hero-slide {
     transition: none !important;

@@ -114,16 +114,6 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);overflo
 img{max-width:100%}
 .hero-title,.section-title,.stat-num,.social-handle,.explore-card-title,.gift-strip h2,.food-card-label,.mobile-nav-link,.newsletter-inner .section-title{font-family:var(--font-display)}
 
-/* CURSOR */
-@media (hover:hover) and (pointer:fine){
-  body{cursor:none}
-  a,button{cursor:none}
-}
-.cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cta);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:multiply}
-.cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1.5px solid var(--cta);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .12s ease-out,width .3s,height .3s,opacity .3s;opacity:.55}
-.cursor.hover{width:20px;height:20px}
-.cursor-ring.hover{width:60px;height:60px;opacity:.3}
-
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 40px;display:flex;align-items:center;gap:20px;height:80px;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);box-shadow:none;border-bottom:1px solid var(--nav-border);transition:background .4s,height .4s,box-shadow .4s,border-color .4s}
 nav.scrolled{background:var(--nav-bg-scrolled);height:68px;box-shadow:0 8px 30px var(--nav-shadow)}
@@ -366,8 +356,6 @@ body.mobile-menu-open{overflow:hidden}
 @media (max-height:700px){.hero{padding:0 0 52px}.hero-scroll-hint{display:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .cursor,.cursor-ring{display:none!important}
-  body{cursor:auto!important}
   .carousel-track{transform:none!important}
   .reveal,.reveal-delay-1,.reveal-delay-2{opacity:1!important;transform:none!important;transition:none!important}
   .hero-eyebrow,.hero-title,.hero-desc,.hero-actions,.hero-awards-inline,.hero-scroll-hint{animation:none!important;opacity:1!important;transform:none!important}
@@ -384,8 +372,6 @@ body.mobile-menu-open{overflow:hidden}
 </style>
 </head>
 <body class="" data-page="home">
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 <nav aria-label="Primary" id="mainNav">
 <a class="nav-logo" href="index.html">
   <img alt="Frankie &amp; Fanucci's logo" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683078_rrbxh1.jpg" width="48" height="48"/>
@@ -655,18 +641,6 @@ Follow on Instagram
 <script>
 (function(){
   var reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function initCursor(){
-    var cursor=document.getElementById("cursor"),ring=document.getElementById("cursorRing");
-    if(!cursor||!ring)return;
-    if(reduceMotion||window.matchMedia("(pointer: coarse)").matches){cursor.style.display="none";ring.style.display="none";document.body.style.cursor="auto";return;}
-    var mouseX=0,mouseY=0,ringX=0,ringY=0;
-    document.addEventListener("mousemove",function(e){mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+"px";cursor.style.top=mouseY+"px";});
-    (function loop(){ringX+=(mouseX-ringX)*0.14;ringY+=(mouseY-ringY)*0.14;ring.style.left=ringX+"px";ring.style.top=ringY+"px";requestAnimationFrame(loop);})();
-    document.querySelectorAll("a,button,.food-card,.explore-card").forEach(function(el){
-      el.addEventListener("mouseenter",function(){cursor.classList.add("hover");ring.classList.add("hover");});
-      el.addEventListener("mouseleave",function(){cursor.classList.remove("hover");ring.classList.remove("hover");});
-    });
-  }
   function initNav(){
     var nav=document.getElementById("mainNav");if(!nav)return;
     var onScroll=function(){nav.classList.toggle("scrolled",window.scrollY>40);};onScroll();
@@ -739,7 +713,7 @@ Follow on Instagram
     }catch(err){msg("Something went wrong. Please try again.",true);}
     finally{if(submitBtn)submitBtn.disabled=false;}
   };
-  function start(){initCursor();initNav();initHeroVideo();initFoodCarousel();initReveal();}
+  function start(){initNav();initHeroVideo();initFoodCarousel();initReveal();}
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",start);}else{start();}
 })();
 </script>
