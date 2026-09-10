@@ -112,12 +112,124 @@ nav.scrolled{height:70px;background:rgba(26,26,29,.82)}
 .nav-logo:hover{opacity:.85}
 .nav-logo img{height:48px;width:48px;border-radius:50%;object-fit:cover}
 .nav-logo-text{font-family:var(--font-sans);font-size:12.5px;letter-spacing:.11em;color:var(--silver);font-weight:700;line-height:1.25;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin-left:auto}
-.nav-links a{font-family:var(--font-sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-decoration:none;font-weight:600;position:relative;padding-bottom:2px;white-space:nowrap;transition:color .25s}
-.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--silver);transition:width .3s var(--ease-out)}
-.nav-links a:hover,.nav-links a[aria-current=page]{color:var(--silver)}
-.nav-links a:hover::after,.nav-links a[aria-current=page]::after{width:100%}
-.nav-order-btn{background:var(--silver);color:var(--night);padding:11px 22px;border-radius:999px;border:1.5px solid var(--silver);font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s var(--ease-out),opacity .2s}
+.nav-links{display:flex;align-items:center;gap:18px;list-style:none;margin-left:auto}
+.nav-links > li{position:relative}
+.nav-links > li > a,
+.nav-drop-btn{
+  font-family:var(--font-sans);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mid);
+  text-decoration:none;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:11px 4px;
+  border:1.5px solid transparent;
+  border-radius:0;
+  background:transparent;
+  cursor:pointer;
+  line-height:1.2;
+  position:relative;
+  transition:color .25s;
+}
+.nav-links > li > a::after,
+.nav-drop-btn::after{
+  content:"";
+  position:absolute;
+  left:4px;
+  right:4px;
+  bottom:6px;
+  width:auto;
+  height:1px;
+  background:var(--silver);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .3s var(--ease-out);
+}
+.nav-links > li > a:hover,
+.nav-links > li > a[aria-current=page],
+.nav-drop-btn:hover,
+.nav-drop.open > .nav-drop-btn{
+  color:var(--silver);
+}
+.nav-links > li > a:hover::after,
+.nav-links > li > a[aria-current=page]::after,
+.nav-drop-btn:hover::after,
+.nav-drop.open > .nav-drop-btn::after{
+  transform:scaleX(1);
+}
+.nav-drop-btn::before{
+  content:"";
+  order:1;
+  width:5px;height:5px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-1px);
+  transition:transform .2s var(--ease-out);
+  flex-shrink:0;
+  margin-left:2px;
+}
+.nav-drop.open > .nav-drop-btn::before{transform:rotate(225deg) translateY(-1px)}
+.nav-dropdown{
+  position:absolute;
+  top:calc(100% - 2px);
+  left:50%;
+  transform:translateX(-50%);
+  min-width:180px;
+  padding:8px;
+  margin:0;
+  list-style:none;
+  background:rgba(26,26,29,.96);
+  border:1px solid var(--line-2);
+  border-radius:14px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .18s var(--ease-out),visibility .18s;
+  z-index:1001;
+}
+.nav-dropdown::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:-10px;
+  height:12px;
+}
+.nav-drop.open > .nav-dropdown{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.nav-drop:last-child > .nav-dropdown{
+  left:auto;
+  right:0;
+  transform:none;
+}
+.nav-dropdown a{
+  display:block;
+  font-family:var(--font-sans);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mid);
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:8px;
+  white-space:nowrap;
+  transition:color .2s,background .2s;
+}
+.nav-dropdown a:hover,
+.nav-dropdown a[aria-current=page]{
+  color:var(--silver);
+  background:rgba(245,245,247,.06);
+}
+.nav-order-btn{background:var(--silver);color:var(--night);padding:11px 22px;border-radius:999px;border:1.5px solid var(--silver);font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0;line-height:1.2;transition:transform .2s var(--ease-out),opacity .2s}
 .nav-order-btn:hover{opacity:.9;transform:translateY(-1px)}
 .nav-hamburger{display:none;position:relative;width:32px;height:24px;flex-direction:column;justify-content:center;border:0;background:none;padding:0;z-index:1002}
 .nav-hamburger span{position:absolute;left:4px;width:24px;height:1.5px;background:var(--silver);transition:transform .3s,top .3s,opacity .2s}
@@ -343,12 +455,22 @@ body.mobile-menu-open{overflow:hidden}
 </a>
 <ul class="nav-links">
 <li><a href="menu.html">Menu</a></li>
-<li><a href="delivery.html">Delivery</a></li>
-<li><a href="catering.html">Catering</a></li>
-<li><a href="groups.html">Groups</a></li>
 <li><a href="happy-hour.html">Happy Hour</a></li>
-<li><a href="rewards.html">Rewards</a></li>
+<li class="nav-drop">
+  <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-events-menu" id="navEventsBtn">Events</button>
+  <ul class="nav-dropdown" id="nav-events-menu" role="menu" aria-labelledby="navEventsBtn">
+    <li role="none"><a role="menuitem" href="catering.html">Catering</a></li>
+    <li role="none"><a role="menuitem" href="groups.html">Groups</a></li>
+  </ul>
+</li>
 <li><a href="contact.html">Find Us</a></li>
+<li class="nav-drop">
+  <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu" id="navMoreBtn">More</button>
+  <ul class="nav-dropdown" id="nav-more-menu" role="menu" aria-labelledby="navMoreBtn">
+    <li role="none"><a role="menuitem" href="delivery.html">Delivery</a></li>
+    <li role="none"><a role="menuitem" href="rewards.html">Rewards</a></li>
+  </ul>
+</li>
 </ul>
 <a class="nav-order-btn" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" target="_blank">Order Online</a>
 <button aria-expanded="false" aria-label="Open menu" class="nav-hamburger" id="hamburgerBtn" type="button">
@@ -609,6 +731,40 @@ body.mobile-menu-open{overflow:hidden}
       btn.addEventListener("click",function(){setOpen(!mob.classList.contains("open"));});
       mob.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){setOpen(false);});});
     }
+    // Desktop dropdowns: Events / More
+    var drops=nav.querySelectorAll(".nav-drop");
+    function closeDrops(except){
+      drops.forEach(function(d){
+        if(except&&d===except)return;
+        d.classList.remove("open");
+        var t=d.querySelector(".nav-drop-btn");
+        if(t)t.setAttribute("aria-expanded","false");
+      });
+    }
+    drops.forEach(function(drop){
+      var trigger=drop.querySelector(".nav-drop-btn");
+      if(!trigger)return;
+      trigger.addEventListener("click",function(e){
+        e.stopPropagation();
+        var willOpen=!drop.classList.contains("open");
+        closeDrops(willOpen?drop:null);
+        drop.classList.toggle("open",willOpen);
+        trigger.setAttribute("aria-expanded",willOpen?"true":"false");
+      });
+      drop.addEventListener("mouseenter",function(){
+        if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;
+        closeDrops(drop);
+        drop.classList.add("open");
+        trigger.setAttribute("aria-expanded","true");
+      });
+      drop.addEventListener("mouseleave",function(){
+        if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;
+        drop.classList.remove("open");
+        trigger.setAttribute("aria-expanded","false");
+      });
+    });
+    document.addEventListener("click",function(){closeDrops(null);});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrops(null);});
   }
   // Scroll reveals
   var rev=document.querySelectorAll(".reveal");
