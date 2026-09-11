@@ -82,29 +82,30 @@
 <!-- KORA_GOOGLE_FONTS_END -->
 <style>
 
-/* Kit 1a Trattoria — palette: #F5F2EC #1A1815 #57514A #B8AE9F #8A8074 #4A453D | Instrument Serif + Archivo | buttons 999px */
+/* Kit 2a Rosso — palette: #F7F5F0 #17140F #6A655C #C7362B #8A8479 #4A453D | Instrument Serif + Archivo | buttons 999px | red only on CTAs */
 :root{
   --font-sans:"Archivo","Avenir Next",Helvetica,Arial,sans-serif;
   --font-display:"Instrument Serif","Bodoni Moda",Didot,"Times New Roman",serif;
   --display-weight:400;--display-tracking:-.015em;--em-style:italic;--radius:999px;--radius-card:2px;
-  --bg:#f5f2ec;--bg-alt:#f5f2ec;--bg-alt2:#f5f2ec;
-  --ink:#1a1815;--charcoal:#1a1815;
-  --text:#1a1815;--text-mid:#57514a;--text-light:#8a8074;
-  --border:rgba(26,24,21,.14);
-  --shadow:0 8px 40px rgba(26,24,21,.10);--shadow-lg:0 20px 80px rgba(26,24,21,.16);
-  --accent:#8a8074;--accent-on-dark:#b8ae9f;--accent-strong:#1a1815;
-  --cta:#1a1815;--cta-hover:#1a1815;--btn-text:#f5f2ec;
-  --hero-eyebrow:#b8ae9f;--on-ink-accent:#b8ae9f;
-  --gold:#8a8074;--gold-light:#b8ae9f;--gold-dark:#8a8074;
+  --bg:#f7f5f0;--bg-alt:#f7f5f0;--bg-alt2:#f7f5f0;
+  --ink:#17140f;--charcoal:#17140f;
+  --text:#17140f;--text-mid:#4a453d;--text-light:#8a8479;
+  --border:rgba(23,20,15,.14);
+  --shadow:0 8px 40px rgba(23,20,15,.10);--shadow-lg:0 20px 80px rgba(23,20,15,.16);
+  --accent:#8a8479;--accent-on-dark:#f7f5f0;--accent-strong:#17140f;
+  --cta:#c7362b;--cta-hover:#c7362b;--btn-text:#ffffff;
+  --hero-eyebrow:#c7362b;--on-ink-accent:#f7f5f0;
+  --gold:#c7362b;--gold-light:#f7f5f0;--gold-dark:#8a8479;
   --cta-ls:.12em;
-  --nav-bg:rgba(245,242,236,.85);--nav-bg-scrolled:rgba(245,242,236,.96);
-  --nav-border:rgba(26,24,21,.12);--nav-shadow:rgba(26,24,21,.10);
-  --nav-text:#1a1815;--nav-link:#57514a;--nav-link-hover:#1a1815;--nav-underline:#1a1815;
-  --nav-cta-bg:#1a1815;--nav-cta-text:#f5f2ec;--nav-cta-border:#1a1815;
-  --nav-cta-hover-bg:#57514a;--nav-cta-hover-text:#f5f2ec;
-  --gift-bg:#1a1815;--gift-text:#f5f2ec;--gift-btn-bg:#f5f2ec;--gift-btn-text:#1a1815;
-  --footer-bg:#1a1815;
+  --nav-bg:rgba(247,245,240,.85);--nav-bg-scrolled:rgba(247,245,240,.96);
+  --nav-border:rgba(23,20,15,.12);--nav-shadow:rgba(23,20,15,.10);
+  --nav-text:#17140f;--nav-link:#4a453d;--nav-link-hover:#c7362b;--nav-underline:#c7362b;
+  --nav-cta-bg:#c7362b;--nav-cta-text:#ffffff;--nav-cta-border:#c7362b;
+  --nav-cta-hover-bg:#c7362b;--nav-cta-hover-text:#ffffff;
+  --gift-bg:#c7362b;--gift-text:#ffffff;--gift-btn-bg:#ffffff;--gift-btn-text:#c7362b;
+  --footer-bg:#17140f;
 }
+
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -156,6 +157,46 @@ nav.scrolled{background:var(--nav-bg-scrolled);height:68px;box-shadow:0 8px 30px
 .hero-awards-inline{display:block;margin-top:18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--hero-eyebrow);font-weight:600;opacity:0;animation:fadeUp .8s 1.1s forwards}
 .hero-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeIn 1s 1.5s forwards}
 .hero-scroll-hint span{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+/* ── GALLERIA HERO (design5) — text + composite media (video + 2 stacked images) ── */
+.r-hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;position:relative;background:var(--bg)}
+.r-hero-grid{max-width:1440px;margin:0 auto;padding:0 40px;width:100%;display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center}
+.r-hero-eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--hero-eyebrow);margin:0}
+.r-hero-title{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(48px,6vw,96px);line-height:.94;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0}
+.r-hero-title em{font-style:italic}
+.r-hero-desc{color:var(--text-mid);font-size:17px;line-height:1.7;max-width:440px;margin:24px 0 0}
+.r-hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:32px 0 0}
+.r-hero-media{width:100%}
+/* composite: portrait video (left, tall) + two stacked images (right) */
+.r-media-grid{display:flex;gap:16px;align-items:stretch}
+.r-media-video{position:relative;flex:1.05;aspect-ratio:9/16;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:#ece8e0}
+.r-media-video img,.r-media-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r-media-video video{opacity:0;transition:opacity 1s ease}
+.r-media-video video.ready{opacity:1}
+.r-media-stack{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.r-media-img{flex:1;min-height:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+.r-media-img img{width:100%;height:100%;object-fit:cover;display:block}
+/* 650–1023px: stacked — media frame on top, text + CTA below (centered) */
+@media (max-width:1023px){
+  .r-hero{min-height:0;display:block;padding:104px 0 64px}
+  .r-hero-grid{display:flex;flex-direction:column;gap:36px;max-width:720px;padding:0 32px;align-items:stretch}
+  .r-hero-media{order:-1;max-width:640px;margin:0 auto;width:100%}
+  .r-hero-text{order:1;text-align:center}
+  .r-hero-desc{margin-left:auto;margin-right:auto}
+  .r-hero-actions{justify-content:center}
+}
+/* <650px: full-screen portrait video only (two images hidden) — matches design3 */
+@media (max-width:550px){
+  .r-hero{min-height:0;display:block;padding:0}
+  .r-hero-grid{display:flex;flex-direction:column;gap:0;padding:0;max-width:none;align-items:stretch}
+  .r-hero-media{order:-1;max-width:none;margin:0}
+  .r-media-grid{display:block}
+  .r-media-stack{display:none}
+  .r-media-video{flex:none;width:100%;height:100vh;height:100svh;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;background:var(--bg)}
+  .r-hero-text{order:1;padding:44px 24px 8px;text-align:center}
+  .r-hero-desc{margin-left:auto;margin-right:auto}
+  .r-hero-actions{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.r-media-video video{transition:none}}
 .scroll-line{width:1px;height:48px;background:linear-gradient(var(--accent-on-dark),transparent);animation:scrollLine 1.8s ease infinite}
 @keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.4}}
 
@@ -196,7 +237,7 @@ section{position:relative}
 .food-carousel-section{padding:120px 0;background:var(--bg-alt)}
 .food-carousel-header{text-align:center;margin-bottom:64px}
 .food-carousel-header .section-title{margin:12px 0 20px}
-.food-carousel-header p{color:var(--text-light);font-size:16px;max-width:520px;margin:0 auto;line-height:1.75;font-weight:500}
+.food-carousel-header p{color:var(--text-light);font-size:16px;max-width:520px;margin:0 auto;line-height:1.75;font-weight:400}
 .food-carousel-cta{display:inline-flex;margin-top:28px;position:relative;z-index:3}
 .carousel-track-wrapper{overflow:hidden;position:relative;transform:translateZ(0)}
 .carousel-track-wrapper::before,.carousel-track-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
@@ -400,186 +441,33 @@ body.mobile-menu-open{overflow:hidden}
 <a class="mobile-nav-link" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" style="color:var(--cta)" target="_blank">Order Online →</a>
 </div>
 <main id="main">
-<section class="hero" id="home">
-<div aria-hidden="true" class="hero-slideshow" id="heroBg">
-<div class="hero-slide active" id="heroPoster">
-<img alt="" decoding="async" fetchpriority="high" height="1080" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683061_51lloh.jpg" width="1920"/>
-</div>
-<video aria-hidden="true" autoplay="" class="hero-video" id="heroVideo" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<div class="hero-content seo-hidden-ui">
-<p class="hero-eyebrow">Wood-Fired · Scratch Made · Fresh</p>
-<h1 class="hero-title">Frankie &amp; <em>Fanucci's</em></h1>
-<p class="hero-desc">Where every bite tells a story. Award-winning thin-crust pizzas, handmade pastas, and Italian favorites in the heart of Mamaroneck, NY.</p>
-<div class="hero-actions">
-<a class="btn-primary" href="https://order.toasttab.com/online/fandfpizza" target="_blank">Order Online</a>
-<a class="btn-ghost" href="menu.html">View Menu →</a>
-</div>
-<p class="hero-awards-inline">6× Best of Westchester</p>
-</div>
-</section>
-<section class="about-strip" id="about">
-<div class="section-inner">
-<div class="about-text reveal">
-<div class="eyebrow">Our Story</div>
-<h2 class="section-title">A Vibrant<br/>Neighborhood<br/><em>Pizzeria</em></h2>
-<p>Frankie &amp; Fanucci's in Mamaroneck, NY is more than a restaurant — it's the neighborhood's gathering place. Voted "Best of Westchester" six times, we've built our reputation on thin-crust perfection baked in traditional wood-fired ovens.</p>
-<p>Our menu spans the full Italian table: handmade pastas, crispy antipasti, fresh salads, and entrées crafted with care. A full bar, handcrafted cocktails, and a family-friendly vibe make every visit memorable.</p>
-<div class="about-stats">
-<div><div class="stat-num">6×</div><div class="stat-label">Best of Westchester</div></div>
-<div><div class="stat-num">12+</div><div class="stat-label">Signature Pizzas</div></div>
-<div><div class="stat-num">40+</div><div class="stat-label">Menu Items</div></div>
+<section class="r-hero" id="home">
+<div class="r-hero-grid">
+<div class="r-hero-text">
+<p class="r-hero-eyebrow reveal">Wood-Fired Pizza &amp; a Full Bar</p>
+<h1 class="r-hero-title reveal reveal-delay-1">Frankie<br/><em>&amp; Fanucci's</em></h1>
+<p class="r-hero-desc reveal reveal-delay-2">Where every bite tells a story. Award-winning thin-crust pizzas, handmade pastas, and Italian favorites in the heart of Mamaroneck, NY.</p>
+<div class="r-hero-actions reveal reveal-delay-2">
+<a class="btn-primary" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" target="_blank">Order Online</a>
+<a class="btn-outlined" href="menu.html">See Menu →</a>
 </div>
 </div>
-<div class="about-image-grid reveal reveal-delay-2">
-<div class="about-img-wrap"><img alt="Spaghetti &amp; Meatballs" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683746_6d0glp.jpg" width="800"/></div>
-<div class="about-img-wrap"><img alt="Salmon" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683094_piaiqm.jpg" width="800"/></div>
-<div class="about-img-wrap"><img alt="Burger" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683103_fsel4j.jpg" width="800"/></div>
+<div class="r-hero-media reveal reveal-delay-1">
+<div class="r-media-grid">
+<div class="r-media-video">
+<img alt="" decoding="async" fetchpriority="high" height="1280" id="heroPoster" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683024_7zfn2u.jpg" width="720"/>
+<video aria-hidden="true" id="heroVideo" loop="" muted="" playsinline="" preload="none"></video>
 </div>
-</div>
-</section>
-<section class="food-carousel-section">
-<div class="food-carousel-header reveal">
-<div class="eyebrow">From Our Kitchen</div>
-<h2 class="section-title">Crafted with <em>Passion</em></h2>
-<p>Every dish is made from scratch — from our wood-fired crust to our house-made sauces. Hover to pause and explore.</p>
-<a class="btn-outlined food-carousel-cta" href="menu.html">Explore Full Menu →</a>
-</div>
-<div class="carousel-track-wrapper">
-<div class="carousel-track" data-food-carousel="">
-<div class="carousel-set">
-<div class="food-card"><img alt="Amici Pizza" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683024_7zfn2u.jpg" width="800"/><div class="food-card-label">Amici Pizza</div></div>
-<div class="food-card"><img alt="Truffled Spaghetti" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683107_f5nvmc.jpg" width="800"/><div class="food-card-label">Truffled Spaghetti</div></div>
-<div class="food-card"><img alt="Gelato" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683043_d3sn61.jpg" width="800"/><div class="food-card-label">Craft Gelato</div></div>
-<div class="food-card"><img alt="Burger" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683103_fsel4j.jpg" width="800"/><div class="food-card-label">The Burger</div></div>
-<div class="food-card"><img alt="Salmon" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683094_piaiqm.jpg" width="800"/><div class="food-card-label">Salmon Piccata</div></div>
-<div class="food-card"><img alt="Spaghetti &amp; Meatballs" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683746_6d0glp.jpg" width="800"/><div class="food-card-label">Spaghetti &amp; Meatballs</div></div>
-<div class="food-card"><img alt="Lasagna" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683075_x1ddzn.jpg" width="800"/><div class="food-card-label">House Lasagna</div></div>
-<div class="food-card"><img alt="The Q Pizza" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683090_d6ui1t.jpg" width="800"/><div class="food-card-label">The 'Q' Pizza</div></div>
-<div class="food-card"><img alt="Chicken Paillard" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683031_mtq74q.jpg" width="800"/><div class="food-card-label">Chicken Paillard</div></div>
-<div class="food-card"><img alt="Spicy Sausage Pizza" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683098_e9xivl.jpg" width="800"/><div class="food-card-label">Spicy Sausage &amp; Onion</div></div>
-<div class="food-card"><img alt="Di Parma" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683705_rxqc8b.jpg" width="800"/><div class="food-card-label">Di Parma</div></div>
-<div class="food-card"><img alt="House Specialty" decoding="async" height="600" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683068_ek4g3c.jpg" width="800"/><div class="food-card-label">House Specialty</div></div>
+<div class="r-media-stack">
+<div class="r-media-img"><img alt="Salmon piccata" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683094_piaiqm.jpg" width="800"/></div>
+<div class="r-media-img"><img alt="The burger" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683103_fsel4j.jpg" width="800"/></div>
 </div>
 </div>
 </div>
-</section>
-<section class="explore-section" id="explore">
-<div class="section-inner">
-<div class="eyebrow reveal">What We Offer</div>
-<h2 class="section-title reveal">Dine In, Take Out,<br/><em>Celebrate</em></h2>
-<div class="explore-grid">
-<a class="explore-card reveal" href="catering.html">
-<img alt="Catering trays" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683027_grdvd6.jpg" width="800"/>
-<div class="explore-card-overlay"></div>
-<div class="explore-card-content">
-<span class="service-tag">Food by the Tray</span>
-<div class="explore-card-title">Catering</div>
-<p class="explore-card-desc">Wood-fired pizza, salads, and Italian classics for your next event.</p>
-<span class="explore-link">See catering →</span>
-</div>
-</a>
-<a class="explore-card reveal reveal-delay-1" href="groups.html">
-<img alt="Group dining" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683050_vwy39w.jpg" width="800"/>
-<div class="explore-card-overlay"></div>
-<div class="explore-card-content">
-<span class="service-tag">Private Events</span>
-<div class="explore-card-title">Group Dining</div>
-<p class="explore-card-desc">Birthdays, team dinners, celebrations — space for up to 40 guests.</p>
-<span class="explore-link">View packages →</span>
-</div>
-</a>
-<a class="explore-card reveal reveal-delay-2" href="happy-hour.html">
-<img alt="Happy hour cocktails" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683058_nbozea.jpg" width="800"/>
-<div class="explore-card-overlay"></div>
-<div class="explore-card-content">
-<span class="service-tag">All Day · Every Day</span>
-<div class="explore-card-title">2 for 1 Happy Hour</div>
-<p class="explore-card-desc">Craft cocktails, wine, and draft beer at the bar — Mamaroneck's best deal.</p>
-<span class="explore-link">See details →</span>
-</div>
-</a>
-</div>
-</div>
-</section>
-<section aria-label="Gift cards" class="gift-strip">
-<div class="section-inner gift-strip-inner">
-<div>
-<div class="gift-strip-label">Perfect for Any Occasion</div>
-<h2>Gift Cards Available</h2>
-<p>Treat someone to wood-fired pizza and Italian favorites they'll love.</p>
-</div>
-<a class="btn-dark" href="https://order.toasttab.com/egiftcards/fandfpizza" rel="noopener noreferrer" style="white-space:nowrap;" target="_blank">Get a Gift Card</a>
-</div>
-</section>
-<section class="home-visit">
-<div class="section-inner">
-<div class="home-visit-layout">
-<div class="home-visit-map reveal">
-<iframe allowfullscreen="" class="map-embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.6364808270328!2d-73.73699682350309!3d40.9511926229372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c29164a26503cd%3A0xb42e4b73d6fcffb7!2sFrankie%20%26%20Fanucci%27s!5e1!3m2!1sen!2sin!4v1786684073461!5m2!1sen!2sin" title="Map to Frankie &amp; Fanucci's"></iframe>
-</div>
-<div class="reveal reveal-delay-2">
-<div class="eyebrow">Visit Us</div>
-<h2 class="section-title">Find <em>Us</em> in<br/>Mamaroneck</h2>
-<p class="home-visit-address">301 Mamaroneck Avenue · Mamaroneck, NY 10543</p>
-<div class="home-visit-hours-block">
-<div class="detail-label">Hours of Operation</div>
-<div class="hours-grid">
-<span class="day">Mon – Thu</span><span>12:00 PM – 9:00 PM</span>
-<span class="day">Friday</span><span>12:00 PM – 10:00 PM</span>
-<span class="day">Saturday</span><span>11:30 AM – 10:00 PM</span>
-<span class="day">Sunday</span><span>11:30 AM – 9:00 PM</span>
-</div>
-</div>
-<p class="home-visit-note">Dine in, take out, or order delivery.</p>
-<div style="display:flex;gap:12px;flex-wrap:wrap;">
-<a class="btn-primary" href="contact.html">Find Us</a>
-<a class="btn-outlined" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" target="_blank">Order Online</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="social-section">
-<div class="section-inner">
-<div class="eyebrow reveal">Follow Along</div>
-<h2 class="section-title reveal">Share the <em>Goodness</em></h2>
-<div class="social-handle reveal"><a href="https://www.instagram.com/fandfpizza" target="_blank">@FandFpizza</a></div>
-<div class="social-grid reveal">
-<div class="social-img"><img alt="" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683024_7zfn2u.jpg" width="800"/></div>
-<div class="social-img"><img alt="" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683107_f5nvmc.jpg" width="800"/></div>
-<div class="social-img"><img alt="" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683043_d3sn61.jpg" width="800"/></div>
-<div class="social-img"><img alt="" decoding="async" height="600" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683705_rxqc8b.jpg" width="800"/></div>
-</div>
-<a class="social-follow-btn reveal" href="https://www.instagram.com/fandfpizza" target="_blank">
-<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle></svg>
-Follow on Instagram
-</a>
-</div>
-</section>
-<section class="newsletter-section">
-<div class="newsletter-inner">
-<div class="eyebrow">Stay Connected</div>
-<h2 class="section-title">Exclusive Offers<br/>&amp; <em>Updates</em></h2>
-<p>Sign up to receive exclusive offers, seasonal menus, event announcements, and more.</p>
-<form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
-<div class="newsletter-fields">
-<input id="newsletter-email" placeholder="Your email address" type="email"/>
-<input id="newsletter-phone" placeholder="Your phone number" type="tel"/>
-</div>
-<div class="newsletter-options">
-<label class="newsletter-option"><input checked="" id="newsletter-email-optin" type="checkbox"/><span>Email Updates</span></label>
-<label class="newsletter-option"><input id="newsletter-sms-optin" type="checkbox"/><span>SMS Updates</span></label>
-</div>
-<div class="newsletter-submit-row">
-<button type="submit">Subscribe</button>
-<p aria-live="polite" class="newsletter-message" id="newsletter-message"></p>
-</div>
-</form>
-<p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.06em;">We respect your privacy. Unsubscribe anytime.</p>
 </div>
 </section>
 </main>
+
 <footer>
 <div class="footer-inner">
 <div class="footer-top">
@@ -634,7 +522,7 @@ Follow on Instagram
 </div>
 </div>
 </footer>
-<div aria-label="Design options" class="design-switcher"><span>Design</span><a class="active" href="design1.html">1 · Trattoria</a><a href="design2.html">2 · Moderno</a><a href="design3.html">3 · Rosso</a><a href="design4.html">4 · Notte</a><a href="design5.html">5 · Galleria</a></div>
+<div aria-label="Design options" class="design-switcher"><span>Design</span><a href="design1.html">1 · Trattoria</a><a href="design2.html">2 · Moderno</a><a href="design3.html">3 · Rosso</a><a href="design4.html">4 · Notte</a><a class="active" href="design5.html">5 · Galleria</a></div>
 <script>
 (function(){
   var reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
