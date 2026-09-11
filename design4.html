@@ -380,7 +380,7 @@ footer{background:var(--night);border-top:1px solid var(--line);padding:64px 0 3
 body.mobile-menu-open{overflow:hidden}
 
 /* SWITCHER */
-.design-switcher{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:2000;display:flex;align-items:center;gap:2px;padding:6px;background:rgba(26,26,29,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line-2);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.design-switcher{position:fixed;left:18px;bottom:18px;z-index:2000;display:flex;align-items:center;gap:10px}.ds-toggle{flex:none;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(20,16,12,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .2s,transform .2s;padding:0}.ds-toggle:hover{background:rgba(20,16,12,.94)}.ds-toggle svg{display:block;transition:transform .3s ease}.design-switcher.open .ds-toggle svg{transform:rotate(180deg)}.ds-panel{display:flex;align-items:center;gap:2px;padding:6px;background:rgba(20,16,12,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);transform-origin:left center;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-10px) scale(.96);transition:opacity .22s ease,transform .22s ease,visibility .22s}.design-switcher.open .ds-panel{opacity:1;visibility:visible;pointer-events:auto;transform:none}
 .design-switcher span{color:var(--mid);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:0 10px 0 8px}
 .design-switcher a{color:var(--mid);font-size:11px;letter-spacing:.04em;text-decoration:none;padding:7px 12px;border-radius:999px;transition:background .2s,color .2s;white-space:nowrap}
 .design-switcher a:hover{color:var(--silver)}
@@ -693,7 +693,8 @@ body.mobile-menu-open{overflow:hidden}
 </div>
 </div>
 </footer>
-<div aria-label="Design options" class="design-switcher"><span>Design</span><a href="design1.html">1 · Trattoria</a><a href="design2.html">2 · Moderno</a><a href="design3.html">3 · Rosso</a><a class="active" href="design4.html">4 · Notte</a><a href="design5.html">5 · Galleria</a></div>
+<div aria-label="Design options" class="design-switcher" id="designSwitcher"><button class="ds-toggle" id="dsToggle" type="button" aria-label="Switch design" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></button><div class="ds-panel"><span>Design</span><a href="design1.html">1 · Trattoria</a><a href="design2.html">2 · Moderno</a><a href="design3.html">3 · Rosso</a><a class="active" href="design4.html">4 · Notte</a><a href="design5.html">5 · Galleria</a></div></div>
+<script>(function(){var s=document.getElementById("designSwitcher"),b=document.getElementById("dsToggle");if(!s||!b)return;b.addEventListener("click",function(e){e.stopPropagation();var o=s.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(s.classList.contains("open")&&!s.contains(e.target)){s.classList.remove("open");b.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&s.classList.contains("open")){s.classList.remove("open");b.setAttribute("aria-expanded","false");}});})();</script>
 <script>
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
