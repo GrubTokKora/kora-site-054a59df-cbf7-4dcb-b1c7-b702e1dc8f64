@@ -102,8 +102,10 @@
     if (!track.dataset.cloned) {
       const clone = set.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
+      // Keep loading="lazy" on clones — forcing eager competed with the hero LCP
+      // and fetched the full carousel twice on first paint.
       clone.querySelectorAll("img").forEach((img) => {
-        img.setAttribute("loading", "eager");
+        img.setAttribute("loading", "lazy");
         img.removeAttribute("fetchpriority");
       });
       track.appendChild(clone);
