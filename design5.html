@@ -792,6 +792,7 @@ Follow on Instagram
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",start);}else{start();}
 })();
 </script>
+<script>(function(){var nav=document.getElementById("mainNav");if(!nav)return;var drops=nav.querySelectorAll(".nav-drop");if(!drops.length)return;function closeAll(except){drops.forEach(function(d){if(except&&d===except)return;d.classList.remove("open");var t=d.querySelector(".nav-drop-btn");if(t)t.setAttribute("aria-expanded","false");});}drops.forEach(function(drop){var trigger=drop.querySelector(".nav-drop-btn");if(!trigger)return;trigger.addEventListener("click",function(e){e.stopPropagation();var willOpen=!drop.classList.contains("open");closeAll(willOpen?drop:null);drop.classList.toggle("open",willOpen);trigger.setAttribute("aria-expanded",willOpen?"true":"false");});drop.addEventListener("mouseenter",function(){if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;closeAll(drop);drop.classList.add("open");trigger.setAttribute("aria-expanded","true");});drop.addEventListener("mouseleave",function(){if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;drop.classList.remove("open");trigger.setAttribute("aria-expanded","false");});});document.addEventListener("click",function(){closeAll(null);});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll(null);});})();</script>
 <!-- KORA_BRANDING_FOOTER_SCRIPT_START -->
 <script>
 (function () {
@@ -863,6 +864,5 @@ Follow on Instagram
 }());
 </script>
 <!-- KORA_BRANDING_FOOTER_SCRIPT_END -->
-<script>(function(){var nav=document.getElementById("mainNav");if(!nav)return;var drops=nav.querySelectorAll(".nav-drop");if(!drops.length)return;function closeAll(except){drops.forEach(function(d){if(except&&d===except)return;d.classList.remove("open");var t=d.querySelector(".nav-drop-btn");if(t)t.setAttribute("aria-expanded","false");});}drops.forEach(function(drop){var trigger=drop.querySelector(".nav-drop-btn");if(!trigger)return;trigger.addEventListener("click",function(e){e.stopPropagation();var willOpen=!drop.classList.contains("open");closeAll(willOpen?drop:null);drop.classList.toggle("open",willOpen);trigger.setAttribute("aria-expanded",willOpen?"true":"false");});drop.addEventListener("mouseenter",function(){if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;closeAll(drop);drop.classList.add("open");trigger.setAttribute("aria-expanded","true");});drop.addEventListener("mouseleave",function(){if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;drop.classList.remove("open");trigger.setAttribute("aria-expanded","false");});});document.addEventListener("click",function(){closeAll(null);});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll(null);});})();</script>
 </body>
 </html>
