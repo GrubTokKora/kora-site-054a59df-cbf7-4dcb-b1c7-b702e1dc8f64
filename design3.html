@@ -157,6 +157,31 @@ nav.scrolled{background:var(--nav-bg-scrolled);height:68px;box-shadow:0 8px 30px
 .hero-awards-inline{display:block;margin-top:18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--hero-eyebrow);font-weight:600;opacity:0;animation:fadeUp .8s 1.1s forwards}
 .hero-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeIn 1s 1.5s forwards}
 .hero-scroll-hint span{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+/* ── ROSSO SPLIT HERO — layout/breakpoints mirrored from Notte (design4), Rosso styling ── */
+.r-hero{min-height:100svh;display:flex;align-items:center;padding:124px 0 72px;position:relative;background:var(--bg)}
+.r-hero-grid{max-width:1240px;margin:0 auto;padding:0 48px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.r-hero-eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--hero-eyebrow);margin:0}
+.r-hero-title{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(52px,7vw,104px);line-height:.94;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0}
+.r-hero-title em{font-style:italic}
+.r-hero-desc{color:var(--text-mid);font-size:17px;line-height:1.7;max-width:420px;margin:24px 0 0}
+.r-hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:32px 0}
+.r-hero-media{justify-self:end;width:100%;max-width:392px}
+.r-video-frame{position:relative;aspect-ratio:9/16;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:#ece8e0}
+.r-video-frame img,.r-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r-video-frame video{opacity:0;transition:opacity 1s ease}
+.r-video-frame video.ready{opacity:1}
+@media (max-width:1024px){.r-hero-grid{gap:40px}}
+/* ≤650px: full-screen video hero, content below (centered) — matches design4 */
+@media (max-width:650px){
+  .r-hero{min-height:0;display:block;padding:0}
+  .r-hero-grid{display:flex;flex-direction:column;gap:0;padding:0;max-width:none;align-items:stretch}
+  .r-hero-media{order:-1;width:100%;max-width:none;margin:0}
+  .r-video-frame{width:100%;height:100vh;height:100svh;min-height:0;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;background:var(--bg)}
+  .r-hero-text{order:1;padding:48px 24px 8px;text-align:center}
+  .r-hero-desc{margin-left:auto;margin-right:auto}
+  .r-hero-actions{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.r-video-frame video{transition:none}}
 .scroll-line{width:1px;height:48px;background:linear-gradient(var(--accent-on-dark),transparent);animation:scrollLine 1.8s ease infinite}
 @keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.4}}
 
@@ -401,22 +426,23 @@ body.mobile-menu-open{overflow:hidden}
 <a class="mobile-nav-link" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" style="color:var(--cta)" target="_blank">Order Online →</a>
 </div>
 <main id="main">
-<section class="hero" id="home">
-<div aria-hidden="true" class="hero-slideshow" id="heroBg">
-<div class="hero-slide active" id="heroPoster">
-<img alt="" decoding="async" fetchpriority="high" height="1080" loading="eager" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683061_51lloh.jpg" width="1920"/>
+<section class="r-hero" id="home">
+<div class="r-hero-grid">
+<div class="r-hero-text">
+<p class="r-hero-eyebrow reveal">Wood-Fired Pizza &amp; a Full Bar</p>
+<h1 class="r-hero-title reveal reveal-delay-1">Frankie<br/><em>&amp; Fanucci's</em></h1>
+<p class="r-hero-desc reveal reveal-delay-2">Where every bite tells a story. Award-winning thin-crust pizzas, handmade pastas, and Italian favorites in the heart of Mamaroneck, NY.</p>
+<div class="r-hero-actions reveal reveal-delay-2">
+<a class="btn-primary" href="https://order.toasttab.com/online/fandfpizza" rel="noopener noreferrer" target="_blank">Order Online</a>
+<a class="btn-outlined" href="menu.html">See Menu →</a>
 </div>
-<video aria-hidden="true" autoplay="" class="hero-video" id="heroVideo" loop="" muted="" playsinline="" preload="none"></video>
 </div>
-<div class="hero-content seo-hidden-ui">
-<p class="hero-eyebrow">Wood-Fired · Scratch Made · Fresh</p>
-<h1 class="hero-title">Frankie &amp; <em>Fanucci's</em></h1>
-<p class="hero-desc">Where every bite tells a story. Award-winning thin-crust pizzas, handmade pastas, and Italian favorites in the heart of Mamaroneck, NY.</p>
-<div class="hero-actions">
-<a class="btn-primary" href="https://order.toasttab.com/online/fandfpizza" target="_blank">Order Online</a>
-<a class="btn-ghost" href="menu.html">View Menu →</a>
+<div class="r-hero-media reveal reveal-delay-1">
+<div class="r-video-frame">
+<img alt="" decoding="async" fetchpriority="high" height="1280" id="heroPoster" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683024_7zfn2u.jpg" width="720"/>
+<video aria-hidden="true" id="heroVideo" loop="" muted="" playsinline="" preload="none"></video>
 </div>
-<p class="hero-awards-inline">6× Best of Westchester</p>
+</div>
 </div>
 </section>
 <section class="about-strip" id="about">
