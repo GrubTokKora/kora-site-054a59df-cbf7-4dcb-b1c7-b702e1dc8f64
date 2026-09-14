@@ -3,6 +3,8 @@
   const ORDER = "https://order.toasttab.com/online/fandfpizza";
   const GIFTCARDS = "https://order.toasttab.com/egiftcards/fandfpizza";
   const INSTAGRAM = "https://www.instagram.com/fandfpizza";
+  const FACEBOOK = "https://www.facebook.com/fandfpizza";
+  const TIKTOK = "https://www.tiktok.com/@fandfpizza";
   const PHONE = "9146304360";
   const PHONE_DISPLAY = "(914) 630-4360";
   const EMAIL = "info@FandFpizza.com";
@@ -10,7 +12,7 @@
   const LOGO =
     "https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683078_rrbxh1.jpg";
 
-  window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
+  window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, FACEBOOK, TIKTOK, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
 
   function active(page, id) {
     return page === id ? ' aria-current="page"' : "";
@@ -25,19 +27,12 @@
 <ul class="nav-links">
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
   <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
+  <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
   <li class="nav-drop">
     <button aria-controls="nav-events-menu" aria-expanded="false" aria-haspopup="true" class="nav-drop-btn" id="navEventsBtn" type="button">Events<span class="nav-caret"></span></button>
     <ul aria-labelledby="navEventsBtn" class="nav-dropdown" id="nav-events-menu" role="menu">
       <li role="none"><a href="catering.html" role="menuitem"${active(page, "catering")}>Catering</a></li>
       <li role="none"><a href="groups.html" role="menuitem"${active(page, "groups")}>Groups</a></li>
-    </ul>
-  </li>
-  <li class="nav-drop">
-    <button aria-controls="nav-more-menu" aria-expanded="false" aria-haspopup="true" class="nav-drop-btn" id="navMoreBtn" type="button">More<span class="nav-caret"></span></button>
-    <ul aria-labelledby="navMoreBtn" class="nav-dropdown" id="nav-more-menu" role="menu">
-      <li role="none"><a href="delivery.html" role="menuitem"${active(page, "delivery")}>Delivery</a></li>
-      <li role="none"><a href="rewards.html" role="menuitem"${active(page, "rewards")}>Rewards</a></li>
-      <li role="none"><a href="contact.html" role="menuitem"${active(page, "contact")}>Find Us</a></li>
     </ul>
   </li>
 </ul>
@@ -80,6 +75,16 @@
             <circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle>
           </svg>
         </a>
+        <a aria-label="Facebook" href="${FACEBOOK}" target="_blank" rel="noopener noreferrer">
+          <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a aria-label="TikTok" href="${TIKTOK}" target="_blank" rel="noopener noreferrer">
+          <svg fill="currentColor" height="16" viewBox="0 0 24 24" width="16" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.27 8.27 0 004.76 1.5V7.1a4.83 4.83 0 01-1-.41z"></path>
+          </svg>
+        </a>
         <a aria-label="Phone" href="tel:${PHONE}">
           <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
@@ -110,7 +115,6 @@
       <ul class="footer-links">
         <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
         <li><a href="delivery.html">Delivery &amp; Pickup</a></li>
-        <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Takeout</a></li>
         <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
       </ul>
     </div>
