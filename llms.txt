@@ -1,6 +1,6 @@
 # Frankie & Fanucci's
 
-> Frankie & Fanucci's offers authentic Neapolitan-style wood-fired pizzas, scratch-made with fresh ingredients. They also serve classic Italian appetizers, fresh salads, and pasta dishes.
+> Frankie & Fanucci's, located at 301 Mamaroneck Avenue in Mamaroneck, NY, specializes in authentic Neapolitan-style wood-fired pizzas. The restaurant also serves classic Italian appetizers, fresh salads, and pasta dishes.
 
 ## Menu
 Specializing in authentic Neapolitan-style wood-fired pizzas, alongside classic Italian appetizers, fresh salads, and pasta dishes.
@@ -16,10 +16,10 @@ Specializing in authentic Neapolitan-style wood-fired pizzas, alongside classic 
 - Wednesday: 12:00 PM – 9:00 PM
 - Thursday: 12:00 PM – 9:00 PM
 - Friday: 12:00 PM – 10:00 PM
-- Saturday: 12:00 PM – 10:00 PM
-- Sunday: 12:00 PM – 9:00 PM
+- Saturday: 11:30 AM – 10:00 PM
+- Sunday: 11:30 AM – 9:00 PM
 
 ## Action Links
 - Reserve a Table: contact.html
 - Order Online: https://order.toasttab.com/online/fandfpizza
-- View Menu: menu.html
+- See Menu: menu.html
