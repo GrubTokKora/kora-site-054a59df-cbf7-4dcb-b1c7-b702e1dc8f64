@@ -37,6 +37,46 @@
     };
   }
 
+  function initDropdowns() {
+    const nav = document.getElementById("mainNav");
+    if (!nav) return;
+    const drops = nav.querySelectorAll(".nav-drop");
+    if (!drops.length) return;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    function closeAll(except) {
+      drops.forEach((d) => {
+        if (except && d === except) return;
+        d.classList.remove("open");
+        const t = d.querySelector(".nav-drop-btn");
+        if (t) t.setAttribute("aria-expanded", "false");
+      });
+    }
+    drops.forEach((drop) => {
+      const trigger = drop.querySelector(".nav-drop-btn");
+      if (!trigger) return;
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const willOpen = !drop.classList.contains("open");
+        closeAll(willOpen ? drop : null);
+        drop.classList.toggle("open", willOpen);
+        trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      });
+      drop.addEventListener("mouseenter", () => {
+        if (!canHover.matches) return;
+        closeAll(drop);
+        drop.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      });
+      drop.addEventListener("mouseleave", () => {
+        if (!canHover.matches) return;
+        drop.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+    document.addEventListener("click", () => closeAll(null));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAll(null); });
+  }
+
   function initHeroSlideshow() {
     // Legacy slideshow — no-op now; video handled by initHeroVideo()
   }
@@ -49,29 +89,24 @@
     // Respect user motion preference — keep the static poster instead
     if (reduceMotion) return;
 
-    const VIDEO_SRC = "https://stream.mux.com/wapXqrf025Y00bXmZXwlUu022dbLvwTgW01w401lbNTKWsDU/high.mp4";
+    const VIDEO_SRC = "https://stream.mux.com/uu601WDQjnqkJD3iz9AP01dB3bZ97CjiZmUi7Z5AcEHes/high.mp4";
 
     function loadVideo() {
       // Set src now that the page is idle — avoids competing with LCP
       video.src = VIDEO_SRC;
 
-      // canplaythrough fires when enough data is buffered for smooth play
-      video.addEventListener("canplaythrough", function onReady() {
-        video.removeEventListener("canplaythrough", onReady);
-        video.classList.add("ready");      // fade video in
-        poster.classList.add("video-playing"); // fade poster out underneath
-        video.play().catch(() => {});      // explicit play() for some browsers
+      // Reveal the video ONLY once it is actually playing — if autoplay is
+      // blocked, the poster image stays visible underneath (no blank frame).
+      video.addEventListener("playing", function () {
+        video.classList.add("ready");
       }, { once: true });
 
-      // Fallback: if canplaythrough takes too long, start on first data
-      video.addEventListener("loadeddata", function onData() {
-        video.removeEventListener("loadeddata", onData);
-        if (!video.classList.contains("ready")) {
-          video.classList.add("ready");
-          poster.classList.add("video-playing");
-          video.play().catch(() => {});
-        }
-      }, { once: true });
+      var tryPlay = function () {
+        var p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      };
+      video.addEventListener("canplay", tryPlay, { once: true });
+      video.addEventListener("loadeddata", tryPlay, { once: true });
 
       video.load();
     }
@@ -339,6 +374,7 @@
 
   function start() {
     initNav();
+    initDropdowns();
     initHeroSlideshow();
     initHeroVideo();
     initFoodCarousel();

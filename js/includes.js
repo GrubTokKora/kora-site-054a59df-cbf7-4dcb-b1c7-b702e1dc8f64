@@ -24,12 +24,22 @@
 </a>
 <ul class="nav-links">
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
-  <li><a href="delivery.html"${active(page, "delivery")}>Delivery</a></li>
-  <li><a href="catering.html"${active(page, "catering")}>Catering</a></li>
-  <li><a href="groups.html"${active(page, "groups")}>Groups</a></li>
   <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
-  <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
-  <li><a href="contact.html"${active(page, "contact")}>Find Us</a></li>
+  <li class="nav-drop">
+    <button aria-controls="nav-events-menu" aria-expanded="false" aria-haspopup="true" class="nav-drop-btn" id="navEventsBtn" type="button">Events<span class="nav-caret"></span></button>
+    <ul aria-labelledby="navEventsBtn" class="nav-dropdown" id="nav-events-menu" role="menu">
+      <li role="none"><a href="catering.html" role="menuitem"${active(page, "catering")}>Catering</a></li>
+      <li role="none"><a href="groups.html" role="menuitem"${active(page, "groups")}>Groups</a></li>
+    </ul>
+  </li>
+  <li class="nav-drop">
+    <button aria-controls="nav-more-menu" aria-expanded="false" aria-haspopup="true" class="nav-drop-btn" id="navMoreBtn" type="button">More<span class="nav-caret"></span></button>
+    <ul aria-labelledby="navMoreBtn" class="nav-dropdown" id="nav-more-menu" role="menu">
+      <li role="none"><a href="delivery.html" role="menuitem"${active(page, "delivery")}>Delivery</a></li>
+      <li role="none"><a href="rewards.html" role="menuitem"${active(page, "rewards")}>Rewards</a></li>
+      <li role="none"><a href="contact.html" role="menuitem"${active(page, "contact")}>Find Us</a></li>
+    </ul>
+  </li>
 </ul>
 <a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>
 <button aria-label="Open menu" aria-expanded="false" class="nav-hamburger" id="hamburgerBtn" type="button">
