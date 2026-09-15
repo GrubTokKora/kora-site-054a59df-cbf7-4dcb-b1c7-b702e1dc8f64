@@ -47,7 +47,7 @@
 <a class="mobile-nav-link" href="rewards.html"${active(page, "rewards")}>Rewards</a>
 <a class="mobile-nav-link" href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a>
 <a class="mobile-nav-link" href="contact.html"${active(page, "contact")}>Find Us</a>
-<a class="mobile-nav-link" href="${ORDER}" style="color:var(--gold-light)" target="_blank" rel="noopener noreferrer">Order Online →</a>`;
+<a class="mobile-nav-cta" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>`;
   }
 
   function mountFooter(el) {
