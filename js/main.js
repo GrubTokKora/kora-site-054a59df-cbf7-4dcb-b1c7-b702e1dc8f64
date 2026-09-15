@@ -257,35 +257,6 @@
     });
   }
 
-  function initFaq() {
-    const items = document.querySelectorAll(".faq-item");
-    if (!items.length) return;
-
-    items.forEach((item) => {
-      const btn = item.querySelector(".faq-trigger");
-      if (!btn) return;
-
-      btn.addEventListener("click", () => {
-        const isOpen = item.classList.contains("open");
-        const group = item.closest(".faq-accordion");
-
-        // Drawer-style accordion: collapse any other open drawer in the accordion group
-        if (group && !isOpen) {
-          group.querySelectorAll(".faq-item.open").forEach((other) => {
-            if (other !== item) {
-              other.classList.remove("open");
-              const otherBtn = other.querySelector(".faq-trigger");
-              if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-            }
-          });
-        }
-
-        item.classList.toggle("open", !isOpen);
-        btn.setAttribute("aria-expanded", !isOpen ? "true" : "false");
-      });
-    });
-  }
-
   function initReveal() {
     const reveals = document.querySelectorAll(".reveal");
     if (!reveals.length) return;
@@ -326,7 +297,6 @@
     initHeroVideo();
     initFoodCarousel();
     initMenuTabs();
-    initFaq();
     initReveal();
   }
 
