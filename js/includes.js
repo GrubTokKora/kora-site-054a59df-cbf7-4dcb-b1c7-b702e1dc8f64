@@ -28,13 +28,7 @@
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
   <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
   <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
-  <li class="nav-drop">
-    <button aria-controls="nav-events-menu" aria-expanded="false" aria-haspopup="true" class="nav-drop-btn" id="navEventsBtn" type="button">Events<span class="nav-caret"></span></button>
-    <ul aria-labelledby="navEventsBtn" class="nav-dropdown" id="nav-events-menu" role="menu">
-      <li role="none"><a href="catering.html" role="menuitem"${active(page, "catering")}>Catering</a></li>
-      <li role="none"><a href="groups.html" role="menuitem"${active(page, "groups")}>Groups</a></li>
-    </ul>
-  </li>
+  <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
 </ul>
 <a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>
 <button aria-label="Open menu" aria-expanded="false" class="nav-hamburger" id="hamburgerBtn" type="button">

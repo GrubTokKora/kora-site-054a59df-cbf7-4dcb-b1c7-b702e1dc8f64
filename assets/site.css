@@ -644,10 +644,10 @@
       transform: scale(1.05);
     }
 
-    /* ── FOOD CAROUSEL ── */
+    /* ── FOOD CAROUSEL (dark theme — matches Our Story) ── */
     .food-carousel-section {
       padding: 120px 0;
-      background: var(--warm-white);
+      background: var(--ink);
     }
 
     .food-carousel-header {
@@ -655,12 +655,17 @@
       margin-bottom: 64px;
     }
 
+    .food-carousel-header .eyebrow {
+      color: var(--accent-on-dark);
+    }
+
     .food-carousel-header .section-title {
       margin: 12px 0 20px;
+      color: #fff;
     }
 
     .food-carousel-header p {
-      color: var(--text-light);
+      color: rgba(255, 255, 255, .72);
       font-size: 16px;
       max-width: 520px;
       margin: 0 auto;
@@ -673,6 +678,13 @@
       margin-top: 28px;
       position: relative;
       z-index: 3;
+      border-color: rgba(255, 255, 255, .75);
+      color: #fff;
+    }
+
+    .food-carousel-cta:hover {
+      background: #fff;
+      color: var(--ink);
     }
 
     .carousel-track-wrapper {
@@ -696,12 +708,12 @@
 
     .carousel-track-wrapper::before {
       left: 0;
-      background: linear-gradient(to right, var(--warm-white), transparent);
+      background: linear-gradient(to right, var(--ink), transparent);
     }
 
     .carousel-track-wrapper::after {
       right: 0;
-      background: linear-gradient(to left, var(--warm-white), transparent);
+      background: linear-gradient(to left, var(--ink), transparent);
     }
 
     .carousel-track {
@@ -3320,16 +3332,18 @@ section{position:relative}
 .about-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;display:block}
 .about-img-wrap:hover img{transform:scale(1.05)}
 
-/* FOOD CAROUSEL */
-.food-carousel-section{padding:120px 0;background:var(--bg-alt)}
+/* FOOD CAROUSEL — dark theme (matches Our Story / n-story) */
+.food-carousel-section{padding:120px 0;background:var(--ink)}
 .food-carousel-header{text-align:center;margin-bottom:64px}
-.food-carousel-header .section-title{margin:12px 0 20px}
-.food-carousel-header p{color:var(--text-light);font-size:16px;max-width:520px;margin:0 auto;line-height:1.75;font-weight:400}
-.food-carousel-cta{display:inline-flex;margin-top:28px;position:relative;z-index:3}
+.food-carousel-header .eyebrow{color:var(--accent-on-dark)}
+.food-carousel-header .section-title{margin:12px 0 20px;color:#fff}
+.food-carousel-header p{color:rgba(255,255,255,.72);font-size:16px;max-width:520px;margin:0 auto;line-height:1.75;font-weight:400}
+.food-carousel-cta{display:inline-flex;margin-top:28px;position:relative;z-index:3;border-color:rgba(255,255,255,.75);color:#fff}
+.food-carousel-cta:hover{background:#fff;color:var(--ink)}
 .carousel-track-wrapper{overflow:hidden;position:relative;transform:translateZ(0)}
 .carousel-track-wrapper::before,.carousel-track-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
-.carousel-track-wrapper::before{left:0;background:linear-gradient(to right,var(--bg-alt),transparent)}
-.carousel-track-wrapper::after{right:0;background:linear-gradient(to left,var(--bg-alt),transparent)}
+.carousel-track-wrapper::before{left:0;background:linear-gradient(to right,var(--ink),transparent)}
+.carousel-track-wrapper::after{right:0;background:linear-gradient(to left,var(--ink),transparent)}
 .carousel-track{display:flex;gap:20px;width:max-content;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
 .carousel-set{display:flex;gap:20px;flex-shrink:0}
 .food-card{flex:0 0 280px;width:280px;min-width:280px;height:360px;border-radius:var(--radius-card);overflow:hidden;position:relative;box-shadow:var(--shadow)}
