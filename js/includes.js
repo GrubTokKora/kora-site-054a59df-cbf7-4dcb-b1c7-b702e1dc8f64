@@ -10,7 +10,7 @@
   const EMAIL = "info@FandFpizza.com";
   const MAPS = "https://maps.app.goo.gl/46oFBpwPPzhscmRL8";
   const LOGO =
-    "https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/de8c94d8-887e-4625-825f-ec262dbc28df/1786683078_rrbxh1.jpg";
+    "https://quseprdus1.blob.core.windows.net/kora-business-images/v2-uploads/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/b496d754-6bff-481f-a539-b7be688ca0b9-logo-ff-circle-192.webp";
 
   window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, FACEBOOK, TIKTOK, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
 
