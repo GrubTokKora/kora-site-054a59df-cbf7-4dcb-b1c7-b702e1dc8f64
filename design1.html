@@ -277,6 +277,33 @@ section{position:relative}
 .newsletter-form button:hover{background:var(--cta-hover)}
 .newsletter-message{min-height:18px;font-size:13px;color:rgba(255,255,255,.72)}
 
+/* FAQ ACCORDION */
+.faq-section{padding:100px 0;background:var(--bg)}
+.faq-header{text-align:center;max-width:680px;margin:0 auto 48px}
+.faq-header .eyebrow{margin-bottom:12px}
+.faq-header .section-title{margin-bottom:14px}
+.faq-subtitle{color:var(--text-light);font-size:15px;line-height:1.7}
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-card);box-shadow:var(--shadow);overflow:hidden;transition:border-color .25s ease,box-shadow .25s ease}
+.faq-item:hover{border-color:var(--ink);box-shadow:var(--shadow-lg)}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;background:none;border:none;text-align:left;cursor:pointer;color:var(--ink);font-family:var(--font-sans);transition:background-color .2s ease}
+.faq-question:hover{background-color:rgba(0,0,0,.025)}
+.faq-question-text{font-size:17px;font-weight:700;line-height:1.4;color:var(--ink);letter-spacing:-.01em}
+.faq-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.04);color:var(--ink);flex-shrink:0;transition:transform .35s cubic-bezier(.4,0,.2,1),background-color .25s ease,color .25s ease}
+.faq-question:hover .faq-icon{background:rgba(0,0,0,.08)}
+.faq-item.open .faq-icon{transform:rotate(180deg);background:var(--cta);color:var(--btn-text)}
+.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1),opacity .3s ease;opacity:0}
+.faq-item.open .faq-answer{grid-template-rows:1fr;opacity:1}
+.faq-answer-inner{overflow:hidden}
+.faq-answer-text{padding:0 28px 24px 28px;font-size:15px;line-height:1.75;color:var(--text-mid);margin:0}
+@media (max-width:768px){
+  .faq-section{padding:72px 0}
+  .faq-header{margin-bottom:32px}
+  .faq-question{padding:18px 20px;gap:12px}
+  .faq-question-text{font-size:15.5px}
+  .faq-answer-text{padding:0 20px 20px 20px;font-size:14.5px}
+}
+
 /* FOOTER */
 footer{background:var(--footer-bg);padding:64px 0 32px}
 .footer-inner{max-width:1240px;margin:0 auto;padding:0 48px}
@@ -557,6 +584,82 @@ Follow on Instagram
 </a>
 </div>
 </section>
+<section class="faq-section" id="faq">
+<div class="section-inner">
+<div class="faq-header reveal">
+<div class="eyebrow">Common Questions</div>
+<h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+<p class="faq-subtitle">Everything you need to know about dining in, takeout, catering, and events at Frankie &amp; Fanucci's.</p>
+</div>
+<div class="faq-list reveal reveal-delay-1">
+<div class="faq-item">
+<button aria-controls="faq-ans-1" aria-expanded="false" class="faq-question" id="faq-btn-1" type="button">
+<span class="faq-question-text">Do you accept reservations or host private group events?</span>
+<span aria-hidden="true" class="faq-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div aria-labelledby="faq-btn-1" class="faq-answer" id="faq-ans-1" role="region">
+<div class="faq-answer-inner">
+<p class="faq-answer-text">Yes! We welcome private gatherings, birthday celebrations, and team events with space for up to 40 guests. We offer three per-person packages featuring our signature wood-fired pizzas, appetizers, and handmade pastas.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<button aria-controls="faq-ans-2" aria-expanded="false" class="faq-question" id="faq-btn-2" type="button">
+<span class="faq-question-text">What areas do you deliver to, and is curbside pickup available?</span>
+<span aria-hidden="true" class="faq-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div aria-labelledby="faq-btn-2" class="faq-answer" id="faq-ans-2" role="region">
+<div class="faq-answer-inner">
+<p class="faq-answer-text">We offer local delivery to Mamaroneck, Larchmont, Harrison (South of I-95), Rye (South of Osborn Rd / Oakland Beach Ave), Scarsdale (East of Bronx River Pkwy), and New Rochelle. Quick, contactless curbside pickup is also available directly behind the restaurant at 300 Phillips Park Road.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<button aria-controls="faq-ans-3" aria-expanded="false" class="faq-question" id="faq-btn-3" type="button">
+<span class="faq-question-text">When is your 2-for-1 Happy Hour available?</span>
+<span aria-hidden="true" class="faq-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div aria-labelledby="faq-btn-3" class="faq-answer" id="faq-ans-3" role="region">
+<div class="faq-answer-inner">
+<p class="faq-answer-text">Our 2-for-1 Happy Hour is available all day, every day at the bar. Enjoy buy-one-get-one on handcrafted cocktails, select wines, and cold draft beers.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<button aria-controls="faq-ans-4" aria-expanded="false" class="faq-question" id="faq-btn-4" type="button">
+<span class="faq-question-text">What are your hours of operation?</span>
+<span aria-hidden="true" class="faq-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div aria-labelledby="faq-btn-4" class="faq-answer" id="faq-ans-4" role="region">
+<div class="faq-answer-inner">
+<p class="faq-answer-text">We are open Monday through Thursday from 12:00 PM to 9:00 PM, Friday from 12:00 PM to 10:00 PM, Saturday from 11:30 AM to 10:00 PM, and Sunday from 11:30 AM to 9:00 PM for dine-in, takeout, and delivery.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<button aria-controls="faq-ans-5" aria-expanded="false" class="faq-question" id="faq-btn-5" type="button">
+<span class="faq-question-text">How do event and party catering orders work?</span>
+<span aria-hidden="true" class="faq-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div aria-labelledby="faq-btn-5" class="faq-answer" id="faq-ans-5" role="region">
+<div class="faq-answer-inner">
+<p class="faq-answer-text">We cater parties and corporate events with generous half-tray options for our wood-fired pizzas, house salads, pastas, and antipasti. Catering orders can be easily placed online or by contacting us ahead of your event date.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section class="newsletter-section">
 <div class="newsletter-inner">
 <div class="eyebrow">Stay Connected</div>
@@ -711,7 +814,27 @@ Follow on Instagram
     }catch(err){msg("Something went wrong. Please try again.",true);}
     finally{if(submitBtn)submitBtn.disabled=false;}
   };
-  function start(){initNav();initHeroVideo();initFoodCarousel();initReveal();}
+  function initFaq(){
+    var items=document.querySelectorAll(".faq-item");
+    if(!items.length)return;
+    items.forEach(function(item){
+      var btn=item.querySelector(".faq-question");
+      if(!btn)return;
+      btn.addEventListener("click",function(){
+        var isOpen=item.classList.contains("open");
+        items.forEach(function(other){
+          if(other!==item&&other.classList.contains("open")){
+            other.classList.remove("open");
+            var ob=other.querySelector(".faq-question");
+            if(ob)ob.setAttribute("aria-expanded","false");
+          }
+        });
+        item.classList.toggle("open",!isOpen);
+        btn.setAttribute("aria-expanded",!isOpen?"true":"false");
+      });
+    });
+  }
+  function start(){initNav();initHeroVideo();initFoodCarousel();initReveal();initFaq();}
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",start);}else{start();}
 })();
 </script>
