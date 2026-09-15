@@ -290,6 +290,134 @@
     });
   }
 
+  function initFaq() {
+    const list = document.querySelector(".faq-list");
+    if (!list) return;
+
+    const items = Array.from(list.querySelectorAll(".faq-item"));
+    if (!items.length) return;
+
+    function setPanelHeight(panel, open) {
+      if (!panel) return;
+      if (reduceMotion) {
+        panel.style.height = open ? "auto" : "0px";
+        panel.style.opacity = open ? "1" : "0";
+        return;
+      }
+      if (open) {
+        panel.hidden = false;
+        panel.style.height = "0px";
+        panel.style.opacity = "0";
+        // Force reflow so the open transition runs from 0
+        void panel.offsetHeight;
+        panel.style.height = panel.scrollHeight + "px";
+        panel.style.opacity = "1";
+      } else {
+        panel.style.height = panel.scrollHeight + "px";
+        panel.style.opacity = "1";
+        void panel.offsetHeight;
+        panel.style.height = "0px";
+        panel.style.opacity = "0";
+      }
+    }
+
+    function closeItem(item) {
+      const trigger = item.querySelector(".faq-trigger");
+      const panel = item.querySelector(".faq-panel");
+      if (!trigger || !panel) return;
+      if (!item.classList.contains("is-open")) return;
+
+      item.classList.remove("is-open");
+      trigger.setAttribute("aria-expanded", "false");
+      setPanelHeight(panel, false);
+
+      const onEnd = (e) => {
+        if (e.propertyName !== "height") return;
+        panel.hidden = true;
+        panel.style.height = "";
+        panel.removeEventListener("transitionend", onEnd);
+      };
+      if (reduceMotion) {
+        panel.hidden = true;
+        panel.style.height = "";
+      } else {
+        panel.addEventListener("transitionend", onEnd);
+      }
+    }
+
+    function openItem(item) {
+      const trigger = item.querySelector(".faq-trigger");
+      const panel = item.querySelector(".faq-panel");
+      if (!trigger || !panel) return;
+
+      items.forEach((other) => {
+        if (other !== item) closeItem(other);
+      });
+
+      item.classList.add("is-open");
+      trigger.setAttribute("aria-expanded", "true");
+      panel.hidden = false;
+      setPanelHeight(panel, true);
+
+      const onEnd = (e) => {
+        if (e.propertyName !== "height") return;
+        if (item.classList.contains("is-open")) {
+          panel.style.height = "auto";
+        }
+        panel.removeEventListener("transitionend", onEnd);
+      };
+      if (reduceMotion) {
+        panel.style.height = "auto";
+        panel.style.opacity = "1";
+      } else {
+        panel.addEventListener("transitionend", onEnd);
+      }
+    }
+
+    // Seed open state for the first item (marked is-open in HTML)
+    items.forEach((item) => {
+      const panel = item.querySelector(".faq-panel");
+      const trigger = item.querySelector(".faq-trigger");
+      if (!panel || !trigger) return;
+      if (item.classList.contains("is-open")) {
+        panel.hidden = false;
+        panel.style.height = "auto";
+        panel.style.opacity = "1";
+        trigger.setAttribute("aria-expanded", "true");
+      } else {
+        panel.hidden = true;
+        panel.style.height = "0px";
+        panel.style.opacity = "0";
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    items.forEach((item, index) => {
+      const trigger = item.querySelector(".faq-trigger");
+      if (!trigger) return;
+
+      trigger.addEventListener("click", () => {
+        if (item.classList.contains("is-open")) {
+          closeItem(item);
+        } else {
+          openItem(item);
+        }
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key !== "ArrowDown" && e.key !== "ArrowUp" && e.key !== "Home" && e.key !== "End") return;
+        e.preventDefault();
+        let next = index;
+        if (e.key === "ArrowDown") next = (index + 1) % items.length;
+        if (e.key === "ArrowUp") next = (index - 1 + items.length) % items.length;
+        if (e.key === "Home") next = 0;
+        if (e.key === "End") next = items.length - 1;
+        const nextTrigger = items[next].querySelector(".faq-trigger");
+        if (nextTrigger) nextTrigger.focus();
+      });
+    });
+  }
+
   function start() {
     initNav();
     initDropdowns();
@@ -297,6 +425,7 @@
     initHeroVideo();
     initFoodCarousel();
     initMenuTabs();
+    initFaq();
     initReveal();
   }
 
