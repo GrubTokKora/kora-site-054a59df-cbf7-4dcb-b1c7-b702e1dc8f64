@@ -418,6 +418,41 @@
     });
   }
 
+  function initLazyMaps() {
+    const maps = document.querySelectorAll("iframe.map-embed[data-src]");
+    if (!maps.length) return;
+
+    function loadMap(iframe) {
+      const src = iframe.getAttribute("data-src");
+      if (!src || iframe.getAttribute("src")) return;
+      iframe.setAttribute("src", src);
+      iframe.removeAttribute("data-src");
+      iframe.classList.add("is-loaded");
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      maps.forEach(loadMap);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadMap(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        // Start loading a bit before it enters the viewport
+        rootMargin: "200px 0px",
+        threshold: 0.01,
+      }
+    );
+
+    maps.forEach((iframe) => observer.observe(iframe));
+  }
+
   function start() {
     initNav();
     initDropdowns();
@@ -426,6 +461,7 @@
     initFoodCarousel();
     initMenuTabs();
     initFaq();
+    initLazyMaps();
     initReveal();
   }
 
