@@ -257,7 +257,7 @@
     });
   }
 
-function initReveal() {
+  function initReveal() {
     const reveals = document.querySelectorAll(".reveal");
     if (!reveals.length) return;
     if (reduceMotion) {
@@ -290,147 +290,12 @@ function initReveal() {
     });
   }
 
-  function initReviewsCarousel() {
-    const track = document.getElementById("reviewsTrack");
-    if (!track) return;
-    const container = document.getElementById("reviewsTrackContainer");
-    const outer = document.querySelector(".reviews-carousel-outer");
-    const slides = track.querySelectorAll(".reviews-slide");
-    if (!slides.length) return;
-    const prevBtn = document.querySelector(".reviews-prev");
-    const nextBtn = document.querySelector(".reviews-next");
-    const dots = document.querySelectorAll(".reviews-dot");
-
-    let currentIndex = 0;
-    let autoPlayTimer = null;
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchDiffX = 0;
-    let touchDiffY = 0;
-
-    function goToSlide(index) {
-      if (index < 0) index = slides.length - 1;
-      if (index >= slides.length) index = 0;
-      currentIndex = index;
-      track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
-      dots.forEach((dot, i) => {
-        const active = i === currentIndex;
-        dot.classList.toggle("active", active);
-        dot.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      slides.forEach((slide, i) => {
-        slide.setAttribute("aria-hidden", i === currentIndex ? "false" : "true");
-      });
-    }
-
-    function nextSlide() {
-      goToSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentIndex - 1);
-    }
-
-    function startAutoPlay() {
-      if (reduceMotion) return;
-      stopAutoPlay();
-      autoPlayTimer = setInterval(nextSlide, 5500);
-    }
-
-    function stopAutoPlay() {
-      if (autoPlayTimer) {
-        clearInterval(autoPlayTimer);
-        autoPlayTimer = null;
-      }
-    }
-
-    function resetAutoPlay() {
-      stopAutoPlay();
-      startAutoPlay();
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        prevSlide();
-        resetAutoPlay();
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        nextSlide();
-        resetAutoPlay();
-      });
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        goToSlide(i);
-        resetAutoPlay();
-      });
-    });
-
-    if (outer) {
-      outer.addEventListener("mouseenter", stopAutoPlay);
-      outer.addEventListener("mouseleave", startAutoPlay);
-    }
-
-    if (container) {
-      container.addEventListener("focusin", stopAutoPlay);
-      container.addEventListener("focusout", startAutoPlay);
-
-      container.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          prevSlide();
-          resetAutoPlay();
-        } else if (e.key === "ArrowRight") {
-          nextSlide();
-          resetAutoPlay();
-        }
-      });
-
-      container.addEventListener("touchstart", (e) => {
-        if (!e.touches || !e.touches[0]) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchDiffX = 0;
-        touchDiffY = 0;
-        stopAutoPlay();
-      }, { passive: true });
-
-      container.addEventListener("touchmove", (e) => {
-        if (!e.touches || !e.touches[0]) return;
-        touchDiffX = touchStartX - e.touches[0].clientX;
-        touchDiffY = touchStartY - e.touches[0].clientY;
-      }, { passive: true });
-
-      container.addEventListener("touchend", () => {
-        if (Math.abs(touchDiffX) > 40 && Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
-          if (touchDiffX > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
-        }
-        startAutoPlay();
-      });
-    }
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stopAutoPlay();
-      else startAutoPlay();
-    });
-
-    goToSlide(0);
-    startAutoPlay();
-  }
-
   function start() {
     initNav();
     initDropdowns();
     initHeroSlideshow();
     initHeroVideo();
     initFoodCarousel();
-    initReviewsCarousel();
     initMenuTabs();
     initReveal();
   }
