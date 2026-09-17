@@ -516,8 +516,71 @@ TikTok
 <p class="newsletter-sms-note">Get more deals when you sign up for SMS offers.</p>
 </div>
 </section>
+<section class="instagram-feed-section" hidden="" id="instagram-feed">
+<div class="section-inner">
+<div class="eyebrow">From Our Feed</div>
+<h2 class="section-title">Follow Frankie <em>&amp; Fanucci's</em></h2>
+<div class="social-handle"><a data-ig-profile="" data-ig-username="" href="https://www.instagram.com/fandfpizza" rel="noopener" target="_blank">@fandfpizza</a></div>
+<div class="ig-grid" data-ig-grid=""></div>
+<div style="display:flex;justify-content:center;">
+<a class="btn-outlined" data-ig-profile="" href="https://www.instagram.com/fandfpizza" rel="noopener" target="_blank">View on Instagram →</a>
+</div>
+</div>
+</section>
 </main>
 <footer data-footer=""></footer>
+<script>
+  window.KORA_SITE_CONFIG = {
+    apiBaseUrl: "https://kora-agent.grubtok.com",
+    businessId: "054a59df-cbf7-4dcb-b1c7-b702e1dc8f64",
+    recaptchaSiteKey: "6LcsdJYsAAAAAAur-h7cYlZuGJTmijNHmOi5kFH7"
+  };
+  window.KORA_CONFIG = Object.assign(window.KORA_CONFIG || {}, window.KORA_SITE_CONFIG);
+</script>
+<script>
+(function () {
+  var section = document.getElementById('instagram-feed');
+  if (!section) return;
+  var cfg = window.KORA_CONFIG || window.KORA_SITE_CONFIG || {};
+  var apiBaseUrl = (cfg.apiBaseUrl || '').replace(/\/+$/, '');
+  var businessId = cfg.businessId;
+  if (!apiBaseUrl || !businessId) return;
+
+  var url = apiBaseUrl + '/api/v1/public/instagram/feed?business_id=' + encodeURIComponent(businessId);
+  fetch(url, { headers: { Accept: 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !data.enabled || !data.items || !data.items.length) return;
+      var handle = data.username ? '@' + data.username : '';
+      section.querySelectorAll('[data-ig-username]').forEach(function (el) {
+        el.textContent = handle;
+        if (data.profile_url) el.setAttribute('href', data.profile_url);
+      });
+      section.querySelectorAll('[data-ig-profile]').forEach(function (el) {
+        if (data.profile_url) el.setAttribute('href', data.profile_url);
+      });
+      var grid = section.querySelector('[data-ig-grid]');
+      if (!grid) return;
+      grid.innerHTML = '';
+      data.items.forEach(function (item) {
+        var a = document.createElement('a');
+        a.href = item.permalink;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'ig-tile';
+        var img = document.createElement('img');
+        img.src = item.image_url;
+        img.alt = item.caption || ('Instagram post by ' + handle);
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        a.appendChild(img);
+        grid.appendChild(a);
+      });
+      section.hidden = false;
+    })
+    .catch(function (err) { console.error('Instagram feed failed', err); });
+})();
+</script>
 <script defer="" src="js/includes.js"></script>
 <script defer="" src="js/main.js"></script>
 <!-- KORA_BRANDING_FOOTER_SCRIPT_START -->

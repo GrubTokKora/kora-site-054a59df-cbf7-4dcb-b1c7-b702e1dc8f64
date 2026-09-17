@@ -14,6 +14,7 @@ sections:
 - `#explore` "Dine In, Take Out, Celebrate" — the three paths onward: Catering, Group Dining, 2 for 1 Happy Hour
 - `#reviews` "What Our Customers Say" — customer testimonials with 4.4 rating from 618 Google reviews
 - `#newsletter-form` — the newsletter sign-up, with `#newsletter-email`, `#newsletter-phone`, an email opt-in, an SMS opt-in and a message slot
+- `#instagram-feed` "Follow Frankie & Fanucci's" — live Instagram feed showing recent posts and profile link
 also: The hero claims counts — six Best of Westchester wins, twelve-plus signature pizzas, forty-plus menu items. All three go stale as the menu changes, and nothing recomputes them from menu.html.
 also: The newsletter form is repeated on every page except menu.html and happy-hour.html, always with the same field ids. A change to it has to be made on six pages.
 
