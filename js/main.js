@@ -89,7 +89,8 @@
     // Respect user motion preference — keep the static poster instead
     if (reduceMotion) return;
 
-    const VIDEO_SRC = "https://stream.mux.com/qr1Tugxb5YVPf5qWPtJSxeU3019FIsXHnY00lUuVPgn7g/high.mp4";
+    const VIDEO_SRC = video.getAttribute("data-src") || video.querySelector("source")?.src;
+    if (!VIDEO_SRC) return;
 
     function loadVideo() {
       // Set src now that the page is idle — avoids competing with LCP
