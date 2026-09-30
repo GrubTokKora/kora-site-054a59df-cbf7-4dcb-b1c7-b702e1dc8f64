@@ -238,24 +238,43 @@
   }
 
   function initMenuTabs() {
-    const tabs = document.querySelectorAll(".menu-tab");
-    if (!tabs.length) return;
+    // The menu is drawn by Kora into the page; here its categories become tabs, one shown at a time.
+    const menu = document.querySelector(".kora-menu");
+    if (!menu) return;
+    const nav = menu.querySelector(".kora-menu__nav");
+    const sections = menu.querySelectorAll(".kora-menu__section");
+    if (!nav || sections.length < 2) return;
+    const links = nav.querySelectorAll("a");
+    const photos = window.MENU_PANEL_IMAGES || {};
 
-    window.switchTab = function switchTab(id, evt) {
-      document.querySelectorAll(".menu-tab").forEach((t) => t.classList.remove("active"));
-      document.querySelectorAll(".menu-panel").forEach((p) => p.classList.remove("active"));
-      const trigger = evt && evt.currentTarget ? evt.currentTarget : document.querySelector(`.menu-tab[data-tab="${id}"]`);
-      if (trigger) trigger.classList.add("active");
-      const panel = document.getElementById("panel-" + id);
-      if (panel) panel.classList.add("active");
-    };
+    sections.forEach((section) => {
+      const title = section.querySelector(".kora-menu__section-title");
+      const photo = title && photos[title.textContent.trim()];
+      const list = section.querySelector(".kora-menu__items");
+      if (!photo || !list) return;
+      const img = document.createElement("img");
+      img.className = "menu-panel-img";
+      img.alt = photo.alt || "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 900;
+      img.height = 600;
+      img.src = photo.src;
+      list.before(img);
+    });
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", (e) => {
-        const id = tab.getAttribute("data-tab");
-        if (id) window.switchTab(id, e);
+    function show(id) {
+      sections.forEach((s) => { s.hidden = s.id !== id; });
+      links.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + id));
+    }
+    links.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        show(a.getAttribute("href").slice(1));
       });
     });
+    show(sections[0].id);
+    menu.classList.add("has-tabs");
   }
 
   function initReveal() {
