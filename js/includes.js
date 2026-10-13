@@ -18,6 +18,22 @@
     return page === id ? ' aria-current="page"' : "";
   }
 
+  // The site's full page list — shared by the desktop "More" dropdown and the mobile menu
+  function fullNav(page) {
+    return [
+      `<a href="index.html"${active(page, "home")}>Home</a>`,
+      `<a href="menu.html"${active(page, "menu")}>Menu</a>`,
+      `<a href="lunch-special.html"${active(page, "lunch")}>Lunch Special</a>`,
+      `<a href="delivery.html"${active(page, "delivery")}>Delivery &amp; Pickup</a>`,
+      `<a href="catering.html"${active(page, "catering")}>Catering</a>`,
+      `<a href="groups.html"${active(page, "groups")}>Groups &amp; Events</a>`,
+      `<a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a>`,
+      `<a href="rewards.html"${active(page, "rewards")}>Rewards</a>`,
+      `<a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a>`,
+      `<a href="contact.html"${active(page, "contact")}>Find Us</a>`,
+    ];
+  }
+
   function mountNav(el, page) {
     el.innerHTML = `
 <a class="nav-logo" href="index.html">
@@ -26,11 +42,26 @@
 </a>
 <ul class="nav-links">
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
-  <li><a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a></li>
-  <li><a href="rewards.html"${active(page, "rewards")}>Rewards</a></li>
+  <li><a href="catering.html"${active(page, "catering")}>Catering</a></li>
+  <li><a href="groups.html"${active(page, "groups")}>Groups</a></li>
   <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+  <li class="nav-drop">
+    <button class="nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
+    <ul class="nav-dropdown">
+      ${fullNav(page).map((l) => `<li>${l}</li>`).join("\n      ")}
+    </ul>
+  </li>
 </ul>
 <a class="nav-order-btn" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>
+<div class="nav-mobile-actions">
+  <a class="nav-call-btn" href="tel:${PHONE}" aria-label="Call ${PHONE_DISPLAY}">
+    <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
+    </svg>
+    <span>Call</span>
+  </a>
+  <a class="nav-mobile-order" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>
+</div>
 <button aria-label="Open menu" aria-expanded="false" class="nav-hamburger" id="hamburgerBtn" type="button">
   <span></span><span></span><span></span>
 </button>`;
@@ -38,15 +69,7 @@
 
   function mountMobile(el, page) {
     el.innerHTML = `
-<a class="mobile-nav-link" href="index.html"${active(page, "home")}>Home</a>
-<a class="mobile-nav-link" href="menu.html"${active(page, "menu")}>Menu</a>
-<a class="mobile-nav-link" href="delivery.html"${active(page, "delivery")}>Delivery &amp; Pickup</a>
-<a class="mobile-nav-link" href="catering.html"${active(page, "catering")}>Catering</a>
-<a class="mobile-nav-link" href="groups.html"${active(page, "groups")}>Groups &amp; Events</a>
-<a class="mobile-nav-link" href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a>
-<a class="mobile-nav-link" href="rewards.html"${active(page, "rewards")}>Rewards</a>
-<a class="mobile-nav-link" href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a>
-<a class="mobile-nav-link" href="contact.html"${active(page, "contact")}>Find Us</a>
+${fullNav(page).map((l) => l.replace("<a ", '<a class="mobile-nav-link" ')).join("\n")}
 <a class="mobile-nav-cta" href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a>`;
   }
 
@@ -97,6 +120,7 @@
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
+        <li><a href="lunch-special.html">Lunch Special</a></li>
         <li><a href="catering.html">Catering</a></li>
         <li><a href="groups.html">Groups &amp; Events</a></li>
         <li><a href="happy-hour.html">Happy Hour</a></li>
