@@ -3455,12 +3455,22 @@ body.mobile-menu-open{overflow:hidden}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 
+/* Mobile nav quick actions (Call / Order Online) — shown only when the hamburger is */
+.nav-mobile-actions{display:none;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.nav-call-btn,.nav-mobile-order{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 14px;border-radius:var(--radius);font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.nav-call-btn{border:1.5px solid var(--nav-text);color:var(--nav-text);background:transparent}
+.nav-call-btn:hover{background:var(--nav-text);color:var(--bg)}
+.nav-mobile-order{border:1.5px solid var(--nav-cta-border);background:var(--nav-cta-bg);color:var(--nav-cta-text)}
+.nav-mobile-order:hover{background:var(--nav-cta-hover-bg);color:var(--nav-cta-hover-text)}
+
 /* RESPONSIVE */
 @media (min-width:1400px){nav{padding:0 48px}.nav-links{gap:28px}.nav-links a{font-size:12px}}
 @media (max-width:1024px){
   nav{padding:0 28px}
   .nav-links,.nav-order-btn{display:none}
   .nav-hamburger{display:flex;margin-left:auto}
+  .nav-mobile-actions{display:flex}
+  .nav-mobile-actions + .nav-hamburger{margin-left:0}
   .hero{padding:0 0 76px}
   .hero-content{padding:0 48px;max-width:520px}
   .about-strip .section-inner{grid-template-columns:1fr;gap:48px}
@@ -3487,6 +3497,9 @@ body.mobile-menu-open{overflow:hidden}
 }
 @media (max-width:480px){
   .nav-logo-text{display:none}
+  nav{gap:12px}
+  .nav-call-btn{width:38px;padding:0}
+  .nav-call-btn span{display:none}
   .about-stats{gap:28px;flex-wrap:wrap}
 }
 @media (max-height:700px){.hero{padding:0 0 52px}.hero-scroll-hint{display:none}}

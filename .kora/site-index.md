@@ -10,13 +10,23 @@ sections:
 - `#home` "Frankie & Fanucci's" — the hero, with the Order Online and View Menu actions and the Best of Westchester claim
 - `#heroPoster` — the still image shown before the hero video loads
 - `#heroVideo` — the hero's background video
-- `#about` "A Vibrant Neighborhood Pizzeria" — the restaurant's story, its wood-fired thin crust, and the counts it claims for pizzas and menu items
-- `#explore` "Dine In, Take Out, Celebrate" — the three paths onward: Catering, Group Dining, 2 for 1 Happy Hour
+- `#explore` "Dine In, Take Out, Delivery" — the four paths onward: Catering, Group Dining, 2 for 1 Happy Hour, Lunch Special
+- rewards strip "Join F&F Fired-Up Rewards and Don't Miss Out." — the combined rewards + sign-up call to action, linking to rewards.html (replaces the old separate newsletter section)
+- Visit Us "Find Us in Mamaroneck" — a storefront photo linking to Google Maps directions (no embedded map, by request: the embed showed nearby competitors), with the address and hours
+- `#about` "Quality in Every Pie." — the restaurant's story
 - `#reviews` "What Our Customers Say" — customer testimonials with 4.4 rating from 618 Google reviews
-- `#newsletter-form` — the newsletter sign-up, with `#newsletter-email`, `#newsletter-phone`, an email opt-in, an SMS opt-in and a message slot
-- `#instagram-feed` "Follow Frankie & Fanucci's" — live Instagram feed showing recent posts and profile link
+- `#faq` "Frequently Asked Questions" — eight questions, mirrored in the page's FAQPage JSON-LD; edit both together
+- gift-card strip "Share the Love." — directly after the FAQ
+- `#instagram-feed` "Share the Goodness" — the live Instagram feed; the four static photos show until the feed loads (or if it fails)
 also: The hero claims counts — six Best of Westchester wins, twelve-plus signature pizzas, forty-plus menu items. All three go stale as the menu changes, and nothing recomputes them from menu.html.
-also: The newsletter form is repeated on every page except menu.html and happy-hour.html, always with the same field ids. A change to it has to be made on six pages.
+also: The newsletter section is repeated on every page except index.html, menu.html, happy-hour.html and lunch-special.html, always with the same field ids. A change to it has to be made on six pages.
+
+## lunch-special.html → /lunch-special
+title: Lunch Special — Frankie & Fanucci's | Lunch in Mamaroneck
+purpose: The lunch special page — linked from the More dropdown, the mobile menu, the footer and the homepage explore cards.
+sections:
+- `#main` "Lunch Special" — the page hero with Order Online and Call actions
+- `#lunch` "Today's Lunch Special" — the lunch copy; the special's items, price and hours are not yet filled in (see the TODO comment)
 
 ## menu.html → /menu
 title: Menu — Frankie & Fanucci's | Wood-Fired Pizza & Italian Kitchen
@@ -104,5 +114,6 @@ change to the site's content can land there; the rest only make the site work or
 - `js/main.js` — scroll and motion behaviour
 
 ## shared (every page)
+The desktop nav is Menu, Catering, Groups, Gift Cards, a More dropdown (the full page list, same as the mobile menu — both come from `fullNav()` in js/includes.js) and Order Online; on mobile the bar shows Call and Order Online buttons beside the hamburger.
 The header, navigation, mobile menu and footer are propagated from index.html to every other page by
 `shell_propagation`. A change to any of them is made on index.html alone and copied automatically.
