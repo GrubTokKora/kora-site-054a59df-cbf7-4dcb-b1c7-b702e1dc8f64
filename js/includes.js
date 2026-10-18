@@ -12,7 +12,43 @@
   const LOGO =
     "https://quseprdus1.blob.core.windows.net/kora-business-images/v2-uploads/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/b496d754-6bff-481f-a539-b7be688ca0b9-logo-ff-circle-192.webp";
 
+  const FEATURES = {
+    accessibilityWidget: {
+      enabled: true,
+      provider: "sinanisler"
+    }
+  };
+
   window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, FACEBOOK, TIKTOK, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
+  window.FF_FEATURES = FEATURES;
+  window.features = FEATURES;
+
+  function initAccessibility() {
+    if (document.getElementById("sinanisler-accessibility-script")) return;
+    const script = document.createElement("script");
+    script.id = "sinanisler-accessibility-script";
+    script.src = "https://cdn.jsdelivr.net/gh/sinanisler/accessibility@latest/dist/accessibility.min.js";
+    script.async = true;
+    script.onload = function () {
+      function start() {
+        try {
+          if (typeof Accessibility !== "undefined") {
+            new Accessibility();
+          }
+        } catch (e) {
+          console.error("Accessibility widget init error", e);
+        }
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start);
+      } else {
+        start();
+      }
+    };
+    (document.head || document.documentElement).appendChild(script);
+  }
+
+  initAccessibility();
 
   function active(page, id) {
     return page === id ? ' aria-current="page"' : "";
