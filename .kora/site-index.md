@@ -71,6 +71,7 @@ purpose: The bar page — the happy-hour offer and the full bar list.
 sections:
 - `#main` "2 for 1 Happy Hour" — the page hero and the terms of the offer
 - `#happyhour` "Full Bar Menu" — the bar list, 30 drinks across cocktails, wines and beers: Aperol Spritz, Strawberry Lover, Doppio Espresso Martini, Ginger Agave, Spicy Italian Margarita, Negroni, Violet Haze, Maple Bourbon Sour, Red Sangria, White Sangria, Prosecco, Rosé, Pinot Grigio, Sauvignon Blanc, Chardonnay, Montepulciano, Malbec, Pinot Noir, Cabernet Sauvignon, Brooklyn Seasonal, Birra Peroni Nastro Azzurro, Night Shift Nite Lite, Von Trapp, Catskill Nightshine, Allagash White, Threes All or Nothing, Brooklyn Pulp Art, Coors Light, Corona, Heineken
+- `#gallery` "Cocktails & Vibes" — 5-image photo gallery showcasing bar cocktails and atmosphere
 also: The page says the tap list rotates and directs the visitor to the in-store menu for current selection and pricing, so the beers named here are not guaranteed to be pouring.
 also: This page has no newsletter form, unlike every other page except menu.html.
 
