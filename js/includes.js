@@ -7,7 +7,6 @@
   const TIKTOK = "https://www.tiktok.com/@fandfpizza";
   const PHONE = "9146304360";
   const PHONE_DISPLAY = "(914) 630-4360";
-  const EMAIL = "info@FandFpizza.com";
   const MAPS = "https://maps.app.goo.gl/46oFBpwPPzhscmRL8";
   const LOGO =
     "https://quseprdus1.blob.core.windows.net/kora-business-images/v2-uploads/054a59df-cbf7-4dcb-b1c7-b702e1dc8f64/b496d754-6bff-481f-a539-b7be688ca0b9-logo-ff-circle-192.webp";
@@ -19,7 +18,7 @@
     }
   };
 
-  window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, FACEBOOK, TIKTOK, PHONE, PHONE_DISPLAY, EMAIL, MAPS, LOGO };
+  window.FF_LINKS = { ORDER, GIFTCARDS, INSTAGRAM, FACEBOOK, TIKTOK, PHONE, PHONE_DISPLAY, MAPS, LOGO };
   window.FF_FEATURES = FEATURES;
   window.features = FEATURES;
 
@@ -65,8 +64,8 @@
       `<a href="groups.html"${active(page, "groups")}>Groups &amp; Events</a>`,
       `<a href="happy-hour.html"${active(page, "happyhour")}>Happy Hour</a>`,
       `<a href="rewards.html"${active(page, "rewards")}>Rewards</a>`,
-      `<a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a>`,
-      `<a href="contact.html"${active(page, "contact")}>Find Us</a>`,
+      `<a href="contact-2.html"${active(page, "giftcards")}>Gift Cards</a>`,
+      `<a href="contact.html"${active(page, "contact")}>How to Reach Us</a>`,
     ];
   }
 
@@ -80,7 +79,7 @@
   <li><a href="menu.html"${active(page, "menu")}>Menu</a></li>
   <li><a href="catering.html"${active(page, "catering")}>Catering</a></li>
   <li><a href="groups.html"${active(page, "groups")}>Groups</a></li>
-  <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+  <li><a href="contact-2.html"${active(page, "giftcards")}>Gift Cards</a></li>
   <li class="nav-drop">
     <button class="nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
     <ul class="nav-dropdown">
@@ -143,12 +142,6 @@ ${fullNav(page).map((l) => l.replace("<a ", '<a class="mobile-nav-link" ')).join
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
           </svg>
         </a>
-        <a aria-label="Email" href="mailto:${EMAIL}">
-          <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" aria-hidden="true">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-        </a>
       </div>
     </div>
     <div class="footer-col footer-col-nav">
@@ -161,7 +154,8 @@ ${fullNav(page).map((l) => l.replace("<a ", '<a class="mobile-nav-link" ')).join
         <li><a href="groups.html">Groups &amp; Events</a></li>
         <li><a href="happy-hour.html">Happy Hour</a></li>
         <li><a href="rewards.html">Rewards</a></li>
-        <li><a href="contact.html">Find Us</a></li>
+        <li><a href="contact-2.html">Gift Cards</a></li>
+        <li><a href="contact.html">How to Reach Us</a></li>
       </ul>
     </div>
     <div class="footer-col footer-col-order">
@@ -169,14 +163,14 @@ ${fullNav(page).map((l) => l.replace("<a ", '<a class="mobile-nav-link" ')).join
       <ul class="footer-links">
         <li><a href="${ORDER}" target="_blank" rel="noopener noreferrer">Order Online</a></li>
         <li><a href="delivery.html">Delivery &amp; Pickup</a></li>
-        <li><a href="${GIFTCARDS}" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+        <li><a href="contact-2.html">Gift Cards</a></li>
       </ul>
     </div>
     <div class="footer-col footer-col-contact">
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="tel:${PHONE}">${PHONE_DISPLAY}</a></li>
-        <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
+        <li><a href="contact.html">Online Contact Form</a></li>
         <li><a href="${MAPS}" target="_blank" rel="noopener noreferrer">301 Mamaroneck Ave<br/>Mamaroneck, NY 10543</a></li>
       </ul>
     </div>

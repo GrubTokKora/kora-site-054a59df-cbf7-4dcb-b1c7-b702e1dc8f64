@@ -12,7 +12,7 @@ sections:
 - `#heroVideo` — the hero's background video
 - `#explore` "Dine In, Take Out, Delivery" — the four paths onward: Catering, Group Dining, 2 for 1 Happy Hour, Lunch Special
 - rewards strip "Join F&F Fired-Up Rewards and Don't Miss Out." — the combined rewards + sign-up call to action, linking to rewards.html (replaces the old separate newsletter section)
-- Visit Us "Find Us in Mamaroneck" — a storefront photo linking to Google Maps directions (no embedded map, by request: the embed showed nearby competitors), with the address and hours
+- Visit Us "Find Us in Mamaroneck" — a storefront photo linking to Google Maps directions (no embedded map, by request: the embed showed nearby competitors), with the address, hours, and How to Reach Us link
 - `#about` "Quality in Every Pie." — the restaurant's story
 - `#reviews` "What Our Customers Say" — customer testimonials with 4.4 rating from 618 Google reviews
 - `#faq` "Frequently Asked Questions" — eight questions, mirrored in the page's FAQPage JSON-LD; edit both together
@@ -85,14 +85,23 @@ sections:
 also: The New Rochelle zone is described by three boundary streets rather than a name, so it does not read like the other five and a change to the zone list can easily drop it.
 
 ## contact.html → /contact
-title: Find Us — Frankie & Fanucci's | Hours, Map & Contact
-purpose: The contact page — the address, phone, email, hours, gift cards and the newsletter sign-up.
+title: How to Reach Us — Frankie & Fanucci's | Hours, Map & Contact
+purpose: The contact page — the address, phone, contact inquiry form, hours, gift cards and the newsletter sign-up.
 sections:
-- `#main` "Find Us" — the page hero with the Get Directions and Order Online actions
-- `#location` "Hours & Contact" — the address, phone, email and the opening hours by day
+- `#main` "How to Reach Us" — the page hero with Send Message and Get Directions actions
+- `#location` "Hours & Contact" — the address, phone, and opening hours by day
+- `#contact-form` "Send Us a Message" — the contact inquiry form with visitor details, message, and reCAPTCHA v2
 - `#main` "Gift Cards Available" — the gift-card block
 - `#newsletter-form` — the newsletter sign-up
 also: The address is written here and again on delivery.html as the curbside address, and the two are different — 301 Mamaroneck Avenue here, 300 Phillips Park Road there. Both are correct and neither page explains the difference, so a change made to "the address" can easily be made to the wrong one.
+
+## contact-2.html → /contact-2
+title: Gift Cards — Frankie & Fanucci's | Mamaroneck, NY
+purpose: The gift cards page — purchase e-gift cards online with immediate or scheduled delivery, or physical gift cards in-store.
+sections:
+- `#main` "Gift Cards" — the page hero with Order E-Gift Card and Visit Us actions
+- Two Ways to Gift — comparison between online e-gift cards (instant/scheduled delivery) and physical cards (in-store only)
+- gift-card strip "Give the Gift of Great Food" — closing purchase call to action
 
 ## rewards.html → /rewards
 title: F&F Fired-Up Rewards — Frankie & Fanucci's | Earn Points & Perks
