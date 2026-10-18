@@ -60,6 +60,8 @@ purpose: The private-dining page — three per-person packages for groups.
 sections:
 - `#main` "Host Your Next Event at F&F" — the page hero, the guest limit and the contact actions
 - `#groups` "Choose Your Menu" — the three packages, each with a per-person price, an event length and its courses: Pizza Party, Italian Classic, Italian Deluxe
+- `#group-dining-form` "Group Dining Inquiry" — the event inquiry form with contact details, event date, guest count, and newsletter opt-in
+- Craft-Your-Own Gelato Cart — birthday add-on with photo and direct link to the group dining inquiry form
 - `#newsletter-form` — the newsletter sign-up
 also: Each package lists the dishes a guest may select, naming salads, appetizers and pizzas that also appear on menu.html. A dish removed from the menu stays selectable here unless it is removed from all three packages too.
 

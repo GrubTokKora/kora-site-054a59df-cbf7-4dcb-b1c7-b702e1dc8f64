@@ -2624,6 +2624,132 @@
   object-fit: cover;
 }
 
+/* ── GROUP DINING RESERVATION FORM ── */
+.group-dining-form-card {
+  margin-top: 36px;
+  padding: 36px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+.group-dining-form-card .eyebrow {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.group-dining-form-card .group-form-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.group-dining-form-card .group-form-subtitle {
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.gdf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.gdf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gdf-field-full {
+  grid-column: 1 / -1;
+}
+.gdf-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.gdf-input,
+.gdf-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: #ffffff;
+  color: #17140f;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: border-color .2s, box-shadow .2s;
+  box-sizing: border-box;
+}
+.gdf-input:focus,
+.gdf-textarea:focus {
+  outline: none;
+  border-color: var(--cta);
+  box-shadow: 0 0 0 2px rgba(199, 54, 43, 0.15);
+}
+.gdf-input::placeholder,
+.gdf-textarea::placeholder {
+  color: #8a8479;
+  opacity: 1;
+}
+.gdf-checkbox-row {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+.gdf-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.gdf-checkbox-label input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--cta);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.gdf-submit-btn {
+  margin-top: 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+.gdf-status {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.gdf-status.is-success {
+  background: #edf7ed;
+  color: #1e4620;
+  border: 1px solid #c8e6c9;
+}
+.gdf-status.is-error {
+  background: #fdf2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+@media (max-width: 640px) {
+  .group-dining-form-card {
+    padding: 24px 18px;
+  }
+  .gdf-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 .happy-section .btn-outlined {
   border-color: rgba(255, 255, 255, 0.45);
   color: rgba(255, 255, 255, 0.92);
