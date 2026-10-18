@@ -26,7 +26,7 @@ title: Lunch Special — Frankie & Fanucci's | Lunch in Mamaroneck
 purpose: The lunch special page — linked from the More dropdown, the mobile menu, the footer and the homepage explore cards.
 sections:
 - `#main` "Lunch Special" — the page hero with Order Online and Call actions
-- `#lunch` "Today's Lunch Special" — the lunch copy; the special's items, price and hours are not yet filled in (see the TODO comment)
+- `#lunch` "Lunch Special $16.95" — $16.95 lunch special served daily until 4 PM, offering wood-fired pizzas, salads, and pastas
 
 ## menu.html → /menu
 title: Menu — Frankie & Fanucci's | Wood-Fired Pizza & Italian Kitchen
@@ -82,7 +82,6 @@ sections:
 - `#main` Delivery Zones — the areas served: Mamaroneck, Larchmont, Harrison South of I-95, Rye South of Osborn Rd / Oakland Beach Ave, Scarsdale East of Bronx River Pkwy, New Rochelle
 - `#main` Curbside Pickup — the three-step pickup instructions and the pickup address
 - `#newsletter-form` — the newsletter sign-up
-also: The delivery window is stated twice on this page, once beside the fee and once under Delivery Hours. Changing one leaves the other contradicting it.
 also: The New Rochelle zone is described by three boundary streets rather than a name, so it does not read like the other five and a change to the zone list can easily drop it.
 
 ## contact.html → /contact

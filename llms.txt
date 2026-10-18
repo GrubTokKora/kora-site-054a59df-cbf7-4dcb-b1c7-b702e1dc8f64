@@ -1,9 +1,12 @@
 # Frankie & Fanucci's
 
-> Frankie & Fanucci's is a wood-fired pizza restaurant located in Mamaroneck, NY. They specialize in authentic Neapolitan-style wood-fired pizzas, alongside classic Italian appetizers, fresh salads, and pasta dishes.
+> Frankie & Fanucci's is a wood-fired pizza restaurant located in Mamaroneck, NY. They specialize in authentic Neapolitan-style wood-fired pizzas, classic Italian appetizers, fresh salads, and pasta dishes.
 
 ## Menu
 Specializing in authentic Neapolitan-style wood-fired pizzas, alongside classic Italian appetizers, fresh salads, and pasta dishes.
+
+### Offers
+- Lunch Special — $16.95
 
 ## Location & Contact
 - Address: 301 Mamaroneck Avenue, Mamaroneck, NY 10543, US
