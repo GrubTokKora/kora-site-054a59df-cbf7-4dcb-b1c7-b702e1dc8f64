@@ -3739,3 +3739,12 @@ body.mobile-menu-open{overflow:hidden}
     transition: none !important;
   }
 }
+
+/* Rewards strip above the footer — Email and Text sign-up CTAs side by side */
+.rewards-strip-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.rewards-strip-ctas .newsletter-cta { white-space: nowrap; }
+@media (max-width: 768px) {
+  .rewards-strip { padding: 64px 0; }
+  .rewards-strip-ctas { width: 100%; flex-direction: column; align-items: stretch; }
+  .rewards-strip-ctas .newsletter-cta { width: 100%; }
+}

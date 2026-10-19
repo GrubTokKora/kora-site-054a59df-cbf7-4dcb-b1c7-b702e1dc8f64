@@ -19,7 +19,7 @@ sections:
 - gift-card strip "Share the Love." — directly after the FAQ
 - `#instagram-feed` "Share the Goodness" — the live Instagram feed; the four static photos show until the feed loads (or if it fails)
 also: The hero claims counts — six Best of Westchester wins, twelve-plus signature pizzas, forty-plus menu items. All three go stale as the menu changes, and nothing recomputes them from menu.html.
-also: The newsletter section is repeated on every page except index.html, menu.html, happy-hour.html and lunch-special.html, always with the same field ids. A change to it has to be made on six pages.
+also: The rewards strip is repeated directly above the footer on every page except index.html (where it sits mid-page with a single link to rewards.html). The footer copies carry two CTAs — Email Signup (Toast marketing sign-up) and Text Signup (ordertracking.io SMS) — and replace the old "Exclusive Offers & Updates" newsletter section. A change to it has to be made on nine pages.
 
 ## lunch-special.html → /lunch-special
 title: Lunch Special — Frankie & Fanucci's | Lunch in Mamaroneck
@@ -27,6 +27,7 @@ purpose: The lunch special page — linked from the More dropdown, the mobile me
 sections:
 - `#main` "Lunch Special" — the page hero with Order Online and Call actions
 - `#lunch` "Lunch Special $16.95" — $16.95 lunch special served daily until 4 PM, offering wood-fired pizzas, salads, and pastas
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 
 ## menu.html → /menu
 title: Menu — Frankie & Fanucci's | Wood-Fired Pizza & Italian Kitchen
@@ -41,6 +42,7 @@ sections:
 - `#panel-entrees` — 8 priced items: Parm, Marsala, Francese, Hanger Steak, Spicy Scarpariello, Paillard, Milanese, Salmon Piccata
 - `#panel-heros` — 7 priced items: Parm Hero, Caprese Hero, Milanese 'Wich, Chicken & Bacon 'Wich, Roasted Eggplant 'Wich, The Burger
 - `#panel-dessert` — 7 priced items: Cheesecake, Tiramisu, Zeppole, Bomboloni, S'mores Pizza, Lava Cake, Tartufo
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: Eleven dishes are written twice on this site — the antipasti and salads named here appear again on catering.html and inside the group packages on groups.html, each with their own wording. Renaming a dish means finding every copy.
 also: Several dish names are single words that also occur in ordinary prose on this page — Parm, White, Popeye, Amici. A change described by name alone can match the wrong text.
 
@@ -51,7 +53,7 @@ sections:
 - `#main` "Favorites by the Tray" — the page hero, the notice period and the tray-size note
 - `#catering` "Ordering Guide" — how many trays to order for a given headcount, then the catering menu by category
 - `#catering` Antipasti & Sides — the trays offered: Bruschetta, Meatballs, Garlic Bread, Burrata, Fried Calamari, Wings, Wood-Fired Cauliflower
-- `#newsletter-form` — the newsletter sign-up
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: Prices on this page are for half trays only, stated once at the top. A price change here has to preserve that qualifier or every number on the page becomes wrong.
 
 ## groups.html → /groups
@@ -62,7 +64,7 @@ sections:
 - `#groups` "Choose Your Menu" — the three packages, each with a per-person price, an event length and its courses: Pizza Party, Italian Classic, Italian Deluxe
 - `#group-dining-form` "Group Dining Inquiry" — the event inquiry form with contact details, event date, guest count, and newsletter opt-in
 - Craft-Your-Own Gelato Cart — birthday add-on with photo and direct link to the group dining inquiry form
-- `#newsletter-form` — the newsletter sign-up
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: Each package lists the dishes a guest may select, naming salads, appetizers and pizzas that also appear on menu.html. A dish removed from the menu stays selectable here unless it is removed from all three packages too.
 
 ## happy-hour.html → /happy-hour
@@ -72,8 +74,8 @@ sections:
 - `#main` "2 for 1 Happy Hour" — the page hero and the terms of the offer
 - `#happyhour` "Full Bar Menu" — the bar list, 30 drinks across cocktails, wines and beers: Aperol Spritz, Strawberry Lover, Doppio Espresso Martini, Ginger Agave, Spicy Italian Margarita, Negroni, Violet Haze, Maple Bourbon Sour, Red Sangria, White Sangria, Prosecco, Rosé, Pinot Grigio, Sauvignon Blanc, Chardonnay, Montepulciano, Malbec, Pinot Noir, Cabernet Sauvignon, Brooklyn Seasonal, Birra Peroni Nastro Azzurro, Night Shift Nite Lite, Von Trapp, Catskill Nightshine, Allagash White, Threes All or Nothing, Brooklyn Pulp Art, Coors Light, Corona, Heineken
 - `#gallery` "Cocktails & Vibes" — 5-image photo gallery showcasing bar cocktails and atmosphere
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: The page says the tap list rotates and directs the visitor to the in-store menu for current selection and pricing, so the beers named here are not guaranteed to be pouring.
-also: This page has no newsletter form, unlike every other page except menu.html.
 
 ## delivery.html → /delivery
 title: Delivery & Pickup — Frankie & Fanucci's | Mamaroneck, Larchmont & More
@@ -82,18 +84,18 @@ sections:
 - `#main` "Delivery & Pickup" — the page body, holding the delivery block and the curbside block
 - `#main` Delivery Zones — the areas served: Mamaroneck, Larchmont, Harrison South of I-95, Rye South of Osborn Rd / Oakland Beach Ave, Scarsdale East of Bronx River Pkwy, New Rochelle
 - `#main` Curbside Pickup — the three-step pickup instructions and the pickup address
-- `#newsletter-form` — the newsletter sign-up
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: The New Rochelle zone is described by three boundary streets rather than a name, so it does not read like the other five and a change to the zone list can easily drop it.
 
 ## contact.html → /contact
 title: How to Reach Us — Frankie & Fanucci's | Hours, Map & Contact
-purpose: The contact page — the address, phone, contact inquiry form, hours, gift cards and the newsletter sign-up.
+purpose: The contact page — the address, phone, contact inquiry form, hours, gift cards and the rewards sign-up strip.
 sections:
 - `#main` "How to Reach Us" — the page hero with Send Message and Get Directions actions
 - `#location` "Hours & Contact" — the address, phone, and opening hours by day
 - `#contact-form` "Send Us a Message" — the contact inquiry form with visitor details, message, and reCAPTCHA v2
 - `#main` "Gift Cards Available" — the gift-card block
-- `#newsletter-form` — the newsletter sign-up
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: The address is written here and again on delivery.html as the curbside address, and the two are different — 301 Mamaroneck Avenue here, 300 Phillips Park Road there. Both are correct and neither page explains the difference, so a change made to "the address" can easily be made to the wrong one.
 
 ## contact-2.html → /contact-2
@@ -103,6 +105,7 @@ sections:
 - `#main` "Gift Cards" — the page hero with Order E-Gift Card and Visit Us actions
 - Two Ways to Gift — comparison between online e-gift cards (instant/scheduled delivery) and physical cards (in-store only)
 - gift-card strip "Give the Gift of Great Food" — closing purchase call to action
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 
 ## rewards.html → /rewards
 title: F&F Fired-Up Rewards — Frankie & Fanucci's | Earn Points & Perks
@@ -111,7 +114,7 @@ sections:
 - `#main` "F&F Fired-Up Rewards" — the page hero and the sign-up action
 - `#main` "Earn Points, Get Rewarded" — the three earning rules, covering the spend rate, the reward threshold and the absence of a points limit
 - `#main` "Special Bonuses" — the member perks: Signup Bonus, Birthday Bonus, Exclusive Offers
-- `#newsletter-form` — the newsletter sign-up
+- rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
 also: Every rule on this page is a number — the spend per point, the points per reward, the signup bonus, the birthday reward. All of them are programme terms rather than page structure, so any change here is a change to the offer itself.
 
 ## support files
