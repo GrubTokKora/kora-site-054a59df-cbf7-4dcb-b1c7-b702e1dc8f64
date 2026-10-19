@@ -52,9 +52,17 @@ purpose: The catering menu, sold by the tray, with a guide to how much to order.
 sections:
 - `#main` "Favorites by the Tray" — the page hero, the notice period and the tray-size note
 - `#catering` "Ordering Guide" — how many trays to order for a given headcount, then the catering menu by category
-- `#catering` Antipasti & Sides — the trays offered: Bruschetta, Meatballs, Garlic Bread, Burrata, Fried Calamari, Wings, Wood-Fired Cauliflower
+- `#catering` Antipasti & Sides — 15 priced half trays: Bruschetta, Meatballs, Garlic Bread Box, Burrata, Fried Calamari, Wings, Wood-Fired Cauliflower, Mozzarella Sticks, Fried Ravioli, Spicy Shrimp, Chicken Tenders & Fries, Fries, Roasted Broccoli, Sautéed Spinach, Roasted Potatoes
+- `#catering` Salads — 6 priced half trays: Pear & Gorgonzola, Arugula, Caesar, Di Casa, Tuscan, Mozzarella Salad
+- `#catering` Pasta Trays — 14 priced half trays: Penne Pomodoro, Penne alla Vodka, Rigatoni Burrata, Penne Alfredo, Bolognese, Rigatoni & Spicy Sausage, Ravioli Creamy Vermouth, Cheese Ravioli (three sauces, three prices), Gnocchi Siciliana, Fresh Cavatelli, Truffled Spaghetti, Spaghetti & Meatballs, Spaghetti Spicy Shrimp, Lasagna
+- `#catering` Plates — 13 priced half trays: Chicken Parm, Chicken Marsala, Chicken Francese, Grilled Chicken, Eggplant Parm, Spicy Chicken Scarpariello, five shrimp dishes, Salmon Piccata, Hanger Steak
+- `#catering` Wood-Fired Pizza — a note linking to menu.html
+- `#catering` Dessert — Zeppole, Bomboloni, S'mores Pizza
+- `#catering` Sauces & Dough — pomodoro, vodka and bolognese sauce by the pint and quart, pizza dough by weight
+- `#catering` Beverages — a call-to-inquire note
 - rewards strip — the Join F&F Fired-Up Rewards strip with Email Signup and Text Signup, directly above the footer
-also: Prices on this page are for half trays only, stated once at the top. A price change here has to preserve that qualifier or every number on the page becomes wrong.
+also: Prices on this page are for half trays (except Sauces & Dough, priced by the pint, quart or weight), stated once at the top. A price change here has to preserve that qualifier or every number on the page becomes wrong.
+also: Every dish and price here is taken from the Kora menu's "Catering by the Tray" sections, using the page's own wording; a dish dropped from those sections should come off this page too, and a price change there has to be copied here and into the FoodService AggregateOffer range in the page's JSON-LD.
 
 ## groups.html → /groups
 title: Groups & Events — Frankie & Fanucci's | Private Dining Mamaroneck
