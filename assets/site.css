@@ -3241,8 +3241,8 @@
   --cream:#f7f5f0;--warm-white:#efece5;--parchment:#ece8e0;
   --brown:#6a655c;--brick:#c7362b;--sage:#8a8479;--text-dark:#17140f;
 
-  --font-sans:"Archivo","Avenir Next",Helvetica,Arial,sans-serif;
-  --font-display:"Instrument Serif","Bodoni Moda",Didot,"Times New Roman",serif;
+  --font-sans:var(--kora-font-body, "Archivo"), "Avenir Next",Helvetica,Arial,sans-serif;
+  --font-display:var(--kora-font-heading, "Instrument Serif"), "Bodoni Moda",Didot,"Times New Roman",serif;
   --display-weight:400;--display-tracking:-.015em;--em-style:italic;--radius:999px;--radius-card:2px;
   --bg:#f7f5f0;--bg-alt:#f7f5f0;--bg-alt2:#f7f5f0;
   --ink:#17140f;--charcoal:#17140f;
