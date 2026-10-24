@@ -3854,3 +3854,19 @@ body.mobile-menu-open{overflow:hidden}
   .bar-menu-section { padding: 48px 0 56px; }
   .bar-menu-groups, .bar-menu-section--regular .bar-menu-groups { grid-template-columns: minmax(0, 1fr); }
 }
+/* Photos placed with the lists they belong to (Happy Hour page) */
+.bar-menu-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-card); margin-bottom: 20px; }
+.bar-menu-header--photo { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; max-width: none; }
+.bar-menu-header--photo > div { max-width: 640px; }
+.bar-menu-header-photo { flex: none; width: 200px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-card); }
+.bar-menu-note { margin-top: 8px; font-size: 12px !important; letter-spacing: .1em; text-transform: uppercase; color: var(--text-mid); }
+@media (max-width: 640px) {
+  .bar-menu-header--photo { gap: 20px; }
+  .bar-menu-header-photo { width: 104px; }
+}
+/* Regular bar menu: both short lists stacked on the left, the snack photo beside them */
+.bar-menu-section--regular .bar-menu-groups > .bar-menu-group { grid-column: 1; }
+.bar-menu-section--regular .bar-menu-groups > .bar-menu-photo { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+@media (max-width: 640px) {
+  .bar-menu-section--regular .bar-menu-groups > .bar-menu-photo { grid-column: 1; grid-row: auto; margin-bottom: 24px; }
+}
