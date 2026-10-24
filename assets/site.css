@@ -3679,6 +3679,19 @@ body.mobile-menu-open{overflow:hidden}
   .kora-menu.has-tabs { display: block; }
   .kora-menu.has-tabs .kora-menu__nav { position: static; flex-direction: row; flex-wrap: wrap; margin-bottom: 32px; }
   .kora-menu.has-tabs .kora-menu__section { grid-column: auto; grid-row: auto; }
+  /* Tablet/mobile: categories become one sideways-scrolling row pinned under the header, so dishes show right away */
+  .menu-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .menu-layout > .menu-intro .section-title { margin: 0 0 12px; }
+  .menu-layout > .menu-intro p { margin-bottom: 8px; }
+  .kora-menu.has-tabs .kora-menu__nav {
+    position: sticky; top: var(--menu-tabs-top, 68px); z-index: 5;
+    flex-wrap: nowrap; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    margin: 0 0 28px; padding: 12px 0; background: var(--bg); box-shadow: 0 0 0 100vmax var(--bg); clip-path: inset(0 -100vmax);
+  }
+  .kora-menu.has-tabs .kora-menu__nav::-webkit-scrollbar { display: none; }
+  .kora-menu.has-tabs .kora-menu__nav a { flex: none; scroll-snap-align: start; white-space: nowrap; padding: 10px 16px; border: 1px solid var(--border); border-radius: 999px; }
+  .kora-menu.has-tabs .kora-menu__nav a::after { display: none; }
+  .kora-menu.has-tabs .kora-menu__nav a.is-active { border-color: var(--charcoal); }
 }
 
 /* ── BAR GALLERY ── */

@@ -271,6 +271,14 @@
       a.addEventListener("click", (e) => {
         e.preventDefault();
         show(a.getAttribute("href").slice(1));
+        // On tablet/mobile the tabs are one sideways row: bring the tapped one into view, and if the
+        // reader had scrolled down into a long category, return them to the top of the new one.
+        if (getComputedStyle(nav).position === "sticky" && nav.scrollWidth > nav.clientWidth) {
+          nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: "smooth" });
+          const section = menu.querySelector("#" + CSS.escape(a.getAttribute("href").slice(1)));
+          const gap = section.getBoundingClientRect().top - nav.getBoundingClientRect().bottom - 16;
+          if (gap < 0) window.scrollBy({ top: gap, behavior: "smooth" });
+        }
       });
     });
     show(sections[0].id);
