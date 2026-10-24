@@ -3748,3 +3748,31 @@ body.mobile-menu-open{overflow:hidden}
   .rewards-strip-ctas { width: 100%; flex-direction: column; align-items: stretch; }
   .rewards-strip-ctas .newsletter-cta { width: 100%; }
 }
+
+/* ── Readable text over photos: copy sits in a dark frosted box ── */
+.page-hero-inner {
+  width: fit-content;
+  max-width: min(760px, calc(100% - 32px));
+  margin: 0 auto 0 max(16px, calc((100% - 1120px) / 2));
+  padding: 28px 32px 32px;
+  background: rgba(16, 12, 9, .68);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: var(--radius-card);
+}
+.page-hero p { color: rgba(255, 255, 255, .92); }
+.page-hero p:last-child { margin-bottom: 0; }
+.explore-card-content {
+  margin: 16px;
+  padding: 20px 22px;
+  background: rgba(16, 12, 9, .72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-card);
+}
+.explore-card-desc { color: rgba(255, 255, 255, .92); }
+@media (max-width: 600px) {
+  .page-hero-inner { padding: 22px 20px 24px; }
+  .explore-card-content { margin: 12px; padding: 18px; }
+}
