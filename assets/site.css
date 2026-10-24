@@ -3830,3 +3830,27 @@ body.mobile-menu-open{overflow:hidden}
 @media (max-width: 1024px) {
   .menu-section.menu-page { padding-top: 16px; }
 }
+
+/* ── Happy Hour page: drink lists in the menu page's list style; Happy Hour and the regular bar menu kept apart ── */
+.bar-menu-section { padding: 72px 0 80px; background: var(--bg); }
+.bar-menu-section--regular { background: var(--parchment); border-top: 1px solid var(--border); }
+.bar-menu-header { max-width: 640px; margin-bottom: 40px; }
+.bar-menu-header .section-title { margin: 8px 0 12px; }
+.bar-menu-header p { color: var(--text-mid); font-size: 15px; line-height: 1.7; }
+.bar-menu-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 56px; align-items: start; }
+.bar-menu-section--regular .bar-menu-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bar-menu-group { margin-bottom: 40px; }
+.bar-menu-group-title { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-style: italic; color: var(--charcoal); margin: 0 0 8px; }
+.bar-menu-tag { font-family: var(--font-sans); font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--gold); padding: 4px 10px; border-radius: 999px; }
+.bar-menu-items { list-style: none; margin: 0; padding: 0; }
+.bar-menu-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.bar-menu-item:last-child { border-bottom: 0; }
+.bar-menu-item-name { display: block; font-weight: 500; font-size: 14px; color: var(--charcoal); letter-spacing: .02em; text-transform: uppercase; }
+.bar-menu-item-desc { display: block; font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-top: 4px; }
+@media (max-width: 1024px) {
+  .bar-menu-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+}
+@media (max-width: 640px) {
+  .bar-menu-section { padding: 48px 0 56px; }
+  .bar-menu-groups, .bar-menu-section--regular .bar-menu-groups { grid-template-columns: minmax(0, 1fr); }
+}
