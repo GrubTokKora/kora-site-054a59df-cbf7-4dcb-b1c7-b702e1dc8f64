@@ -3657,7 +3657,7 @@ body.mobile-menu-open{overflow:hidden}
 .kora-menu.has-tabs { display: contents; }
 /* Kora draws the category links as a <nav>; undo the site-header rules the global `nav` selector above would put on it. */
 .kora-menu .kora-menu__nav { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 2px; margin: 0; position: static; width: auto; height: auto; z-index: auto; padding: 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; border-bottom: 0; }
-.kora-menu.has-tabs .kora-menu__nav { grid-column: 1; grid-row: 2; position: sticky; top: 100px; align-self: start; }
+.kora-menu.has-tabs .kora-menu__nav { grid-column: 1; grid-row: 1; position: sticky; top: 100px; align-self: start; }
 .kora-menu .kora-menu__nav a { padding: 14px 20px; border-radius: 2px; font-size: 13px; letter-spacing: 0.06em; font-weight: 400; color: var(--text-mid); border: 1px solid transparent; transition: all .25s; background: transparent; display: flex; justify-content: space-between; align-items: center; text-decoration: none; }
 .kora-menu .kora-menu__nav a::after { content: '\2192'; opacity: 0; transition: opacity .2s; font-size: 16px; }
 .kora-menu .kora-menu__nav a:hover { background: var(--parchment); color: var(--charcoal); }
@@ -3822,4 +3822,11 @@ body.mobile-menu-open{overflow:hidden}
   .page-hero--split { grid-template-columns: 1fr; padding-top: 80px; }
   .page-hero--split .page-hero-media { grid-column: 1; grid-row: 1; min-height: 0; aspect-ratio: 16 / 9; }
   .page-hero--split .page-hero-inner { grid-column: 1; grid-row: 2; margin: 0 auto; width: calc(100% - 32px); padding: 32px 0 40px; }
+}
+
+/* Menu page: no "Categories" intro, so start the menu close under the page hero */
+.menu-section.menu-page { padding-top: 56px; }
+.menu-section.menu-page .menu-layout { margin-top: 0; }
+@media (max-width: 1024px) {
+  .menu-section.menu-page { padding-top: 16px; }
 }
