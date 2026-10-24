@@ -242,6 +242,13 @@
     const menu = document.querySelector(".kora-menu");
     if (!menu) return;
     const nav = menu.querySelector(".kora-menu__nav");
+    // Beer and wine live on the Happy Hour page, so their categories are left off the food menu.
+    menu.querySelectorAll(".kora-menu__section").forEach((section) => {
+      const title = section.querySelector(".kora-menu__section-title");
+      if (!title || !/^(beer|wine)\b/i.test(title.textContent.trim())) return;
+      if (nav) nav.querySelector('a[href="#' + section.id + '"]')?.remove();
+      section.remove();
+    });
     const sections = menu.querySelectorAll(".kora-menu__section");
     if (!nav || sections.length < 2) return;
     const links = nav.querySelectorAll("a");
